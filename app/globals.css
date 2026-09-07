@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "chivo";
+  src: url("/fonts/chivo.ttf") format("truetype");
+  font-weight: 100 900;
+}
+
+@theme inline {
+  --color-p: #000000;
+  --color-s: #f0f0f0;
+
+  --font-chivo: "chivo";
+}
+
+html {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-smooth: never !important;
+  letter-spacing: 0;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100dvw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: "chivo", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.noise::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.03;
+  z-index: 1000;
+  pointer-events: none;
+  background: url("../public/noise.gif");
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
+}
+
+::view-transition-group(root) {
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+  will-change: transform, opacity, clip-path;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 99999999;
+  animation: none !important;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+  animation: none !important;
+}
