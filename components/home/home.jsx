@@ -79,7 +79,7 @@ export default function Home() {
       <Loader loading={loading} />
       <main
         ref={containerRef}
-        className="relative h-screen w-full overflow-hidden bg-s cursor-s-resize select-none max-lg:cursor-ew-resize"
+        className="relative h-dvh w-full overflow-hidden bg-s cursor-s-resize select-none max-lg:cursor-ew-resize"
       >
         {/* LEFT PROJECTS */}
         <div
