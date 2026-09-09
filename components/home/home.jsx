@@ -18,11 +18,17 @@ import {
   SiSpotify,
   SiDior,
 } from "react-icons/si";
-import { motion, useSpring, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import ContactModal from "./contact-modal";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-
+  const [contactModal, setContactModal] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
 
   useEffect(() => {
@@ -105,11 +111,12 @@ export default function Home() {
 
         {/* CENTER */}
         <div
-          className=" select-none pointer-events-none relative z-20 flex h-screen w-full flex-col items-center justify-center
+          className=" select-none pointer-events-none relative z-20 flex h-screen w-full 
+          flex-col items-center justify-center max-lg:mix-blend-exclusion 
          max-lg:p-2.5"
         >
           {/* LOGO */}
-          <div className="absolute left-1/2 top-5 z-30 -translate-x-1/2 overflow-hidden">
+          <div className="absolute left-1/2 top-5 z-30 -translate-x-1/2 overflow-hidden ">
             <motion.div
               initial={{
                 y: "120%",
@@ -132,7 +139,7 @@ export default function Home() {
                   rotate: logoRotate,
                   y: logoY,
                 }}
-                className="block text-[32px] font-normal leading-none text-p max-lg:mix-blend-difference max-lg:text-s"
+                className="block text-[38px] font-normal leading-none text-p max-lg:text-s"
               >
                 ✳
               </motion.span>
@@ -159,7 +166,7 @@ export default function Home() {
                 animate={loading ? "exit" : "animate"}
                 exit="exit"
                 tag="p"
-                className="text-[16px] font-normal uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-[14px]"
+                className="text-[16px] font-normal uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-s max-lg:text-[14px]"
               />
             </motion.div>
           </div>
@@ -192,7 +199,7 @@ export default function Home() {
                     }}
                   >
                     <Icon
-                      className="text-[32px] text-p 
+                      className="text-[32px] text-p max-lg:text-s 
                     hover:scale-105 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]
                      cursor-pointer pointer-events-auto"
                     />
@@ -212,6 +219,7 @@ export default function Home() {
                 delay: loading ? 0 : 0.8,
                 ease: [0.33, 1, 0.68, 1],
               }}
+              onClick={() => setContactModal(true)}
             >
               <motion.div
                 className="group relative w-fit cursor-pointer overflow-hidden"
@@ -219,14 +227,14 @@ export default function Home() {
               >
                 <div className="relative">
                   <p
-                    className="text-[14px] font-normal text-center uppercase leading-[120%] tracking-[-4%] text-p 
+                    className="text-[14px] font-normal text-center uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-s 
                   transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full 
                   max-lg:mix-blend-difference max-lg:text-s"
                   >
                     contato
                   </p>
                   <p
-                    className="absolute left-0 top-full text-[14px] font-normal text-center uppercase leading-[120%] tracking-[-4%] text-p 
+                    className="absolute left-0 top-full text-[14px] font-normal text-center uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-s 
                   transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full
                   max-lg:mix-blend-difference max-lg:text-s"
                   >
@@ -262,6 +270,15 @@ export default function Home() {
           currentProject={currentProject}
           closeProject={closeProject}
         />
+
+        <AnimatePresence mode="wait">
+          {contactModal && (
+            <ContactModal
+              isOpen={contactModal}
+              onClose={() => setContactModal(false)}
+            />
+          )}
+        </AnimatePresence>
       </main>
     </>
   );

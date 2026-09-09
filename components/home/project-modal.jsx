@@ -122,7 +122,8 @@ export function ProjectModal({ currentProject, closeProject }) {
 
           <motion.div
             ref={container}
-            className="fixed left-0 top-0 z-9999 m-2.5 h-[calc(100vh-10px)] w-full max-w-180 bg-s p-2.5 backdrop-blur-3xl max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
+            className="fixed left-0 top-0 z-9999 m-2.5 h-[calc(100vh-10px)] w-full max-w-180 bg-s p-2.5 
+            backdrop-blur-3xl cursor-s-resize max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
             variants={menuAnim}
             initial="initial"
             animate="animate"
