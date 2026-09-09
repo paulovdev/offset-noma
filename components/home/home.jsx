@@ -80,36 +80,16 @@ export default function Home() {
     setCurrentProject(null);
   };
 
-  useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.inset = "0";
-    document.body.style.width = "100%";
-    document.body.style.height = "100%";
-
-    return () => {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.inset = "";
-      document.body.style.width = "";
-      document.body.style.height = "";
-    };
-  }, []);
-
   return (
     <>
       <Loader loading={loading} />
+
       <main
         ref={containerRef}
-        className="relative h-screen w-full overflow-hidden overscroll-none bg-s cursor-s-resize select-none touch-none max-lg:cursor-ew-resize"
+        className="relative h-[100svh] w-full overflow-hidden overscroll-none bg-s cursor-s-resize select-none max-lg:cursor-ew-resize"
       >
         {/* LEFT PROJECTS */}
-        <div
-          className="pointer-events-auto absolute left-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden 
-        max-lg:left-0 max-lg:top-2.5 max-lg:h-[27vh] max-lg:w-full"
-        >
+        <div className="pointer-events-auto absolute left-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden max-lg:left-0 max-lg:top-2.5 max-lg:h-[22svh] max-lg:w-full">
           <div
             ref={leftRef}
             className="absolute left-0 top-0 flex w-full flex-col gap-2.5 will-change-transform max-lg:h-full max-lg:w-max max-lg:flex-row"
@@ -128,13 +108,9 @@ export default function Home() {
         </div>
 
         {/* CENTER */}
-        <div
-          className=" select-none pointer-events-none relative z-20 flex h-screen w-full 
-          flex-col items-center justify-center max-lg:mix-blend-exclusion 
-         max-lg:p-2.5"
-        >
+        <div className="pointer-events-none relative z-20 flex h-[100svh] w-full flex-col items-center justify-center select-none max-lg:p-2.5">
           {/* LOGO */}
-          <div className="absolute left-1/2 top-5 z-30 -translate-x-1/2 overflow-hidden ">
+          <div className="absolute left-1/2 top-5 z-30 -translate-x-1/2 overflow-hidden">
             <motion.div
               initial={{
                 y: "120%",
@@ -165,13 +141,10 @@ export default function Home() {
           </div>
 
           {/* TEXT */}
-          <div className="mb-25 max-w-100 w-full text-center max-lg:max-w-75 max-lg:mb-10">
+          <div className="mb-25 w-full max-w-100 text-center max-lg:max-w-[290px] max-lg:mb-5">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
-              animate={{
-                y: loading ? 30 : 0,
-                opacity: loading ? 0 : 1,
-              }}
+              animate={{ y: loading ? 30 : 0, opacity: loading ? 0 : 1 }}
               transition={{
                 duration: 0.8,
                 delay: loading ? 0 : 0.15,
@@ -184,7 +157,7 @@ export default function Home() {
                 animate={loading ? "exit" : "animate"}
                 exit="exit"
                 tag="p"
-                className="text-[16px] font-normal uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-s max-lg:text-[14px]"
+                className="text-[16px] font-normal uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-[14px]"
               />
             </motion.div>
           </div>
@@ -202,7 +175,7 @@ export default function Home() {
               ease: [0.33, 1, 0.68, 1],
             }}
             style={{ y: brandsY }}
-            className="flex items-center gap-5 "
+            className="flex items-center gap-3 lg:gap-5"
           >
             {[SiNike, SiAdidas, SiPuma, SiApple, SiSpotify, SiDior].map(
               (Icon, i) => (
@@ -216,11 +189,7 @@ export default function Home() {
                       ease: [0.33, 1, 0.68, 1],
                     }}
                   >
-                    <Icon
-                      className="text-[32px] text-p max-lg:text-s 
-                    hover:scale-105 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]
-                     cursor-pointer pointer-events-auto"
-                    />
+                    <Icon className="pointer-events-auto cursor-pointer text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] hover:scale-105 lg:text-[32px]" />
                   </motion.div>
                 </div>
               ),
@@ -228,7 +197,7 @@ export default function Home() {
           </motion.div>
 
           {/* CONTACT */}
-          <div className="pointer-events-auto absolute bottom-5 left-1/2 w-fit -translate-x-1/2 overflow-hidden">
+          <div className="pointer-events-auto fixed bottom-5 left-1/2 z-50 w-fit -translate-x-1/2 overflow-hidden max-lg:bottom-4">
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: loading ? "100%" : "0%" }}
@@ -244,18 +213,11 @@ export default function Home() {
                 style={{ y: inputY }}
               >
                 <div className="relative">
-                  <p
-                    className="text-[14px] font-normal text-center uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-s 
-                  transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full 
-                  max-lg:mix-blend-difference max-lg:text-s"
-                  >
+                  <p className="text-center text-[14px] font-normal uppercase leading-[120%] tracking-[-4%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full max-lg:text-s max-lg:mix-blend-difference">
                     contato
                   </p>
-                  <p
-                    className="absolute left-0 top-full text-[14px] font-normal text-center uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-s 
-                  transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full
-                  max-lg:mix-blend-difference max-lg:text-s"
-                  >
+
+                  <p className="absolute left-0 top-full text-center text-[14px] font-normal uppercase leading-[120%] tracking-[-4%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full max-lg:text-s max-lg:mix-blend-difference">
                     contato
                   </p>
                 </div>
@@ -265,7 +227,7 @@ export default function Home() {
         </div>
 
         {/* RIGHT PROJECTS */}
-        <div className="pointer-events-auto absolute right-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden max-lg:bottom-2.5 max-lg:right-0 max-lg:top-auto max-lg:h-[27vh] max-lg:w-full">
+        <div className="pointer-events-auto absolute right-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden max-lg:right-0 max-lg:bottom-2.5 max-lg:top-auto max-lg:h-[22svh] max-lg:w-full">
           <div
             ref={rightRef}
             className="absolute left-0 top-0 flex w-full flex-col gap-2.5 will-change-transform max-lg:h-full max-lg:w-max max-lg:flex-row"
