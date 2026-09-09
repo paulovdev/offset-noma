@@ -89,10 +89,14 @@ export default function Home() {
         className="relative h-[100svh] w-full overflow-hidden overscroll-none bg-s cursor-s-resize select-none max-lg:cursor-ew-resize"
       >
         {/* LEFT PROJECTS */}
-        <div className="pointer-events-auto absolute left-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden max-lg:left-0 max-lg:top-2.5 max-lg:h-[22svh] max-lg:w-full">
+        <div
+          className="pointer-events-auto absolute left-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden 
+        max-lg:left-0 max-lg:top-2.5 max-lg:h-[28svh] max-lg:w-full"
+        >
           <div
             ref={leftRef}
-            className="absolute left-0 top-0 flex w-full flex-col gap-2.5 will-change-transform max-lg:h-full max-lg:w-max max-lg:flex-row"
+            className="absolute left-0 top-0 flex w-full flex-col gap-2.5 will-change-transform 
+            max-lg:h-full max-lg:w-max max-lg:flex-row"
           >
             {repeatedLeftProjects.map((project, index) => (
               <ProjectCard
@@ -227,7 +231,10 @@ export default function Home() {
         </div>
 
         {/* RIGHT PROJECTS */}
-        <div className="pointer-events-auto absolute right-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden max-lg:right-0 max-lg:bottom-2.5 max-lg:top-auto max-lg:h-[22svh] max-lg:w-full">
+        <div
+          className="pointer-events-auto absolute right-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden 
+        max-lg:right-0 max-lg:bottom-2.5 max-lg:top-auto max-lg:h-[28svh] max-lg:w-full"
+        >
           <div
             ref={rightRef}
             className="absolute left-0 top-0 flex w-full flex-col gap-2.5 will-change-transform max-lg:h-full max-lg:w-max max-lg:flex-row"

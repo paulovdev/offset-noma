@@ -61,7 +61,7 @@ const ContactModal = ({ onClose }) => {
       />
       <motion.div
         className="fixed bottom-0 left-1/2 z-100 
-        flex h-100 w-100 -translate-x-1/2 
+        flex h-100 max-w-100 w-full -translate-x-1/2 
         flex-col justify-between bg-s p-5 cursor-default"
         variants={menuAnim}
         initial="initial"
