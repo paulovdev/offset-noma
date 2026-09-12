@@ -14,7 +14,7 @@ export function useInfiniteColumns(leftCount, rightCount, isModalOpen = false) {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
 
-  const targetScroll = useRef(0);
+  const targetScroll = useRef(150);
   const currentScroll = useRef(0);
   const previousScroll = useRef(0);
 

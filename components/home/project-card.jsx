@@ -2,18 +2,19 @@
 
 import { motion, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function ProjectCard({
   project,
-  onClick,
   index = 0,
   scrollVelocity = 0,
   loading,
 }) {
+  const router = useRouter();
   const spring = useSpring(scrollVelocity, {
     stiffness: 225,
     damping: 18,
-    mass: 0.7,
+    mass: 0.75,
   });
 
   const y = useTransform(spring, [-1, 0, 1], [10, 0, -10]);
@@ -22,7 +23,7 @@ export function ProjectCard({
 
   return (
     <motion.button
-      onClick={onClick}
+      onClick={() => router.push(`/project/${project.id}`)}
       initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
       animate={{
         clipPath: loading ? "inset(100% 0% 0% 0%)" : "inset(0% 0% 0% 0%)",
@@ -34,7 +35,12 @@ export function ProjectCard({
           ease: [0.76, 0, 0.24, 1],
         },
       }}
-      whileHover={{ scale: 0.98 }}
+      whileTap={{
+        scale: 1.1,
+      }}
+      whileHover={{
+        scale: 0.98,
+      }}
       className="group relative block h-[60vh] w-full shrink-0 cursor-pointer overflow-hidden max-lg:h-full max-lg:w-[55vw]"
     >
       <motion.div style={{ y, x, scale }} className="relative size-full">
@@ -44,16 +50,16 @@ export function ProjectCard({
           width={3000}
           height={3000}
           placeholder="blur"
-          className="size-full object-cover noise group-hover:brightness-75 transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)]"
+          className="size-full object-cover group-hover:brightness-75 transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)]"
         />
 
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="overflow-hidden">
             <span
-              className="block translate-y-[120%] text-[14px] font-medium uppercase tracking-[-3%] text-s 
+              className="block translate-y-[120%] text-[14px] font-medium uppercase tracking-[-3%] text-p 
             transition-transform duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0"
             >
-              ver projeto
+              view project
             </span>
           </div>
         </div>

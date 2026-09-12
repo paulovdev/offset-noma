@@ -12,7 +12,7 @@ export function Loader({ loading }) {
         scope.current,
         { y: "-100%" },
         {
-          duration: 0.75,
+          duration: 1,
           ease: [0.76, 0, 0.24, 1],
         },
       );
@@ -22,14 +22,14 @@ export function Loader({ loading }) {
   return (
     <div
       ref={scope}
-      className={`fixed inset-0 z-999 flex items-center justify-center bg-p noise ${loading ? "cursor-wait" : "pointer-events-none"}`}
+      className={`fixed inset-0 z-999 flex items-center justify-center bg-p ${loading ? "cursor-wait" : "pointer-events-none"}`}
     >
       <div className="flex items-center justify-center">
-        <p className="text-[14px] font-normal uppercase leading-[120%] tracking-[-4%] text-s">
+        <p className="text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-s will-change-transform">
           carregando
         </p>
 
-        <span className="ml-1 flex w-[18px] items-center text-[14px] font-medium leading-[120%] tracking-[-4%] text-s">
+        <span className="ml-1 flex w-4.5 items-center text-[14px] font-medium leading-[120%] tracking-[-4%] text-s">
           <span className="dot dot-1">.</span>
           <span className="dot dot-2">.</span>
           <span className="dot dot-3">.</span>

@@ -7,8 +7,9 @@
 }
 
 @theme inline {
-  --color-p: #000000;
-  --color-s: #f0f0f0;
+  --color-p: #f9f8f8;
+  --color-s: #000000;
+  --color-ts: #ff3b3c;
 
   --font-chivo: "chivo";
 }

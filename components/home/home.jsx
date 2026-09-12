@@ -2,34 +2,32 @@
 
 import { ClipText } from "@/components/clip-text";
 import { Loader } from "@/components/loader";
-import { ProjectCard } from "@/components/home/project-card";
-import { ProjectModal } from "@/components/home/project-modal";
+import { ProjectCard } from "./project-card";
+import { ProjectModal } from "./modals/project-modal";
+import { useRouter, usePathname } from "next/navigation";
+import AboutModal from "./modals/about-modal";
 import {
   repeatedLeftProjects,
   repeatedRightProjects,
 } from "@/components/home/project-data";
 import { useInfiniteColumns } from "@/components/home/use-infinite-columns";
 import { useEffect, useState } from "react";
-import {
-  SiNike,
-  SiAdidas,
-  SiPuma,
-  SiApple,
-  SiSpotify,
-  SiDior,
-} from "react-icons/si";
-import {
-  AnimatePresence,
-  motion,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import ContactModal from "./contact-modal";
+import { SiNike, SiAdidas, SiApple, SiSpotify, SiDior } from "react-icons/si";
+import { motion, useSpring, useTransform } from "framer-motion";
 
 export default function Home() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const isModalActive =
+    pathname.includes("/contact") ||
+    pathname.includes("/about") ||
+    pathname.includes("/project");
+
   const [loading, setLoading] = useState(true);
-  const [contactModal, setContactModal] = useState(false);
-  const [currentProject, setCurrentProject] = useState(null);
+
+  const { containerRef, leftRef, rightRef, scrollVelocity } =
+    useInfiniteColumns(6, 7, isModalActive);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,9 +36,6 @@ export default function Home() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  const { containerRef, leftRef, rightRef, scrollVelocity } =
-    useInfiniteColumns(5, 4, currentProject !== null);
 
   const logoSpring = useSpring(scrollVelocity, {
     stiffness: 320,
@@ -72,26 +67,18 @@ export default function Home() {
   const brandsY = useTransform(brandsSpring, [-1, 0, 1], [14, 0, -14]);
   const inputY = useTransform(inputSpring, [-1, 0, 1], [5, 0, -2]);
 
-  const openProject = (project) => {
-    setCurrentProject(project);
-  };
-
-  const closeProject = () => {
-    setCurrentProject(null);
-  };
-
   return (
     <>
       <Loader loading={loading} />
 
       <main
         ref={containerRef}
-        className="relative h-[100svh] w-full overflow-hidden overscroll-none bg-s cursor-s-resize select-none max-lg:cursor-ew-resize"
+        className="relative flex h-svh w-full overflow-hidden overscroll-none bg-s cursor-s-resize select-none max-lg:cursor-ew-resize max-lg:flex-col"
       >
         {/* LEFT PROJECTS */}
         <div
-          className="pointer-events-auto absolute left-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden 
-        max-lg:left-0 max-lg:top-2.5 max-lg:h-[28svh] max-lg:w-full"
+          className="pointer-events-auto relative left-2.5 top-0 h-screen w-[30vw] select-none overflow-hidden 
+        max-lg:left-0 max-lg:h-[35svh] max-lg:w-full"
         >
           <div
             ref={leftRef}
@@ -105,16 +92,17 @@ export default function Home() {
                 index={index}
                 scrollVelocity={scrollVelocity}
                 loading={loading}
-                onClick={() => openProject(project)}
               />
             ))}
           </div>
         </div>
-
         {/* CENTER */}
-        <div className="pointer-events-none relative z-20 flex h-[100svh] w-full flex-col items-center justify-center select-none max-lg:p-2.5">
+        <div
+          className="pointer-events-none p-2.5 relative z-20 flex h-svh w-[40vw] flex-col items-center justify-center select-none 
+        max-lg:w-full max-lg:h-[35svh]"
+        >
           {/* LOGO */}
-          <div className="absolute left-1/2 top-5 z-30 -translate-x-1/2 overflow-hidden">
+          <div className="fixed left-1/2 top-5 z-30 -translate-x-1/2 overflow-hidden">
             <motion.div
               initial={{
                 y: "120%",
@@ -137,7 +125,7 @@ export default function Home() {
                   rotate: logoRotate,
                   y: logoY,
                 }}
-                className="block text-[38px] font-normal leading-none text-p max-lg:text-s"
+                className="block text-[38px] font-medium leading-none text-p"
               >
                 ✳
               </motion.span>
@@ -145,7 +133,7 @@ export default function Home() {
           </div>
 
           {/* TEXT */}
-          <div className="mb-25 w-full max-w-100 text-center max-lg:max-w-[290px] max-lg:mb-5">
+          <div className="mb-25 w-full max-w-125 text-center max-lg:max-w-100 max-lg:mb-5">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: loading ? 30 : 0, opacity: loading ? 0 : 1 }}
@@ -157,11 +145,11 @@ export default function Home() {
               style={{ y: textY }}
             >
               <ClipText
-                text="Um estúdio de design independente que ajuda marcas a encontrar sua identidade, expressar suas ideias e se destacar."
+                text="AN INDEPENDENT ✦ DESIGN STUDIO THAT CREATES IDENTITIES, ◉ ART DIRECTION AND VISUAL EXPERIENCES ✧ FOR BRANDS, PRODUCTS ■ AND SPACES. ☼"
                 animate={loading ? "exit" : "animate"}
                 exit="exit"
                 tag="p"
-                className="text-[16px] font-normal uppercase leading-[120%] tracking-[-4%] text-p max-lg:text-[14px]"
+                className="text-[18px] font-medium uppercase leading-[120%] tracking-[-3%] text-p max-2xl:text-[16px] max-md:text-[15px]"
               />
             </motion.div>
           </div>
@@ -181,27 +169,77 @@ export default function Home() {
             style={{ y: brandsY }}
             className="flex items-center gap-3 lg:gap-5"
           >
-            {[SiNike, SiAdidas, SiPuma, SiApple, SiSpotify, SiDior].map(
-              (Icon, i) => (
-                <div key={i} className="overflow-hidden">
-                  <motion.div
-                    initial={{ y: "120%" }}
-                    animate={{ y: loading ? "120%" : "0%" }}
-                    transition={{
-                      duration: 0.8,
-                      delay: loading ? 0 : 0.35 + i * 0.08,
-                      ease: [0.33, 1, 0.68, 1],
-                    }}
-                  >
-                    <Icon className="pointer-events-auto cursor-pointer text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] hover:scale-105 lg:text-[32px]" />
-                  </motion.div>
-                </div>
-              ),
-            )}
+            {[SiNike, SiAdidas, SiApple, SiSpotify, SiDior].map((Icon, i) => (
+              <div key={i} className="overflow-hidden">
+                <motion.div
+                  initial={{ y: "120%" }}
+                  animate={{ y: loading ? "120%" : "0%" }}
+                  transition={{
+                    duration: 0.8,
+                    delay: loading ? 0 : 0.35 + i * 0.08,
+                    ease: [0.33, 1, 0.68, 1],
+                  }}
+                >
+                  <Icon
+                    className="pointer-events-auto cursor-pointer text-[32px] text-p 
+                    transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] hover:scale-105"
+                  />
+                </motion.div>
+              </div>
+            ))}
           </motion.div>
 
-          {/* CONTACT */}
-          <div className="pointer-events-auto fixed bottom-5 left-1/2 z-50 w-fit -translate-x-1/2 overflow-hidden max-lg:bottom-4">
+          {/* ABOUT + CONTACT */}
+          <div className="pointer-events-auto fixed bottom-5 left-1/2 z-50 flex w-fit -translate-x-1/2 items-center gap-5 overflow-hidden max-lg:bottom-4 max-lg:gap-3">
+            {/* ABOUT */}
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: loading ? "100%" : "0%" }}
+              transition={{
+                duration: 0.8,
+                delay: loading ? 0 : 0.75,
+                ease: [0.33, 1, 0.68, 1],
+              }}
+              onClick={() => router.push("/about")}
+            >
+              <motion.div
+                className="group relative w-fit cursor-pointer overflow-hidden"
+                style={{ y: inputY }}
+              >
+                <div className="relative will-change-transform">
+                  <p
+                    className="
+            text-center text-[14px] font-medium uppercase
+            leading-[120%] tracking-[-3%] text-p
+            transition-transform duration-500
+            ease-[cubic-bezier(0.76,0,0.24,1)]
+            group-hover:-translate-y-full
+             max-lg:mix-blend-difference
+          "
+                  >
+                    about us
+                  </p>
+
+                  <p
+                    className="
+            absolute left-0 top-full text-center text-[14px]
+            font-medium uppercase leading-[120%] tracking-[-3%]
+            text-p transition-transform duration-500
+            ease-[cubic-bezier(0.76,0,0.24,1)]
+            group-hover:-translate-y-full
+             max-lg:mix-blend-difference
+          "
+                  >
+                    about us
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* DIVIDER */}
+            <span className="h-3 w-px bg-p/30" />
+
+            {/* CONTACT */}
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: loading ? "100%" : "0%" }}
@@ -210,30 +248,47 @@ export default function Home() {
                 delay: loading ? 0 : 0.8,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              onClick={() => setContactModal(true)}
+              onClick={() => router.push("/contact")}
             >
               <motion.div
                 className="group relative w-fit cursor-pointer overflow-hidden"
                 style={{ y: inputY }}
               >
-                <div className="relative">
-                  <p className="text-center text-[14px] font-normal uppercase leading-[120%] tracking-[-4%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full max-lg:text-s max-lg:mix-blend-difference">
-                    contato
+                <div className="relative will-change-transform">
+                  <p
+                    className="
+            text-center text-[14px] font-medium uppercase
+            leading-[120%] tracking-[-3%] text-p
+            transition-transform duration-500
+            ease-[cubic-bezier(0.76,0,0.24,1)]
+            group-hover:-translate-y-full
+             max-lg:mix-blend-difference
+          "
+                  >
+                    contact
                   </p>
 
-                  <p className="absolute left-0 top-full text-center text-[14px] font-normal uppercase leading-[120%] tracking-[-4%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full max-lg:text-s max-lg:mix-blend-difference">
-                    contato
+                  <p
+                    className="
+            absolute left-0 top-full text-center text-[14px]
+            font-medium uppercase leading-[120%] tracking-[-3%]
+            text-p transition-transform duration-500
+            ease-[cubic-bezier(0.76,0,0.24,1)]
+            group-hover:-translate-y-full
+             max-lg:mix-blend-difference
+          "
+                  >
+                    contact
                   </p>
                 </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
-
         {/* RIGHT PROJECTS */}
         <div
-          className="pointer-events-auto absolute right-2.5 top-0 h-screen w-[25vw] select-none overflow-hidden 
-        max-lg:right-0 max-lg:bottom-2.5 max-lg:top-auto max-lg:h-[28svh] max-lg:w-full"
+          className="pointer-events-auto relative right-2.5 top-0 h-screen w-[30vw] select-none overflow-hidden 
+        max-lg:right-0  max-lg:top-auto max-lg:h-[35svh] max-lg:w-full"
         >
           <div
             ref={rightRef}
@@ -246,26 +301,10 @@ export default function Home() {
                 index={index}
                 scrollVelocity={scrollVelocity}
                 loading={loading}
-                onClick={() => openProject(project)}
               />
             ))}
           </div>
         </div>
-
-        {/* MODAL */}
-        <ProjectModal
-          currentProject={currentProject}
-          closeProject={closeProject}
-        />
-
-        <AnimatePresence mode="wait">
-          {contactModal && (
-            <ContactModal
-              isOpen={contactModal}
-              onClose={() => setContactModal(false)}
-            />
-          )}
-        </AnimatePresence>
       </main>
     </>
   );
