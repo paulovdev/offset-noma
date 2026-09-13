@@ -17,99 +17,77 @@ export const projects = [
     id: "project-01",
     icon: "✳",
     name: "NIKE",
-
     description:
-      "An independent design studio helping brands find their identity, express their ideas, and stand out.",
-
-    action: "Discover NIKE and what we can create together.",
-
-    category: "Identity",
+      "Um estúdio independente de design que ajuda marcas a encontrar sua identidade, expressar suas ideias e se destacar.",
+    action: "Descubra a NIKE e o que podemos criar juntos.",
+    category: "Identidade",
     year: "2026",
-    type: "Selected project",
-
+    type: "Projeto selecionado",
     statement:
-      "A visual identity built to transform strategy into a bold, contemporary, and recognizable presence.",
-
-    idea: "Create a visual language that translates NIKE's personality into a simple, expressive identity capable of evolving alongside the studio.",
-
+      "Uma identidade visual criada para transformar estratégia em uma presença marcante, contemporânea e reconhecível.",
+    idea: "Criar uma linguagem visual que traduza a personalidade da NIKE em uma identidade simples e expressiva, capaz de evoluir junto com a marca.",
     approach:
-      "We started from the brand strategy to develop art direction, typography, composition, and graphic elements that work together as a consistent visual system.",
-
+      "Partimos da estratégia da marca para desenvolver direção de arte, tipografia, composição e elementos gráficos que funcionam juntos como um sistema visual consistente.",
     services: [
-      "Brand strategy",
-      "Visual identity",
-      "Art direction",
-      "Digital design",
+      "Estratégia de marca",
+      "Identidade visual",
+      "Direção de arte",
+      "Design digital",
     ],
-
     result:
-      "A flexible and distinctive identity created to position NIKE with clarity and strength across different contexts.",
-
+      "Uma identidade flexível e marcante, criada para posicionar a NIKE com clareza e força em diferentes contextos.",
     img: bg1,
   },
 
   {
     id: "project-02",
     icon: "✳",
-    name: "Project 02",
-
+    name: "Projeto 02",
     description:
-      "A creative project focused on building a distinctive visual identity and engaging digital experiences.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Creative direction",
+      "Um projeto criativo focado na construção de uma identidade visual marcante e experiências digitais envolventes.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Direção criativa",
     year: "2026",
-    type: "Visual identity",
-
+    type: "Identidade visual",
     statement:
-      "A new visual language created to transform an idea into a brand with presence, personality, and purpose.",
-
-    idea: "Develop an identity capable of communicating the essence of the project immediately, while leaving room for interpretation and experimentation.",
-
+      "Uma nova linguagem visual criada para transformar uma ideia em uma marca com presença, personalidade e propósito.",
+    idea: "Desenvolver uma identidade capaz de comunicar a essência do projeto imediatamente, deixando espaço para interpretação e experimentação.",
     approach:
-      "We explored shapes, typography, rhythm, and composition to build a contemporary visual language that could adapt to different applications.",
-
+      "Exploramos formas, tipografia, ritmo e composição para construir uma linguagem visual contemporânea e adaptável a diferentes aplicações.",
     services: [
-      "Creative direction",
-      "Visual identity",
-      "Typography",
-      "Digital design",
+      "Direção criativa",
+      "Identidade visual",
+      "Tipografia",
+      "Design digital",
     ],
-
     result:
-      "A cohesive visual system that transforms different touchpoints into a unique and recognizable experience.",
-
+      "Um sistema visual coeso que transforma diferentes pontos de contato em uma experiência única e reconhecível.",
     img: bg2,
   },
 
   {
     id: "project-03",
     icon: "✳",
-    name: "Project 03",
-
+    name: "Projeto 03",
     description:
-      "A visual identity created to give the brand a stronger, more memorable, and relevant presence.",
-
-    action: "Discover the project and explore the work.",
-
+      "Uma identidade visual criada para dar à marca uma presença mais forte, memorável e relevante.",
+    action: "Descubra o projeto e explore o trabalho.",
     category: "Branding",
     year: "2026",
-    type: "Brand identity",
-
+    type: "Identidade de marca",
     statement:
-      "An identity designed to make the brand clearer, more recognizable, and more present within contemporary visual culture.",
-
-    idea: "Build a brand that could stand out without relying on visual excess, using contrast, proportion, and a precise graphic language.",
-
+      "Uma identidade criada para tornar a marca mais clara, reconhecível e presente dentro da cultura visual contemporânea.",
+    idea: "Construir uma marca capaz de se destacar sem depender do excesso visual, utilizando contraste, proporção e uma linguagem gráfica precisa.",
     approach:
-      "The identity was developed through a combination of strategy, art direction, and design, creating a simple and highly adaptable visual foundation.",
-
-    services: ["Branding", "Visual identity", "Art direction", "Strategy"],
-
+      "A identidade foi desenvolvida através da combinação de estratégia, direção de arte e design, criando uma base visual simples e altamente adaptável.",
+    services: [
+      "Branding",
+      "Identidade visual",
+      "Direção de arte",
+      "Estratégia",
+    ],
     result:
-      "A more consistent and recognizable brand presence, prepared for different physical and digital environments.",
-
+      "Uma presença de marca mais consistente e reconhecível, preparada para diferentes ambientes físicos e digitais.",
     img: bg3,
   },
 
@@ -117,99 +95,77 @@ export const projects = [
     id: "project-04",
     icon: "✳",
     name: "ADIDAS — STAN SMITH, FOREVER",
-
     description:
-      "A creative direction developed from a bold, contemporary, and highly expressive visual language.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Art direction",
+      "Uma direção criativa desenvolvida a partir de uma linguagem visual marcante, contemporânea e altamente expressiva.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Direção de arte",
     year: "2026",
-    type: "Creative project",
-
+    type: "Projeto criativo",
     statement:
-      "A visual direction built to break away from the predictable and create a bolder, more culturally relevant presence.",
-
-    idea: "Explore an aesthetic that balances impact and refinement, creating an identity capable of demanding attention without losing sophistication.",
-
+      "Uma direção visual criada para romper com o previsível e construir uma presença mais marcante e culturalmente relevante.",
+    idea: "Explorar uma estética que equilibre impacto e refinamento, criando uma identidade capaz de chamar atenção sem perder sofisticação.",
     approach:
-      "We worked with composition, photography, typography, and motion as parts of the same language, creating a dynamic visual experience.",
-
+      "Trabalhamos composição, fotografia, tipografia e movimento como partes de uma mesma linguagem, criando uma experiência visual dinâmica.",
     services: [
-      "Art direction",
-      "Creative direction",
-      "Photography",
-      "Digital design",
+      "Direção de arte",
+      "Direção criativa",
+      "Fotografia",
+      "Design digital",
     ],
-
     result:
-      "An expressive visual direction that positions the brand more boldly and creates space for new forms of communication.",
-
+      "Uma direção visual expressiva que posiciona a marca de forma mais marcante e abre espaço para novas formas de comunicação.",
     img: bg4,
   },
 
   {
     id: "project-05",
     icon: "✳",
-    name: "Project 05",
-
+    name: "Projeto 05",
     description:
-      "A branding project combining strategy, art direction, and digital design into a single language.",
-
-    action: "Discover the project and explore the work.",
-
+      "Um projeto de branding que combina estratégia, direção de arte e design digital em uma única linguagem.",
+    action: "Descubra o projeto e explore o trabalho.",
     category: "Branding",
     year: "2026",
-    type: "Strategy + Design",
-
+    type: "Estratégia + Design",
     statement:
-      "A brand built at the intersection of strategy, aesthetics, and a clear vision for the future.",
-
-    idea: "Create an identity that not only represents the brand, but also helps define how it should be perceived.",
-
+      "Uma marca construída na interseção entre estratégia, estética e uma visão clara de futuro.",
+    idea: "Criar uma identidade que não apenas represente a marca, mas também ajude a definir como ela deve ser percebida.",
     approach:
-      "We combined positioning, visual identity, and digital design to build a system that maintains consistency while allowing creative freedom.",
-
-    services: ["Brand strategy", "Branding", "Art direction", "Digital design"],
-
+      "Combinamos posicionamento, identidade visual e design digital para construir um sistema consistente, mas que também permite liberdade criativa.",
+    services: [
+      "Estratégia de marca",
+      "Branding",
+      "Direção de arte",
+      "Design digital",
+    ],
     result:
-      "A complete identity prepared to grow while maintaining its personality across different channels and experiences.",
-
+      "Uma identidade completa preparada para crescer mantendo sua personalidade em diferentes canais e experiências.",
     img: bg5,
   },
 
   {
     id: "project-06",
     icon: "✳",
-    name: "Project 06",
-
+    name: "Projeto 06",
     description:
-      "A new visual system created to establish a distinctive, consistent, and recognizable brand experience.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Visual system",
+      "Um novo sistema visual criado para estabelecer uma experiência de marca marcante, consistente e reconhecível.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Sistema visual",
     year: "2026",
-    type: "Identity",
-
+    type: "Identidade",
     statement:
-      "A visual system developed to transform consistency into recognition, making every application an extension of the brand.",
-
-    idea: "Create a visual structure strong enough to ensure unity, yet flexible enough to adapt to different needs.",
-
+      "Um sistema visual desenvolvido para transformar consistência em reconhecimento, fazendo de cada aplicação uma extensão da marca.",
+    idea: "Criar uma estrutura visual forte o suficiente para garantir unidade, mas flexível o bastante para se adaptar a diferentes necessidades.",
     approach:
-      "We defined visual elements, composition rules, typography, and art direction to create a language that could be applied intuitively.",
-
+      "Definimos elementos visuais, regras de composição, tipografia e direção de arte para criar uma linguagem que pudesse ser aplicada de forma intuitiva.",
     services: [
-      "Visual system",
-      "Brand identity",
-      "Art direction",
-      "Editorial design",
+      "Sistema visual",
+      "Identidade de marca",
+      "Direção de arte",
+      "Design editorial",
     ],
-
     result:
-      "A consistent visual language that allows the brand to grow without losing its personality or recognition.",
-
+      "Uma linguagem visual consistente que permite à marca crescer sem perder sua personalidade ou reconhecimento.",
     img: bg6,
   },
 
@@ -217,64 +173,46 @@ export const projects = [
     id: "project-07",
     icon: "✳",
     name: "SPOTIFY",
-
     description:
-      "An experimental identity exploring form, typography, motion, and new visual possibilities.",
-
-    action: "Discover the project and explore the work.",
-
+      "Uma identidade experimental que explora forma, tipografia, movimento e novas possibilidades visuais.",
+    action: "Descubra o projeto e explore o trabalho.",
     category: "Experimental",
     year: "2026",
-    type: "Visual exploration",
-
+    type: "Exploração visual",
     statement:
-      "A visual exploration where form, motion, and typography come together to create an unconventional identity.",
-
-    idea: "Question traditional identity structures and explore how graphic elements can gain movement, rhythm, and personality.",
-
+      "Uma exploração visual onde forma, movimento e tipografia se unem para criar uma identidade não convencional.",
+    idea: "Questionar estruturas tradicionais de identidade e explorar como elementos gráficos podem ganhar movimento, ritmo e personalidade.",
     approach:
-      "We experimented with different relationships between typography, scale, space, and motion until we found a unique visual language.",
-
+      "Experimentamos diferentes relações entre tipografia, escala, espaço e movimento até encontrar uma linguagem visual única.",
     services: [
-      "Creative direction",
-      "Experimental design",
-      "Typography",
+      "Direção criativa",
+      "Design experimental",
+      "Tipografia",
       "Motion design",
     ],
-
     result:
-      "An experimental identity that transforms visual rules into tools for creating more expressive experiences.",
-
+      "Uma identidade experimental que transforma regras visuais em ferramentas para criar experiências mais expressivas.",
     img: bg7,
   },
 
   {
     id: "project-08",
     icon: "✳",
-    name: "Project 08",
-
+    name: "Projeto 08",
     description:
-      "A digital experience built around a refined, expressive, and contemporary visual direction.",
-
-    action: "Discover the project and explore the work.",
-
+      "Uma experiência digital construída a partir de uma direção visual refinada, expressiva e contemporânea.",
+    action: "Descubra o projeto e explore o trabalho.",
     category: "Digital",
     year: "2026",
-    type: "Digital experience",
-
+    type: "Experiência digital",
     statement:
-      "A digital experience where design, motion, and interaction work together to create a memorable presence.",
-
-    idea: "Turn navigation into part of the identity, creating an experience that communicates the brand's personality through every interaction.",
-
+      "Uma experiência digital onde design, movimento e interação trabalham juntos para criar uma presença memorável.",
+    idea: "Transformar a navegação em parte da identidade, criando uma experiência que comunica a personalidade da marca através de cada interação.",
     approach:
-      "We developed a visual direction based on typography, space, motion, and subtle transitions to create an engaging digital experience.",
-
-    services: ["Digital design", "Art direction", "UI/UX", "Motion design"],
-
+      "Desenvolvemos uma direção visual baseada em tipografia, espaço, movimento e transições sutis para criar uma experiência digital envolvente.",
+    services: ["Design digital", "Direção de arte", "UI/UX", "Motion design"],
     result:
-      "A refined digital experience that transforms interaction into a natural extension of the brand identity.",
-
+      "Uma experiência digital refinada que transforma a interação em uma extensão natural da identidade da marca.",
     img: bg8,
   },
 
@@ -282,139 +220,103 @@ export const projects = [
     id: "project-09",
     icon: "✳",
     name: "Christian Dior SE",
-
     description:
-      "A contemporary identity system created to connect culture, design, and technology.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Culture",
+      "Um sistema de identidade contemporâneo criado para conectar cultura, design e tecnologia.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Cultura",
     year: "2026",
-    type: "Cultural identity",
-
+    type: "Identidade cultural",
     statement:
-      "An identity created to bring culture, design, and technology closer together through a contemporary visual language.",
-
-    idea: "Build a brand capable of engaging with different audiences and contexts without losing its essence and personality.",
-
+      "Uma identidade criada para aproximar cultura, design e tecnologia através de uma linguagem visual contemporânea.",
+    idea: "Construir uma marca capaz de dialogar com diferentes públicos e contextos sem perder sua essência e personalidade.",
     approach:
-      "The identity combines cultural elements with a digital visual direction, creating an open, dynamic, and adaptable system.",
-
+      "A identidade combina elementos culturais com uma direção visual digital, criando um sistema aberto, dinâmico e adaptável.",
     services: [
-      "Strategy",
-      "Visual identity",
-      "Art direction",
-      "Digital experience",
+      "Estratégia",
+      "Identidade visual",
+      "Direção de arte",
+      "Experiência digital",
     ],
-
     result:
-      "A contemporary identity that creates connections between different languages, platforms, and communities.",
-
+      "Uma identidade contemporânea que cria conexões entre diferentes linguagens, plataformas e comunidades.",
     img: bg9,
   },
 
   {
     id: "project-10",
     icon: "✳",
-    name: "Project 10",
-
+    name: "Projeto 10",
     description:
-      "A visual concept developed through typography, composition, and precise art direction.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Concept",
+      "Um conceito visual desenvolvido através de tipografia, composição e uma direção de arte precisa.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Conceito",
     year: "2026",
-    type: "Visual concept",
-
+    type: "Conceito visual",
     statement:
-      "A visual concept built through contrast, typography, and composition to create a strong and precise presence.",
-
-    idea: "Reduce the visual language to its essentials and use every element as part of a carefully controlled composition.",
-
+      "Um conceito visual construído através de contraste, tipografia e composição para criar uma presença forte e precisa.",
+    idea: "Reduzir a linguagem visual ao essencial e utilizar cada elemento como parte de uma composição cuidadosamente controlada.",
     approach:
-      "The art direction was built through a combination of expressive typography, negative space, and high-contrast compositions.",
-
+      "A direção de arte foi construída através da combinação de tipografia expressiva, espaço negativo e composições de alto contraste.",
     services: [
-      "Art direction",
-      "Visual concept",
-      "Typography",
-      "Graphic design",
+      "Direção de arte",
+      "Conceito visual",
+      "Tipografia",
+      "Design gráfico",
     ],
-
     result:
-      "A precise and recognizable visual language capable of transforming simplicity into presence.",
-
+      "Uma linguagem visual precisa e reconhecível, capaz de transformar simplicidade em presença.",
     img: bg10,
   },
 
   {
     id: "project-11",
     icon: "✳",
-    name: "Project 11",
-
+    name: "Projeto 11",
     description:
-      "A complete creative direction created to make the brand more distinctive, relevant, and connected to its audience.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Creative direction",
+      "Uma direção criativa completa criada para tornar a marca mais marcante, relevante e conectada ao seu público.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Direção criativa",
     year: "2026",
-    type: "Complete project",
-
+    type: "Projeto completo",
     statement:
-      "A complete creative direction created to reposition the brand and build a more relevant and distinctive presence.",
-
-    idea: "Find a balance between the brand's existing essence and a new vision capable of moving it forward.",
-
+      "Uma direção criativa completa criada para reposicionar a marca e construir uma presença mais relevante e marcante.",
+    idea: "Encontrar um equilíbrio entre a essência existente da marca e uma nova visão capaz de levá-la adiante.",
     approach:
-      "The project combines strategy, identity, art direction, and digital design to create an integrated brand experience.",
-
+      "O projeto combina estratégia, identidade, direção de arte e design digital para criar uma experiência de marca integrada.",
     services: [
-      "Brand strategy",
-      "Creative direction",
-      "Visual identity",
-      "Digital design",
+      "Estratégia de marca",
+      "Direção criativa",
+      "Identidade visual",
+      "Design digital",
     ],
-
     result:
-      "A new brand expression built to generate recognition, relevance, and consistency across every touchpoint.",
-
+      "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
     img: bg11,
   },
 
   {
     id: "project-12",
     icon: "✳",
-    name: "Project 12",
-
+    name: "Projeto 12",
     description:
-      "A complete creative direction created to make the brand more distinctive, relevant, and connected to its audience.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Creative direction",
+      "Uma direção criativa completa criada para tornar a marca mais marcante, relevante e conectada ao seu público.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Direção criativa",
     year: "2026",
-    type: "Complete project",
-
+    type: "Projeto completo",
     statement:
-      "A complete creative direction created to reposition the brand and build a more relevant and distinctive presence.",
-
-    idea: "Find a balance between the brand's existing essence and a new vision capable of moving it forward.",
-
+      "Uma direção criativa completa criada para reposicionar a marca e construir uma presença mais relevante e marcante.",
+    idea: "Encontrar um equilíbrio entre a essência existente da marca e uma nova visão capaz de levá-la adiante.",
     approach:
-      "The project combines strategy, identity, art direction, and digital design to create an integrated brand experience.",
-
+      "O projeto combina estratégia, identidade, direção de arte e design digital para criar uma experiência de marca integrada.",
     services: [
-      "Brand strategy",
-      "Creative direction",
-      "Visual identity",
-      "Digital design",
+      "Estratégia de marca",
+      "Direção criativa",
+      "Identidade visual",
+      "Design digital",
     ],
-
     result:
-      "A new brand expression built to generate recognition, relevance, and consistency across every touchpoint.",
-
+      "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
     img: bg12,
   },
 
@@ -422,67 +324,32 @@ export const projects = [
     id: "project-13",
     icon: "✳",
     name: "iPhone",
-
     description:
-      "A complete creative direction created to make the brand more distinctive, relevant, and connected to its audience.",
-
-    action: "Discover the project and explore the work.",
-
-    category: "Creative direction",
+      "Uma direção criativa completa criada para tornar a marca mais marcante, relevante e conectada ao seu público.",
+    action: "Descubra o projeto e explore o trabalho.",
+    category: "Direção criativa",
     year: "2026",
-    type: "Complete project",
-
+    type: "Projeto completo",
     statement:
-      "A complete creative direction created to reposition the brand and build a more relevant and distinctive presence.",
-
-    idea: "Find a balance between the brand's existing essence and a new vision capable of moving it forward.",
-
+      "Uma direção criativa completa criada para reposicionar a marca e construir uma presença mais relevante e marcante.",
+    idea: "Encontrar um equilíbrio entre a essência existente da marca e uma nova visão capaz de levá-la adiante.",
     approach:
-      "The project combines strategy, identity, art direction, and digital design to create an integrated brand experience.",
-
+      "O projeto combina estratégia, identidade, direção de arte e design digital para criar uma experiência de marca integrada.",
     services: [
-      "Brand strategy",
-      "Creative direction",
-      "Visual identity",
-      "Digital design",
+      "Estratégia de marca",
+      "Direção criativa",
+      "Identidade visual",
+      "Design digital",
     ],
-
     result:
-      "A new brand expression built to generate recognition, relevance, and consistency across every touchpoint.",
-
+      "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
     img: bg13,
   },
 ];
 
-export const leftProjects = [
-  projects[0],
-  projects[1],
-  projects[2],
-  projects[3],
-  projects[4],
-  projects[5],
-];
-
-export const rightProjects = [
-  projects[12],
-  projects[11],
-  projects[10],
-  projects[9],
-  projects[8],
-  projects[7],
-  projects[6],
-];
-
-export const repeatedLeftProjects = [
-  ...leftProjects,
-  ...leftProjects,
-  ...leftProjects,
-  ...leftProjects,
-];
-
-export const repeatedRightProjects = [
-  ...rightProjects,
-  ...rightProjects,
-  ...rightProjects,
-  ...rightProjects,
+export const repeatedProjects = [
+  ...projects,
+  ...projects,
+  ...projects,
+  ...projects,
 ];

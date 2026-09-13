@@ -75,7 +75,7 @@ const ContactModal = ({ onCompleteClose }) => {
             animate="animate"
             exit="exit"
           >
-            {/* CLOSE */}
+            {/* FECHAR */}
             <motion.div
               onClick={handleClose}
               initial={{ scale: 0, rotate: -90 }}
@@ -107,9 +107,9 @@ const ContactModal = ({ onCompleteClose }) => {
               </motion.button>
             </motion.div>
 
-            {/* CONTENT */}
+            {/* CONTEÚDO */}
             <div className="flex flex-col gap-10 pt-2.5">
-              {/* HEADER */}
+              {/* CABEÇALHO */}
               <div className="flex items-start justify-between pr-16">
                 <motion.div
                   initial={{ y: 30, opacity: 0 }}
@@ -122,7 +122,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   }}
                 >
                   <ClipText
-                    text="Let's Create Something Together?"
+                    text="Vamos criar algo juntos?"
                     animate="animate"
                     exit="exit"
                     tag="h2"
@@ -131,9 +131,9 @@ const ContactModal = ({ onCompleteClose }) => {
                 </motion.div>
               </div>
 
-              {/* FORM */}
+              {/* FORMULÁRIO */}
               <div className="flex flex-col">
-                {/* NAME */}
+                {/* NOME */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -147,12 +147,12 @@ const ContactModal = ({ onCompleteClose }) => {
                 >
                   <input
                     type="text"
-                    placeholder="name"
+                    placeholder="nome"
                     className="h-11 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform placeholder:text-p/40"
                   />
                 </motion.div>
 
-                {/* EMAIL */}
+                {/* E-MAIL */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -166,12 +166,12 @@ const ContactModal = ({ onCompleteClose }) => {
                 >
                   <input
                     type="email"
-                    placeholder="email"
+                    placeholder="e-mail"
                     className="h-11 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none placeholder:text-p/40 will-change-transform"
                   />
                 </motion.div>
 
-                {/* PROJECT TYPE */}
+                {/* TIPO DE PROJETO */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -188,18 +188,18 @@ const ContactModal = ({ onCompleteClose }) => {
                     className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
                   >
                     <option value="" disabled>
-                      project type
+                      tipo de projeto
                     </option>
                     <option value="branding">branding</option>
-                    <option value="web-design">web design</option>
-                    <option value="art-direction">art direction</option>
-                    <option value="graphic-design">graphic design</option>
+                    <option value="web-design">design web</option>
+                    <option value="art-direction">direção de arte</option>
+                    <option value="graphic-design">design gráfico</option>
                     <option value="motion">motion design</option>
-                    <option value="other">other</option>
+                    <option value="other">outro</option>
                   </select>
                 </motion.div>
 
-                {/* BUDGET + TIMELINE */}
+                {/* INVESTIMENTO + PRAZO */}
                 <div className="grid grid-cols-2 gap-2.5">
                   <motion.div
                     initial={{ y: 25, opacity: 0 }}
@@ -217,13 +217,13 @@ const ContactModal = ({ onCompleteClose }) => {
                       className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
                     >
                       <option value="" disabled>
-                        investment
+                        investimento
                       </option>
-                      <option value="under-1k">up to €1k</option>
-                      <option value="1k-3k">€1k — €3k</option>
-                      <option value="3k-5k">€3k — €5k</option>
-                      <option value="5k-10k">€5k — €10k</option>
-                      <option value="10k-plus">€10k+</option>
+                      <option value="under-1k">até €1 mil</option>
+                      <option value="1k-3k">€1 mil — €3 mil</option>
+                      <option value="3k-5k">€3 mil — €5 mil</option>
+                      <option value="5k-10k">€5 mil — €10 mil</option>
+                      <option value="10k-plus">€10 mil+</option>
                     </select>
                   </motion.div>
 
@@ -243,18 +243,18 @@ const ContactModal = ({ onCompleteClose }) => {
                       className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
                     >
                       <option value="" disabled>
-                        timeline
+                        prazo
                       </option>
-                      <option value="asap">as soon as possible</option>
-                      <option value="1-month">up to 1 month</option>
-                      <option value="2-months">1 — 2 months</option>
-                      <option value="3-months">2 — 3 months</option>
-                      <option value="flexible">flexible</option>
+                      <option value="asap">o mais rápido possível</option>
+                      <option value="1-month">até 1 mês</option>
+                      <option value="2-months">1 — 2 meses</option>
+                      <option value="3-months">2 — 3 meses</option>
+                      <option value="flexible">flexível</option>
                     </select>
                   </motion.div>
                 </div>
 
-                {/* MESSAGE */}
+                {/* MENSAGEM */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -267,7 +267,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   className="group relative overflow-hidden border-b border-p/15"
                 >
                   <textarea
-                    placeholder="tell us about your project"
+                    placeholder="conte-nos sobre seu projeto"
                     rows={3}
                     className="w-full resize-none bg-transparent py-4 text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform placeholder:text-p/40"
                   />
@@ -275,7 +275,7 @@ const ContactModal = ({ onCompleteClose }) => {
               </div>
             </div>
 
-            {/* BOTTOM */}
+            {/* PARTE INFERIOR */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -288,11 +288,11 @@ const ContactModal = ({ onCompleteClose }) => {
               className="mt-5 flex flex-col gap-5"
             >
               <div className="flex items-center justify-between gap-10 max-lg:gap-5">
-                {/* CONTACT */}
+                {/* CONTATO */}
                 <div className="flex flex-col gap-5">
                   <div className="flex flex-col gap-1">
                     <span className="text-[14px] uppercase tracking-[10%] text-p/40 will-change-transform">
-                      or reach out directly
+                      ou fale diretamente conosco
                     </span>
 
                     <a
@@ -311,7 +311,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   </div>
                 </div>
 
-                {/* SEND */}
+                {/* ENVIAR */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -319,16 +319,16 @@ const ContactModal = ({ onCompleteClose }) => {
                 >
                   <span className="relative overflow-hidden will-change-transform">
                     <span className="block text-[14px] font-normal uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                      send
+                      enviar
                     </span>
                     <span className="absolute left-0 top-full block text-[14px] uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                      send
+                      enviar
                     </span>
                   </span>
                 </motion.button>
               </div>
 
-              {/* FOOTER */}
+              {/* RODAPÉ */}
               <div className="flex items-center justify-between border-t border-p/20 pt-4">
                 <div className="flex gap-5">
                   <a

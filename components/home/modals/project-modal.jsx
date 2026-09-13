@@ -11,7 +11,6 @@ const menuAnim = {
   initial: {
     clipPath: "inset(100% 0% 0% 0%)",
   },
-
   animate: {
     clipPath: "inset(0% 0% 0% 0%)",
     transition: {
@@ -19,7 +18,6 @@ const menuAnim = {
       ease: [0.76, 0, 0.24, 1],
     },
   },
-
   exit: {
     clipPath: "inset(100% 0% 0% 0%)",
     transition: {
@@ -34,7 +32,6 @@ const overlayAnim = {
   initial: {
     opacity: 0,
   },
-
   animate: {
     opacity: 1,
     transition: {
@@ -42,7 +39,6 @@ const overlayAnim = {
       ease: [0.76, 0, 0.24, 1],
     },
   },
-
   exit: {
     opacity: 0,
     transition: {
@@ -55,6 +51,7 @@ const overlayAnim = {
 
 function RevealText({ text, tag = "p", className }) {
   const ref = useRef(null);
+
   const isInView = useInView(ref, {
     once: true,
     amount: 0.2,
@@ -83,6 +80,7 @@ export function ProjectModal({ project, onCompleteClose }) {
   const handleClose = () => {
     setIsOpen(false);
   };
+
   useEffect(() => {
     if (!scrollRef.current) return;
 
@@ -114,7 +112,6 @@ export function ProjectModal({ project, onCompleteClose }) {
 
       modalLenis.current?.destroy();
       modalLenis.current = null;
-
       document.body.style.overflow = previousOverflow;
     };
   }, []);
@@ -134,15 +131,13 @@ export function ProjectModal({ project, onCompleteClose }) {
 
           <motion.div
             ref={container}
-            className="fixed bottom-0 left-1/2 -translate-x-1/2 h-[calc(100vh-10px)] w-full max-w-190 bg-s p-2.5 
-            backdrop-blur-3xl cursor-s-resize z-9999 max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
+            className="fixed bottom-0 left-1/2 -translate-x-1/2 h-[calc(100vh-10px)] w-full max-w-190 bg-s p-2.5 backdrop-blur-3xl cursor-s-resize z-9999 max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
             variants={menuAnim}
             initial="initial"
             animate="animate"
             exit="exit"
           >
-            {/* CLOSE */}
-
+            {/* FECHAR */}
             <motion.div
               onClick={handleClose}
               initial={{
@@ -177,15 +172,11 @@ export function ProjectModal({ project, onCompleteClose }) {
                 }}
                 className="group flex size-12.5 cursor-pointer items-center justify-center bg-p backdrop-blur-2xl"
               >
-                <IoClose
-                  className="text-[24px] text-s transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] 
-                group-hover:rotate-90"
-                />
+                <IoClose className="text-[24px] text-s transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
               </motion.button>
             </motion.div>
 
             {/* SCROLL */}
-
             <div
               ref={scrollRef}
               className="size-full overflow-y-auto overscroll-contain"
@@ -194,7 +185,6 @@ export function ProjectModal({ project, onCompleteClose }) {
               }}
             >
               {/* HERO */}
-
               <div className="relative h-[75vh] w-full overflow-hidden">
                 <Image
                   src={project.img}
@@ -212,7 +202,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   <RevealText
                     text={project.name}
                     tag="h1"
-                    className="text-[clamp(28px,4vw,52px)] font-instrument font-normal  leading-[100%] tracking-[-6%] text-p"
+                    className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                   />
 
                   <RevealText
@@ -223,11 +213,10 @@ export function ProjectModal({ project, onCompleteClose }) {
               </div>
 
               {/* INFORMAÇÕES */}
-
               <div className="grid grid-cols-3 gap-2.5 border-b border-p/15 p-2.5 py-5">
                 <div>
                   <RevealText
-                    text="category"
+                    text="categoria"
                     className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -239,7 +228,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                 <div>
                   <RevealText
-                    text="year"
+                    text="ano"
                     className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -251,7 +240,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                 <div>
                   <RevealText
-                    text="Type"
+                    text="tipo"
                     className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -263,25 +252,23 @@ export function ProjectModal({ project, onCompleteClose }) {
               </div>
 
               {/* VISÃO GERAL */}
-
               <section className="border-b border-p/15 p-2.5 py-25">
                 <RevealText
-                  text="01 — Overview"
+                  text="01 — Visão geral"
                   className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
                   text={project.statement}
-                  className="text-[clamp(28px,4vw,52px)] font-instrument font-normal  leading-[100%] tracking-[-6%] text-p"
+                  className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
               </section>
 
               {/* DETALHES */}
-
               <section className="grid grid-cols-2 gap-10 border-b border-p/15 p-2.5 py-25 max-md:grid-cols-1">
                 <div>
                   <RevealText
-                    text="The idea"
+                    text="A ideia"
                     className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -293,7 +280,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                 <div>
                   <RevealText
-                    text="The approach"
+                    text="A abordagem"
                     className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -305,7 +292,6 @@ export function ProjectModal({ project, onCompleteClose }) {
               </section>
 
               {/* SEGUNDA IMAGEM */}
-
               {project.img2 && (
                 <motion.div
                   initial={{
@@ -336,10 +322,9 @@ export function ProjectModal({ project, onCompleteClose }) {
               )}
 
               {/* SERVIÇOS */}
-
               <section className="border-b border-p/15 p-2.5 py-25">
                 <RevealText
-                  text="02 — Services"
+                  text="02 — Serviços"
                   className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
@@ -364,7 +349,6 @@ export function ProjectModal({ project, onCompleteClose }) {
               </section>
 
               {/* TERCEIRA IMAGEM */}
-
               {project.img3 && (
                 <motion.div
                   initial={{
@@ -395,21 +379,19 @@ export function ProjectModal({ project, onCompleteClose }) {
               )}
 
               {/* RESULTADO */}
-
               <section className="p-2.5 py-25">
                 <RevealText
-                  text="03 — Result"
+                  text="03 — Resultado"
                   className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
                   text={project.result}
-                  className="text-[clamp(28px,4vw,52px)] font-instrument font-normal  leading-[100%] tracking-[-6%] text-p"
+                  className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
               </section>
 
               {/* RODAPÉ */}
-
               <footer className="flex min-h-[50vh] flex-col justify-end gap-8 border-t border-p/15 p-2.5 pb-10">
                 <div className="flex items-center gap-2.5">
                   <span className="relative -top-0.5 size-2.5 rounded-full bg-p" />
@@ -426,7 +408,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                 />
 
                 <RevealText
-                  text={`Offset® — Selected projects — ${project.year}`}
+                  text={`Offset® — Projetos selecionados — ${project.year}`}
                   className="text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
               </footer>

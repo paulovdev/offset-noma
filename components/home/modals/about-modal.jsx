@@ -1,9 +1,13 @@
 "use client";
 
 import { ClipText } from "@/components/clip-text";
+
 import { AnimatePresence, motion, useInView } from "framer-motion";
+
 import Lenis from "lenis";
+
 import { useEffect, useRef, useState } from "react";
+
 import { IoClose } from "react-icons/io5";
 
 const menuAnim = {
@@ -74,6 +78,7 @@ export default function AboutModal({ onCompleteClose }) {
   const scrollRef = useRef(null);
   const modalLenis = useRef(null);
   const rafId = useRef(null);
+
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
@@ -129,6 +134,7 @@ export default function AboutModal({ onCompleteClose }) {
             exit="exit"
             className="fixed inset-0 z-90 cursor-not-allowed bg-p/5 backdrop-blur-md"
           />
+
           {/* MODAL */}
           <motion.div
             ref={container}
@@ -171,10 +177,7 @@ export default function AboutModal({ onCompleteClose }) {
                 }}
                 className="group flex size-12.5 cursor-pointer items-center justify-center bg-p backdrop-blur-2xl"
               >
-                <IoClose
-                  className="text-[24px] text-s transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] 
-            group-hover:rotate-90"
-                />
+                <IoClose className="text-[24px] text-s transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
               </motion.button>
             </motion.div>
 
@@ -189,12 +192,12 @@ export default function AboutModal({ onCompleteClose }) {
               {/* HERO / MANIFESTO */}
               <section className="flex flex-col justify-end border-b border-p/15 py-10">
                 <RevealText
-                  text="About us"
+                  text="Sobre nós"
                   className="mb-10 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
-                  text="We don't believe in design made to fill spaces. We create visual systems that find meaning, build presence, and make brands memorable."
+                  text="Não acreditamos em design feito apenas para preencher espaços. Criamos sistemas visuais que encontram significado, constroem presença e tornam marcas memoráveis."
                   tag="h1"
                   className="max-w-175 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
@@ -206,21 +209,21 @@ export default function AboutModal({ onCompleteClose }) {
                   />
 
                   <RevealText
-                    text="Independent design for ideas that want to leave a mark."
-                    className="text-right max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
+                    text="Design independente para ideias que querem deixar uma marca."
+                    className="max-w-125 text-right text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
               </section>
 
-              {/* VALUES */}
+              {/* VALORES */}
               <section className="border-b border-p/15 py-20">
                 <RevealText
-                  text="02 — Values"
+                  text="02 — Valores"
                   className="mb-10 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <div className="grid grid-cols-3 gap-2.5 max-md:grid-cols-1">
-                  {/* VALUE 01 */}
+                  {/* VALOR 01 */}
                   <motion.div
                     initial={{ y: 40, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -235,16 +238,17 @@ export default function AboutModal({ onCompleteClose }) {
 
                     <div>
                       <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
-                        Clarity
+                        Clareza
                       </h3>
 
-                      <p className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s mt-5">
-                        Less noise. More intention. Every choice needs a reason.
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s">
+                        Menos ruído. Mais intenção. Cada escolha precisa ter um
+                        motivo.
                       </p>
                     </div>
                   </motion.div>
 
-                  {/* VALUE 02 */}
+                  {/* VALOR 02 */}
                   <motion.div
                     initial={{ y: 40, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -254,23 +258,23 @@ export default function AboutModal({ onCompleteClose }) {
                       delay: 0.1,
                       ease: [0.33, 1, 0.68, 1],
                     }}
-                    className="flex h-85 aspect-square w-full flex-col justify-between bg-p/80  p-2.5"
+                    className="flex h-85 aspect-square w-full flex-col justify-between bg-p/80 p-2.5"
                   >
                     <span className="text-[14px] font-medium text-s">02</span>
 
                     <div>
                       <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
-                        Intention
+                        Intenção
                       </h3>
 
-                      <p className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s mt-5">
-                        We create with purpose, not trends. Strategy before
-                        aesthetics.
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s">
+                        Criamos com propósito, não seguindo tendências.
+                        Estratégia antes da estética.
                       </p>
                     </div>
                   </motion.div>
 
-                  {/* VALUE 03 */}
+                  {/* VALOR 03 */}
                   <motion.div
                     initial={{ y: 40, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -280,28 +284,28 @@ export default function AboutModal({ onCompleteClose }) {
                       delay: 0.2,
                       ease: [0.33, 1, 0.68, 1],
                     }}
-                    className="flex h-85 aspect-square w-full flex-col justify-between bg-p/70  p-2.5"
+                    className="flex h-85 aspect-square w-full flex-col justify-between bg-p/70 p-2.5"
                   >
                     <span className="text-[14px] font-medium text-s">03</span>
 
                     <div>
                       <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
-                        Impact
+                        Impacto
                       </h3>
 
-                      <p className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s mt-5">
-                        The result needs to work in the real world, not just on
-                        screen.
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s">
+                        O resultado precisa funcionar no mundo real, não apenas
+                        na tela.
                       </p>
                     </div>
                   </motion.div>
                 </div>
               </section>
 
-              {/* IMPACT */}
+              {/* IMPACTO */}
               <section className="border-b border-p/15 py-20">
                 <RevealText
-                  text="03 — Impact"
+                  text="03 — Impacto"
                   className="mb-15 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
@@ -313,11 +317,11 @@ export default function AboutModal({ onCompleteClose }) {
 
                     <div className="flex flex-col justify-end">
                       <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                        Founded
+                        Fundação
                       </span>
 
                       <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                        Independent by choice
+                        Independente por escolha
                       </span>
                     </div>
                   </div>
@@ -329,11 +333,11 @@ export default function AboutModal({ onCompleteClose }) {
 
                     <div className="flex flex-col justify-end">
                       <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                        Collaborations
+                        Colaborações
                       </span>
 
                       <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                        Brands, people & spaces
+                        Marcas, pessoas e espaços
                       </span>
                     </div>
                   </div>
@@ -345,11 +349,11 @@ export default function AboutModal({ onCompleteClose }) {
 
                     <div className="flex flex-col justify-end">
                       <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                        Countries
+                        Países
                       </span>
 
                       <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                        Work beyond borders
+                        Trabalho além das fronteiras
                       </span>
                     </div>
                   </div>
@@ -361,30 +365,30 @@ export default function AboutModal({ onCompleteClose }) {
 
                     <div className="flex flex-col justify-end">
                       <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                        Independent
+                        Independência
                       </span>
 
                       <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                        Small studio. Big ideas.
+                        Estúdio pequeno. Grandes ideias.
                       </span>
                     </div>
                   </div>
                 </div>
               </section>
 
-              {/* AWARDS */}
+              {/* PRÊMIOS */}
               <section className="border-b border-p/15 py-20">
                 <RevealText
-                  text="04 — Awards & Recognitions"
+                  text="04 — Prêmios e reconhecimentos"
                   className="mb-12 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <div className="flex flex-col">
                   {[
-                    ["Awwwards", "Honorable Mention", "2025"],
+                    ["Awwwards", "Menção Honrosa", "2025"],
                     ["CSS Design Awards", "Special Kudos", "2024"],
-                    ["Behance", "Featured Identity", "2024"],
-                    ["Type Directors Club", "Selected Work", "2023"],
+                    ["Behance", "Identidade em destaque", "2024"],
+                    ["Type Directors Club", "Trabalho selecionado", "2023"],
                     ["D&AD", "Graphite Pencil", "2023"],
                   ].map(([name, award, year], index) => (
                     <motion.div
@@ -418,22 +422,22 @@ export default function AboutModal({ onCompleteClose }) {
                 </div>
               </section>
 
-              {/* CLOSING */}
+              {/* ENCERRAMENTO */}
               <footer className="flex flex-col justify-end gap-10 py-20 pb-10">
                 <RevealText
-                  text="05 — Moving forward"
+                  text="05 — Seguindo em frente"
                   className="text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
-                  text="We think. We create. We change the way things are seen."
+                  text="Pensamos. Criamos. Mudamos a forma como as coisas são vistas."
                   tag="h2"
                   className="max-w-175 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
 
                 <div className="flex items-center justify-between border-t border-p/15 pt-5">
                   <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                    Independent studio
+                    Estúdio independente
                   </span>
 
                   <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
@@ -442,7 +446,7 @@ export default function AboutModal({ onCompleteClose }) {
                 </div>
               </footer>
             </div>
-          </motion.div>{" "}
+          </motion.div>
         </>
       )}
     </AnimatePresence>

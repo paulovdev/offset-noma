@@ -1,17 +1,14 @@
 "use client";
 
 import { ClipText } from "@/components/clip-text";
-import { Loader } from "@/components/loader";
 import { ProjectCard } from "./project-card";
 import { useRouter, usePathname } from "next/navigation";
-import {
-  repeatedLeftProjects,
-  repeatedRightProjects,
-} from "@/components/home/project-data";
+import { repeatedProjects } from "@/components/home/project-data";
 import { useInfiniteColumns } from "@/components/home/use-infinite-columns";
 import { useEffect, useState, useMemo, memo } from "react";
 import { SiNike, SiAdidas, SiApple, SiSpotify, SiDior } from "react-icons/si";
 import { motion, useSpring, useTransform } from "framer-motion";
+import { Loader } from "../loader";
 
 const BRAND_ICONS = [SiNike, SiAdidas, SiApple, SiSpotify, SiDior];
 
@@ -19,16 +16,13 @@ const BrandList = memo(function BrandList({ loading, brandsY }) {
   return (
     <motion.div
       initial={{ y: 30, opacity: 0 }}
-      animate={{
-        y: loading ? 30 : 0,
-        opacity: loading ? 0 : 1,
-      }}
+      animate={{ y: loading ? 30 : 0, opacity: loading ? 0 : 1 }}
       transition={{
         duration: 0.8,
         delay: loading ? 0 : 0.3,
         ease: [0.33, 1, 0.68, 1],
       }}
-      style={{ y: brandsY }}
+      style={{ x: brandsY }}
       className="flex items-center gap-3 lg:gap-5 will-change-transform"
     >
       {BRAND_ICONS.map((Icon, i) => (
@@ -42,10 +36,7 @@ const BrandList = memo(function BrandList({ loading, brandsY }) {
               ease: [0.33, 1, 0.68, 1],
             }}
           >
-            <Icon
-              className="pointer-events-auto cursor-pointer text-[32px] text-p 
-              transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] hover:scale-105"
-            />
+            <Icon className="pointer-events-auto cursor-pointer text-[32px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] hover:scale-105" />
           </motion.div>
         </div>
       ))}
@@ -67,8 +58,10 @@ export default function Home() {
 
   const [loading, setLoading] = useState(true);
 
-  const { containerRef, leftRef, rightRef, scrollVelocity } =
-    useInfiniteColumns(6, 7, isModalActive);
+  const { containerRef, projectsRef, scrollVelocity } = useInfiniteColumns(
+    repeatedProjects.length,
+    isModalActive,
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -77,10 +70,6 @@ export default function Home() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  /* -------------------------------------------------------------
-   * CONFIGURAÇÃO DOS SPRINGS (Intensidade Suave/Original)
-   * ------------------------------------------------------------- */
 
   const logoSpring = useSpring(scrollVelocity, {
     stiffness: 300,
@@ -107,35 +96,28 @@ export default function Home() {
   });
 
   const logoRotate = useTransform(logoSpring, [-1, 0, 1], [-75, 0, 75]);
-  const logoY = useTransform(logoSpring, [-1, 0, 1], [8, 0, -8]);
-
-  const textY = useTransform(textSpring, [-1, 0, 1], [12, 0, -12]);
-
-  const brandsY = useTransform(brandsSpring, [-1, 0, 1], [14, 0, -14]);
-
-  const inputY = useTransform(inputSpring, [-1, 0, 1], [5, 0, -5]);
+  const logoY = useTransform(logoSpring, [-1, 0, 1], [12, 0, -12]);
+  const textY = useTransform(textSpring, [-1, 0, 1], [32, 0, -32]);
+  const brandsY = useTransform(brandsSpring, [-1, 0, 1], [24, 0, -24]);
+  const inputY = useTransform(inputSpring, [-1, 0, 1], [15, 0, -15]);
 
   return (
     <>
-      {/*      <Loader loading={loading} />
-       */}
+      <Loader loading={loading} />
       <main
         ref={containerRef}
-        className="relative flex h-svh w-full bg-s cursor-s-resize select-none max-lg:cursor-ew-resize max-lg:flex-col"
+        className="relative h-svh w-full overflow-hidden bg-s cursor-ew-resize select-none"
       >
-        {/* LEFT PROJECTS - Absoluto na esquerda, z-10 para ficar atras do centro */}
-        <div
-          className="pointer-events-auto absolute left-2.5 inset-y-0 z-10 w-[30vw] select-none 
-          max-lg:left-0 max-lg:inset-y-auto max-lg:top-0 max-lg:h-[35svh] max-lg:w-full"
-        >
+        {/* IMAGENS — FULL SCREEN */}
+
+        <div className="absolute inset-0 z-0 h-svh w-full overflow-hidden">
           <div
-            ref={leftRef}
-            className="absolute left-0 top-0 flex w-full flex-col gap-2.5 will-change-transform 
-            max-lg:h-full max-lg:w-max max-lg:flex-row"
+            ref={projectsRef}
+            className="absolute left-0 top-0 flex h-svh w-max gap-2.5 will-change-transform"
           >
-            {repeatedLeftProjects.map((project, index) => (
+            {repeatedProjects.map((project, index) => (
               <ProjectCard
-                key={`left-${project.id}-${index}`}
+                key={`${project.id}-${index}`}
                 project={project}
                 index={index}
                 scrollVelocity={scrollVelocity}
@@ -145,12 +127,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CENTER - z-30 para ficar por cima dos cards que transbordam */}
-        <div
-          className="pointer-events-none p-2.5 relative z-30 mx-auto flex h-svh w-[40vw] flex-col items-center justify-center select-none 
-          max-lg:w-full max-lg:h-[35svh]"
-        >
+        {/* CENTER — ABSOLUTE */}
+
+        <div className="pointer-events-none absolute inset-0 z-30 flex h-svh w-full items-center justify-center p-2.5 select-none">
           {/* LOGO */}
+
           <div className="fixed left-1/2 top-5 z-40 -translate-x-1/2 overflow-hidden">
             <motion.div
               initial={{
@@ -172,7 +153,7 @@ export default function Home() {
               <motion.span
                 style={{
                   rotate: logoRotate,
-                  y: logoY,
+                  x: logoY,
                 }}
                 className="block text-[38px] font-medium leading-none text-p will-change-transform"
               >
@@ -182,37 +163,48 @@ export default function Home() {
           </div>
 
           {/* TEXT */}
-          <div className="mb-25 w-full max-w-175 text-center max-lg:max-w-100 max-lg:mb-5">
+
+          <div className="mb-25 w-full max-w-175 text-center">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
-              animate={{ y: loading ? 30 : 0, opacity: loading ? 0 : 1 }}
+              animate={{
+                y: loading ? 30 : 0,
+                opacity: loading ? 0 : 1,
+              }}
               transition={{
                 duration: 0.8,
                 delay: loading ? 0 : 0.15,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              style={{ y: textY }}
+              style={{ x: textY }}
               className="will-change-transform"
             >
               <ClipText
-                text="An Independent ✦ Design Studio That Creates Identities, ◉ Art Direction And Visual Experiences ✧ For Brands, Products ■ And Spaces."
+                text="Um estúdio de design independente ✦ que cria identidades, direção de arte e experiências visuais ✧ para marcas, produtos ■ e espaços."
                 animate={loading ? "exit" : "animate"}
                 exit="exit"
                 tag="p"
-                className="text-[clamp(28px,4vw,34px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p max-2xl:text-[16px] max-md:text-[15px]"
+                className="text-[clamp(24px,4vw,30px)] font-instrument font-normal leading-[90%] tracking-[-6%] text-p "
               />
             </motion.div>
           </div>
 
           {/* BRANDS */}
-          <BrandList loading={loading} brandsY={brandsY} />
+
+          <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-32.5">
+            <BrandList loading={loading} brandsY={brandsY} />
+          </div>
 
           {/* ABOUT + CONTACT */}
-          <div className="pointer-events-auto fixed bottom-5 left-1/2 z-50 flex w-fit -translate-x-1/2 items-center gap-5 overflow-hidden max-lg:bottom-4 max-lg:gap-3">
+
+          <div className="pointer-events-auto fixed bottom-5 left-1/2 z-50 flex w-fit -translate-x-1/2 items-center gap-5 overflow-hidden">
             {/* ABOUT */}
+
             <motion.div
               initial={{ y: "100%" }}
-              animate={{ y: loading ? "100%" : "0%" }}
+              animate={{
+                y: loading ? "100%" : "0%",
+              }}
               transition={{
                 duration: 0.8,
                 delay: loading ? 0 : 0.75,
@@ -221,46 +213,30 @@ export default function Home() {
               onClick={() => router.push("/about")}
             >
               <motion.div
-                className="group relative w-fit cursor-pointer overflow-hidden"
-                style={{ y: inputY }}
+                className="group relative w-fit cursor-pointer overflow-y-hidden"
+                style={{ x: inputY }}
               >
                 <div className="relative will-change-transform">
-                  <p
-                    className="
-            text-center text-[14px] font-normal uppercase
-            leading-[100%] tracking-[10%] text-p
-            transition-transform duration-500
-            ease-[cubic-bezier(0.76,0,0.24,1)]
-            group-hover:-translate-y-full
-             max-lg:mix-blend-difference
-          "
-                  >
-                    about us
+                  <p className="text-center text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    sobre
                   </p>
 
-                  <p
-                    className="
-            absolute left-0 top-full text-center text-[14px] font-normal uppercase
-            leading-[100%] tracking-[10%]
-            text-p transition-transform duration-500
-            ease-[cubic-bezier(0.76,0,0.24,1)]
-            group-hover:-translate-y-full
-             max-lg:mix-blend-difference
-          "
-                  >
-                    about us
+                  <p className="absolute left-0 top-full text-center text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    sobre
                   </p>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* DIVIDER */}
             <span className="h-3 w-px bg-p/30" />
 
             {/* CONTACT */}
+
             <motion.div
               initial={{ y: "100%" }}
-              animate={{ y: loading ? "100%" : "0%" }}
+              animate={{
+                y: loading ? "100%" : "0%",
+              }}
               transition={{
                 duration: 0.8,
                 delay: loading ? 0 : 0.8,
@@ -269,59 +245,20 @@ export default function Home() {
               onClick={() => router.push("/contact")}
             >
               <motion.div
-                className="group relative w-fit cursor-pointer overflow-hidden"
-                style={{ y: inputY }}
+                className="group relative w-fit cursor-pointer overflow-y-hidden"
+                style={{ x: inputY }}
               >
                 <div className="relative will-change-transform">
-                  <p
-                    className="
-           text-center text-[14px] font-normal uppercase
-            leading-[100%] tracking-[10%] text-p
-            transition-transform duration-500
-            ease-[cubic-bezier(0.76,0,0.24,1)]
-            group-hover:-translate-y-full
-             max-lg:mix-blend-difference
-          "
-                  >
-                    contact
+                  <p className="text-center text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    contato
                   </p>
 
-                  <p
-                    className="
-            absolute left-0 top-full text-center text-[14px] font-normal uppercase
-            leading-[100%] tracking-[10%] 
-            text-p transition-transform duration-500
-            ease-[cubic-bezier(0.76,0,0.24,1)]
-            group-hover:-translate-y-full
-             max-lg:mix-blend-difference
-          "
-                  >
-                    contact
+                  <p className="absolute left-0 top-full text-center text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    contato
                   </p>
                 </div>
               </motion.div>
             </motion.div>
-          </div>
-        </div>
-
-        {/* RIGHT PROJECTS - Absoluto na direita, z-10 para ficar atras do centro */}
-        <div
-          className="pointer-events-auto absolute right-2.5 inset-y-0 z-10 w-[30vw] select-none 
-          max-lg:right-0 max-lg:inset-y-auto max-lg:bottom-0 max-lg:h-[35svh] max-lg:w-full"
-        >
-          <div
-            ref={rightRef}
-            className="absolute left-0 top-0 flex w-full flex-col gap-2.5 will-change-transform max-lg:h-full max-lg:w-max max-lg:flex-row"
-          >
-            {repeatedRightProjects.map((project, index) => (
-              <ProjectCard
-                key={`right-${project.id}-${index}`}
-                project={project}
-                index={index}
-                scrollVelocity={scrollVelocity}
-                loading={loading}
-              />
-            ))}
           </div>
         </div>
       </main>

@@ -3,26 +3,22 @@
 import { motion, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { memo } from "react";
 
-export const ProjectCard = memo(function ProjectCard({
+export function ProjectCard({
   project,
   index = 0,
-  scrollVelocity,
+  scrollVelocity = 0,
   loading,
-  skipLoading = false,
 }) {
   const router = useRouter();
 
-  // Fallback caso scrollVelocity venha nulo
-  const spring = useSpring(scrollVelocity || 0, {
+  const spring = useSpring(scrollVelocity, {
     stiffness: 225,
     damping: 18,
     mass: 0.75,
   });
 
-  const y = useTransform(spring, [-1, 0, 1], [25, 0, -25]);
-  const x = useTransform(spring, [-1, 0, 1], [-25, 0, 25]);
+  const x = useTransform(spring, [-1, 0, 1], [-50, 0, 50]);
 
   return (
     <motion.button
@@ -38,34 +34,28 @@ export const ProjectCard = memo(function ProjectCard({
           ease: [0.76, 0, 0.24, 1],
         },
       }}
-      whileTap={{ scale: 1.1 }}
-      className="group relative block h-svh group w-full shrink-0 cursor-pointer overflow-hidden max-lg:h-full max-lg:w-[55vw] manage-gpu"
+      whileTap={{ scale: 1.05 }}
+      whileHover={{ scale: 0.99 }}
+      className="group relative block h-full w-[30vw] shrink-0 cursor-pointer overflow-hidden max-lg:w-[75vw]"
     >
-      <motion.div
-        style={{ y, x }}
-        className="relative size-full will-change-transform"
-      >
+      <motion.div style={{ x }} className="relative size-full">
         <Image
           src={project.img}
           alt={project.name}
           width={3000}
           height={3000}
           placeholder="blur"
-          priority={index < 2}
-          className="size-full object-cover group-hover:brightness-75 transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)]"
+          className="size-full object-cover brightness-50 group-hover:brightness-75 transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)]"
         />
 
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        {/*    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="overflow-hidden">
-            <span
-              className="block translate-y-[120%] text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p
-            transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0"
-            >
+            <span className="block translate-y-[120%] text-[14px] font-medium uppercase tracking-[-3%] text-p transition-transform duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0">
               view project
             </span>
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </motion.button>
   );
-});
+}
