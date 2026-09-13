@@ -1,24 +1,15 @@
 "use client";
 
-import { motion, useSpring, useTransform } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export function ProjectCard({
-  project,
-  index = 0,
-  scrollVelocity = 0,
-  loading,
-}) {
+export function ProjectCard({ project, index = 0, scrollVelocity, loading }) {
   const router = useRouter();
 
-  const spring = useSpring(scrollVelocity, {
-    stiffness: 225,
-    damping: 18,
-    mass: 0.75,
-  });
-
-  const x = useTransform(spring, [-1, 0, 1], [-50, 0, 50]);
+  // Mapeamento direto sem passar por uma molas extra (useSpring) por card.
+  // A suavidade já vem do scroll principal.
+  const x = useTransform(scrollVelocity, [-1, 0, 1], [-25, 0, 25]);
 
   return (
     <motion.button
@@ -29,32 +20,28 @@ export function ProjectCard({
       }}
       transition={{
         clipPath: {
-          delay: loading ? 0 : 0.15 + index * 0.025,
-          duration: 1,
+          delay: loading ? 0 : 0.05 + index * 0.015,
+          duration: 0.8,
           ease: [0.76, 0, 0.24, 1],
         },
       }}
-      whileTap={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
       whileHover={{ scale: 0.99 }}
-      className="group relative block h-full w-[30vw] shrink-0 cursor-pointer overflow-hidden max-lg:w-[75vw]"
+      className="group relative block h-full w-[40vw] shrink-0 cursor-pointer overflow-hidden max-lg:w-[75vw] [transform-style:preserve-3d]"
     >
-      <motion.div style={{ x }} className="relative size-full">
+      <motion.div
+        style={{ x }}
+        className="relative size-full will-change-transform"
+      >
         <Image
           src={project.img}
           alt={project.name}
-          width={3000}
-          height={3000}
+          width={3200}
+          height={3600}
+          priority={index < 4}
           placeholder="blur"
-          className="size-full object-cover brightness-50 group-hover:brightness-75 transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)]"
+          className="size-full object-cover brightness-50 transition-filter duration-500 group-hover:brightness-75"
         />
-
-        {/*    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="overflow-hidden">
-            <span className="block translate-y-[120%] text-[14px] font-medium uppercase tracking-[-3%] text-p transition-transform duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0">
-              view project
-            </span>
-          </div>
-        </div> */}
       </motion.div>
     </motion.button>
   );

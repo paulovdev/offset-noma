@@ -37,6 +37,8 @@ export const projects = [
     result:
       "Uma identidade flexível e marcante, criada para posicionar a NIKE com clareza e força em diferentes contextos.",
     img: bg1,
+    img2: bg1,
+    img3: bg1,
   },
 
   {
@@ -63,6 +65,8 @@ export const projects = [
     result:
       "Um sistema visual coeso que transforma diferentes pontos de contato em uma experiência única e reconhecível.",
     img: bg2,
+    img2: bg2,
+    img3: bg2,
   },
 
   {
@@ -89,6 +93,8 @@ export const projects = [
     result:
       "Uma presença de marca mais consistente e reconhecível, preparada para diferentes ambientes físicos e digitais.",
     img: bg3,
+    img2: bg3,
+    img3: bg3,
   },
 
   {
@@ -115,6 +121,8 @@ export const projects = [
     result:
       "Uma direção visual expressiva que posiciona a marca de forma mais marcante e abre espaço para novas formas de comunicação.",
     img: bg4,
+    img2: bg4,
+    img3: bg4,
   },
 
   {
@@ -141,6 +149,8 @@ export const projects = [
     result:
       "Uma identidade completa preparada para crescer mantendo sua personalidade em diferentes canais e experiências.",
     img: bg5,
+    img2: bg5,
+    img3: bg5,
   },
 
   {
@@ -167,6 +177,8 @@ export const projects = [
     result:
       "Uma linguagem visual consistente que permite à marca crescer sem perder sua personalidade ou reconhecimento.",
     img: bg6,
+    img2: bg6,
+    img3: bg6,
   },
 
   {
@@ -193,6 +205,8 @@ export const projects = [
     result:
       "Uma identidade experimental que transforma regras visuais em ferramentas para criar experiências mais expressivas.",
     img: bg7,
+    img2: bg7,
+    img3: bg7,
   },
 
   {
@@ -214,6 +228,8 @@ export const projects = [
     result:
       "Uma experiência digital refinada que transforma a interação em uma extensão natural da identidade da marca.",
     img: bg8,
+    img2: bg8,
+    img3: bg8,
   },
 
   {
@@ -240,6 +256,8 @@ export const projects = [
     result:
       "Uma identidade contemporânea que cria conexões entre diferentes linguagens, plataformas e comunidades.",
     img: bg9,
+    img2: bg9,
+    img3: bg9,
   },
 
   {
@@ -266,6 +284,8 @@ export const projects = [
     result:
       "Uma linguagem visual precisa e reconhecível, capaz de transformar simplicidade em presença.",
     img: bg10,
+    img2: bg10,
+    img3: bg10,
   },
 
   {
@@ -292,6 +312,8 @@ export const projects = [
     result:
       "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
     img: bg11,
+    img2: bg11,
+    img3: bg11,
   },
 
   {
@@ -318,6 +340,8 @@ export const projects = [
     result:
       "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
     img: bg12,
+    img2: bg12,
+    img3: bg12,
   },
 
   {
@@ -344,6 +368,8 @@ export const projects = [
     result:
       "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
     img: bg13,
+    img2: bg13,
+    img3: bg13,
   },
 ];
 

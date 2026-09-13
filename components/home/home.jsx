@@ -95,11 +95,11 @@ export default function Home() {
     mass: 0.8,
   });
 
-  const logoRotate = useTransform(logoSpring, [-1, 0, 1], [-75, 0, 75]);
-  const logoY = useTransform(logoSpring, [-1, 0, 1], [12, 0, -12]);
-  const textY = useTransform(textSpring, [-1, 0, 1], [32, 0, -32]);
-  const brandsY = useTransform(brandsSpring, [-1, 0, 1], [24, 0, -24]);
-  const inputY = useTransform(inputSpring, [-1, 0, 1], [15, 0, -15]);
+  const logoRotate = useTransform(logoSpring, [-1, 0, 1], [-50, 0, 50]);
+  const logoY = useTransform(logoSpring, [-1, 0, 1], [5, 0, -5]);
+  const textY = useTransform(textSpring, [-1, 0, 1], [30, 0, -30]);
+  const brandsY = useTransform(brandsSpring, [-1, 0, 1], [20, 0, -20]);
+  const inputY = useTransform(inputSpring, [-1, 0, 1], [5, 0, -5]);
 
   return (
     <>
@@ -108,12 +108,10 @@ export default function Home() {
         ref={containerRef}
         className="relative h-svh w-full overflow-hidden bg-s cursor-ew-resize select-none"
       >
-        {/* IMAGENS — FULL SCREEN */}
-
         <div className="absolute inset-0 z-0 h-svh w-full overflow-hidden">
           <div
             ref={projectsRef}
-            className="absolute left-0 top-0 flex h-svh w-max gap-2.5 will-change-transform"
+            className="absolute left-0 top-0 flex h-svh w-max gap-2.5 transform-3d backface-hidden"
           >
             {repeatedProjects.map((project, index) => (
               <ProjectCard
@@ -184,14 +182,14 @@ export default function Home() {
                 animate={loading ? "exit" : "animate"}
                 exit="exit"
                 tag="p"
-                className="text-[clamp(24px,4vw,30px)] font-instrument font-normal leading-[90%] tracking-[-6%] text-p "
+                className="text-[clamp(22px,4vw,30px)] font-instrument font-normal leading-[90%] tracking-[-6%] text-p "
               />
             </motion.div>
           </div>
 
           {/* BRANDS */}
 
-          <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-32.5">
+          <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-10">
             <BrandList loading={loading} brandsY={brandsY} />
           </div>
 
@@ -228,7 +226,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            <span className="h-3 w-px bg-p/30" />
+            <span className="h-3 w-0.5 bg-p/80" />
 
             {/* CONTACT */}
 

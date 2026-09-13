@@ -9,6 +9,7 @@ import Lenis from "lenis";
 import { useEffect, useRef, useState } from "react";
 
 import { IoClose } from "react-icons/io5";
+import { LuFocus, LuNavigation, LuTrendingUp } from "react-icons/lu";
 
 const menuAnim = {
   initial: {
@@ -199,7 +200,7 @@ export default function AboutModal({ onCompleteClose }) {
                 <RevealText
                   text="Não acreditamos em design feito apenas para preencher espaços. Criamos sistemas visuais que encontram significado, constroem presença e tornam marcas memoráveis."
                   tag="h1"
-                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
+                  className="max-w-200 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
 
                 <div className="mt-20 flex items-start justify-between gap-10">
@@ -232,16 +233,18 @@ export default function AboutModal({ onCompleteClose }) {
                       duration: 0.8,
                       ease: [0.33, 1, 0.68, 1],
                     }}
-                    className="flex h-85 aspect-square w-full flex-col justify-between bg-p/90 p-2.5"
+                    className="flex h-100 aspect-square w-full flex-col justify-between bg-p p-2.5 py-5"
                   >
-                    <span className="text-[14px] font-medium text-s">01</span>
+                    <span className="text-[32px] font-medium text-s">
+                      <LuNavigation />
+                    </span>
 
                     <div>
-                      <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
+                      <h3 className="text-[14px] font-medium uppercase leading-none tracking-[10%] text-s">
                         Clareza
                       </h3>
 
-                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s">
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-medium leading-[110%] tracking-[-3%] text-s">
                         Menos ruído. Mais intenção. Cada escolha precisa ter um
                         motivo.
                       </p>
@@ -258,16 +261,18 @@ export default function AboutModal({ onCompleteClose }) {
                       delay: 0.1,
                       ease: [0.33, 1, 0.68, 1],
                     }}
-                    className="flex h-85 aspect-square w-full flex-col justify-between bg-p/80 p-2.5"
+                    className="flex h-100 aspect-square w-full flex-col justify-between bg-p/90 p-2.5 py-5"
                   >
-                    <span className="text-[14px] font-medium text-s">02</span>
+                    <span className="text-[32px] font-medium text-s">
+                      <LuFocus />
+                    </span>
 
                     <div>
-                      <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
+                      <h3 className="text-[14px] font-medium uppercase leading-none tracking-[10%] text-s">
                         Intenção
                       </h3>
 
-                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s">
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-medium leading-[110%] tracking-[-3%] text-s">
                         Criamos com propósito, não seguindo tendências.
                         Estratégia antes da estética.
                       </p>
@@ -284,16 +289,18 @@ export default function AboutModal({ onCompleteClose }) {
                       delay: 0.2,
                       ease: [0.33, 1, 0.68, 1],
                     }}
-                    className="flex h-85 aspect-square w-full flex-col justify-between bg-p/70 p-2.5"
+                    className="flex h-100 aspect-square w-full flex-col justify-between bg-p/80 p-2.5 py-5"
                   >
-                    <span className="text-[14px] font-medium text-s">03</span>
+                    <span className="text-[32px] font-medium text-s">
+                      <LuTrendingUp />
+                    </span>
 
                     <div>
-                      <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
+                      <h3 className="text-[14px] font-medium uppercase leading-none tracking-[10%] text-s">
                         Impacto
                       </h3>
 
-                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s">
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-medium leading-[110%] tracking-[-3%] text-s">
                         O resultado precisa funcionar no mundo real, não apenas
                         na tela.
                       </p>
@@ -432,7 +439,7 @@ export default function AboutModal({ onCompleteClose }) {
                 <RevealText
                   text="Pensamos. Criamos. Mudamos a forma como as coisas são vistas."
                   tag="h2"
-                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
+                  className="max-w-200 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
 
                 <div className="flex items-center justify-between border-t border-p/15 pt-5">

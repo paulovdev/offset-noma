@@ -189,11 +189,11 @@ export function ProjectModal({ project, onCompleteClose }) {
                 <Image
                   src={project.img}
                   alt={project.name}
-                  width={3000}
-                  height={3000}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 720px"
                   placeholder="blur"
                   priority
-                  className="size-full object-cover brightness-75 noise"
+                  className="size-full object-cover brightness-75"
                 />
 
                 <div className="absolute inset-0 bg-p/10" />
@@ -222,7 +222,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <RevealText
                     text={project.category}
-                    className="text-[14px] font-normal uppercase tracking-[10%] text-p"
+                    className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
 
@@ -234,7 +234,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <RevealText
                     text={String(project.year)}
-                    className="text-[14px] font-normal uppercase tracking-[10%] text-p"
+                    className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
 
@@ -246,7 +246,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <RevealText
                     text={project.type}
-                    className="text-[14px] font-normal uppercase tracking-[10%] text-p"
+                    className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
               </div>
@@ -294,20 +294,10 @@ export function ProjectModal({ project, onCompleteClose }) {
               {/* SEGUNDA IMAGEM */}
               {project.img2 && (
                 <motion.div
-                  initial={{
-                    y: 50,
-                  }}
-                  whileInView={{
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.15,
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    ease: [0.33, 1, 0.68, 1],
-                  }}
+                  initial={{ scale: 1.05 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
                   className="relative h-[70vh] w-full overflow-hidden"
                 >
                   <Image
@@ -316,8 +306,24 @@ export function ProjectModal({ project, onCompleteClose }) {
                     fill
                     sizes="(max-width: 1024px) 100vw, 720px"
                     placeholder="blur"
-                    className="object-cover"
+                    className="size-full scale-110 object-cover grayscale-[15%]"
                   />
+
+                  <div className="absolute inset-0 bg-p/5" />
+
+                  <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
+                    <span className="text-[14px] uppercase tracking-[10%] text-p">
+                      detalhe
+                    </span>
+
+                    <span className="text-[14px] text-p/40">02</span>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 p-5">
+                    <span className="text-[14px] uppercase tracking-[10%] text-p/60">
+                      {project.category}
+                    </span>
+                  </div>
                 </motion.div>
               )}
 
@@ -348,36 +354,6 @@ export function ProjectModal({ project, onCompleteClose }) {
                 </div>
               </section>
 
-              {/* TERCEIRA IMAGEM */}
-              {project.img3 && (
-                <motion.div
-                  initial={{
-                    y: 50,
-                  }}
-                  whileInView={{
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.15,
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    ease: [0.33, 1, 0.68, 1],
-                  }}
-                  className="relative h-[80vh] w-full overflow-hidden"
-                >
-                  <Image
-                    src={project.img3}
-                    alt={`${project.name} apresentação`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 720px"
-                    placeholder="blur"
-                    className="object-cover"
-                  />
-                </motion.div>
-              )}
-
               {/* RESULTADO */}
               <section className="p-2.5 py-25">
                 <RevealText
@@ -391,10 +367,103 @@ export function ProjectModal({ project, onCompleteClose }) {
                 />
               </section>
 
+              {/* TERCEIRA IMAGEM */}
+              {project.img3 && (
+                <motion.div
+                  initial={{ scale: 1.05 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{
+                    duration: 1,
+                    ease: [0.33, 1, 0.68, 1],
+                  }}
+                  className="relative h-[50vh] w-full overflow-hidden"
+                >
+                  <Image
+                    src={project.img3}
+                    alt={`${project.name} apresentação`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 720px"
+                    placeholder="blur"
+                    className="size-full scale-200 blur-2xl object-cover grayscale-50"
+                  />
+
+                  <div className="absolute inset-0 bg-p/5" />
+
+                  <div className="absolute inset-0 p-2.5 flex items-center justify-between gap-5">
+                    <motion.div
+                      initial={{ scale: 0, rotate: -45 }}
+                      exit={{ scale: 0, rotate: -45 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.9,
+                        ease: [0.76, 0, 0.24, 1],
+                      }}
+                      className="flex size-40 items-center justify-center rounded-full border border-p/30 bg-p/10 backdrop-blur-xl"
+                    >
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p">
+                        @paulovdev
+                      </span>
+                    </motion.div>
+                    <motion.div
+                      initial={{ scale: 0, rotate: -45 }}
+                      exit={{ scale: 0, rotate: -45 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.9,
+                        ease: [0.76, 0, 0.24, 1],
+                        delay: 0.25,
+                      }}
+                      className="flex size-40 items-center justify-center rounded-full border border-p/30 bg-p/10 backdrop-blur-xl"
+                    >
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p">
+                        @offset
+                      </span>
+                    </motion.div>
+                    <motion.div
+                      initial={{ scale: 0, rotate: -45 }}
+                      exit={{ scale: 0, rotate: -45 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.9,
+                        ease: [0.76, 0, 0.24, 1],
+                        delay: 0.5,
+                      }}
+                      className="flex size-40 items-center justify-center rounded-full border border-p/30 bg-p/10 backdrop-blur-xl"
+                    >
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p">
+                        @fc_studio
+                      </span>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
+
               {/* RODAPÉ */}
-              <footer className="flex min-h-[50vh] flex-col justify-end gap-8 border-t border-p/15 p-2.5 pb-10">
-                <div className="flex items-center gap-2.5">
-                  <span className="relative -top-0.5 size-2.5 rounded-full bg-p" />
+              <footer className="py-25 flex flex-col justify-end gap-8 border-t border-p/15 p-2.5 pb-10">
+                <div className="flex items-center gap-2.5 ">
+                  <motion.span
+                    initial={{
+                      y: 50,
+                    }}
+                    whileInView={{
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.15,
+                    }}
+                    transition={{
+                      duration: 0.8,
+                      ease: [0.33, 1, 0.68, 1],
+                    }}
+                    className="relative -top-0.5 text-p text-[14px]"
+                  >
+                    ✳
+                  </motion.span>
 
                   <RevealText
                     text={project.name}
