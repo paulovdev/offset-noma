@@ -25,15 +25,9 @@ export function Loader({ loading }) {
       className={`fixed inset-0 z-999 flex items-center justify-center bg-p ${loading ? "cursor-wait" : "pointer-events-none"}`}
     >
       <div className="flex items-center justify-center">
-        <p className="text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-s will-change-transform">
-          carregando
+        <p className="text-[82px] font-normal uppercase leading-[100%] tracking-[10%] text-s will-change-transform animate-spin">
+          ✳
         </p>
-
-        <span className="ml-1 flex w-4.5 items-center text-[14px] font-medium leading-[120%] tracking-[-4%] text-s">
-          <span className="dot dot-1">.</span>
-          <span className="dot dot-2">.</span>
-          <span className="dot dot-3">.</span>
-        </span>
       </div>
 
       <style jsx>{`

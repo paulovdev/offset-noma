@@ -212,12 +212,12 @@ export function ProjectModal({ project, onCompleteClose }) {
                   <RevealText
                     text={project.name}
                     tag="h1"
-                    className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[92%] tracking-[-5%] text-p"
+                    className="text-[clamp(28px,4vw,52px)] font-instrument font-normal  leading-[100%] tracking-[-6%] text-p"
                   />
 
                   <RevealText
                     text={project.description}
-                    className="mt-5 max-w-175 text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-p"
+                    className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
               </div>
@@ -228,36 +228,36 @@ export function ProjectModal({ project, onCompleteClose }) {
                 <div>
                   <RevealText
                     text="category"
-                    className="mb-2 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                    className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
                     text={project.category}
-                    className="text-[14px] font-medium uppercase tracking-[-2%] text-p"
+                    className="text-[14px] font-normal uppercase tracking-[10%] text-p"
                   />
                 </div>
 
                 <div>
                   <RevealText
                     text="year"
-                    className="mb-2 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                    className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
                     text={String(project.year)}
-                    className="text-[14px] font-medium uppercase tracking-[-2%] text-p"
+                    className="text-[14px] font-normal uppercase tracking-[10%] text-p"
                   />
                 </div>
 
                 <div>
                   <RevealText
                     text="Type"
-                    className="mb-2 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                    className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
                     text={project.type}
-                    className="text-[14px] font-medium uppercase tracking-[-2%] text-p"
+                    className="text-[14px] font-normal uppercase tracking-[10%] text-p"
                   />
                 </div>
               </div>
@@ -267,12 +267,12 @@ export function ProjectModal({ project, onCompleteClose }) {
               <section className="border-b border-p/15 p-2.5 py-25">
                 <RevealText
                   text="01 — Overview"
-                  className="mb-8 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
                   text={project.statement}
-                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[100%] tracking-[-5%] text-p"
+                  className="text-[clamp(28px,4vw,52px)] font-instrument font-normal  leading-[100%] tracking-[-6%] text-p"
                 />
               </section>
 
@@ -282,24 +282,24 @@ export function ProjectModal({ project, onCompleteClose }) {
                 <div>
                   <RevealText
                     text="The idea"
-                    className="mb-5 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                    className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
                     text={project.idea}
-                    className="max-w-125 text-[14px] font-medium uppercase leading-[125%] tracking-[-3%] text-p"
+                    className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
 
                 <div>
                   <RevealText
                     text="The approach"
-                    className="mb-5 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                    className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
                     text={project.approach}
-                    className="max-w-125 text-[14px] font-medium uppercase leading-[125%] tracking-[-3%] text-p"
+                    className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
               </section>
@@ -340,7 +340,7 @@ export function ProjectModal({ project, onCompleteClose }) {
               <section className="border-b border-p/15 p-2.5 py-25">
                 <RevealText
                   text="02 — Services"
-                  className="mb-8 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <div className="flex flex-col">
@@ -351,12 +351,12 @@ export function ProjectModal({ project, onCompleteClose }) {
                     >
                       <RevealText
                         text={service}
-                        className="text-[14px] font-medium uppercase tracking-[-3%] text-p"
+                        className="text-p text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%]"
                       />
 
                       <RevealText
                         text={String(index + 1).padStart(2, "0")}
-                        className="text-[14px] font-medium text-p/40"
+                        className="text-[14px] font-normal text-p/40"
                       />
                     </div>
                   ))}
@@ -399,12 +399,12 @@ export function ProjectModal({ project, onCompleteClose }) {
               <section className="p-2.5 py-25">
                 <RevealText
                   text="03 — Result"
-                  className="mb-8 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
                   text={project.result}
-                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[100%] tracking-[-5%] text-p"
+                  className="text-[clamp(28px,4vw,52px)] font-instrument font-normal  leading-[100%] tracking-[-6%] text-p"
                 />
               </section>
 
@@ -416,18 +416,18 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <RevealText
                     text={project.name}
-                    className="text-[14px] font-medium uppercase tracking-[-2%] leading-[100%] text-p"
+                    className="text-[14px] font-normal uppercase tracking-[10%] leading-[100%] text-p"
                   />
                 </div>
 
                 <RevealText
                   text={project.description}
-                  className="max-w-100 text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-p/60"
+                  className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p/60"
                 />
 
                 <RevealText
                   text={`Offset® — Selected projects — ${project.year}`}
-                  className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
               </footer>
             </div>

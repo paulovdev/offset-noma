@@ -7,11 +7,12 @@
 }
 
 @theme inline {
-  --color-p: #f9f8f8;
-  --color-s: #000000;
+  --color-p: #dedfe1;
+  --color-s: #050505;
   --color-ts: #ff3b3c;
 
   --font-chivo: "chivo";
+  --font-instrument: "Instrument Sans";
 }
 
 html,

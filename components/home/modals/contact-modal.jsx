@@ -122,11 +122,11 @@ const ContactModal = ({ onCompleteClose }) => {
                   }}
                 >
                   <ClipText
-                    text="LET'S CREATE SOMETHING TOGETHER?"
+                    text="Let's Create Something Together?"
                     animate="animate"
                     exit="exit"
                     tag="h2"
-                    className="max-w-125 text-[42px] font-medium uppercase leading-[95%] tracking-[-4%] text-p"
+                    className="max-w-100 text-[38px] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                   />
                 </motion.div>
               </div>
@@ -148,7 +148,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   <input
                     type="text"
                     placeholder="name"
-                    className="h-11 w-full bg-transparent text-[14px] font-medium uppercase leading-[120%] tracking-[-2%] text-p outline-none will-change-transform placeholder:text-p/40"
+                    className="h-11 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform placeholder:text-p/40"
                   />
                 </motion.div>
 
@@ -167,7 +167,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   <input
                     type="email"
                     placeholder="email"
-                    className="h-11 w-full bg-transparent text-[14px] font-medium uppercase leading-[120%] tracking-[-2%] text-p outline-none placeholder:text-p/40 will-change-transform"
+                    className="h-11 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none placeholder:text-p/40 will-change-transform"
                   />
                 </motion.div>
 
@@ -185,7 +185,7 @@ const ContactModal = ({ onCompleteClose }) => {
                 >
                   <select
                     defaultValue=""
-                    className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-medium uppercase leading-[120%] tracking-[-2%] text-p outline-none will-change-transform"
+                    className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
                   >
                     <option value="" disabled>
                       project type
@@ -214,7 +214,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   >
                     <select
                       defaultValue=""
-                      className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-medium uppercase leading-[120%] tracking-[-2%] text-p outline-none will-change-transform"
+                      className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
                     >
                       <option value="" disabled>
                         investment
@@ -240,7 +240,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   >
                     <select
                       defaultValue=""
-                      className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-medium uppercase leading-[120%] tracking-[-2%] text-p outline-none will-change-transform"
+                      className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
                     >
                       <option value="" disabled>
                         timeline
@@ -269,7 +269,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   <textarea
                     placeholder="tell us about your project"
                     rows={3}
-                    className="w-full resize-none bg-transparent py-4 text-[14px] font-medium uppercase leading-[120%] tracking-[-2%] text-p outline-none will-change-transform placeholder:text-p/40"
+                    className="w-full resize-none bg-transparent py-4 text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform placeholder:text-p/40"
                   />
                 </motion.div>
               </div>
@@ -291,7 +291,7 @@ const ContactModal = ({ onCompleteClose }) => {
                 {/* CONTACT */}
                 <div className="flex flex-col gap-5">
                   <div className="flex flex-col gap-1">
-                    <span className="text-[14px] uppercase tracking-[-2%] text-p/40 will-change-transform">
+                    <span className="text-[14px] uppercase tracking-[10%] text-p/40 will-change-transform">
                       or reach out directly
                     </span>
 
@@ -300,10 +300,10 @@ const ContactModal = ({ onCompleteClose }) => {
                       className="group relative w-fit cursor-pointer overflow-hidden will-change-transform"
                     >
                       <div className="relative">
-                        <p className="text-[16px] font-medium uppercase leading-[120%] tracking-[-2%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                        <p className="text-[16px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                           hello@offset.studio
                         </p>
-                        <p className="absolute left-0 top-full text-[16px] font-medium uppercase leading-[120%] tracking-[-2%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                        <p className="absolute left-0 top-full text-[16px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                           hello@offset.studio
                         </p>
                       </div>
@@ -318,10 +318,10 @@ const ContactModal = ({ onCompleteClose }) => {
                   className="group relative flex size-23 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-2 border-s bg-p text-s"
                 >
                   <span className="relative overflow-hidden will-change-transform">
-                    <span className="block text-[14px] font-medium uppercase leading-[120%] tracking-[-2%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    <span className="block text-[14px] font-normal uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                       send
                     </span>
-                    <span className="absolute left-0 top-full block text-[14px] uppercase leading-[120%] tracking-[-2%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    <span className="absolute left-0 top-full block text-[14px] uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                       send
                     </span>
                   </span>

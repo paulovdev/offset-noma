@@ -1,13 +1,13 @@
 "use client";
 
 import Lenis from "lenis";
-import { motionValue } from "framer-motion";
+import { useMotionValue } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-const ITEM_HEIGHT = 60;
+const ITEM_HEIGHT = 100;
 const GAP = 10;
 const SCROLL_SPEED = 0.8;
-const SMOOTHNESS = 0.04;
+const SMOOTHNESS = 0.06;
 
 export function useInfiniteColumns(leftCount, rightCount, isModalOpen = false) {
   const containerRef = useRef(null);
@@ -28,48 +28,51 @@ export function useInfiniteColumns(leftCount, rightCount, isModalOpen = false) {
   const dragStartScroll = useRef(0);
 
   const isMobile = useRef(false);
+  const scrollVelocity = useMotionValue(0);
 
-  const scrollVelocity = useRef(motionValue(0)).current;
-
+  // Recalculo de dimensões em Resize
   useEffect(() => {
+    let resizeTimer;
+
     const calculate = () => {
-      isMobile.current = window.innerWidth <= 1024;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      isMobile.current = width <= 1024;
 
       if (isMobile.current) {
-        const itemWidth = window.innerWidth * 0.55;
-        const itemSize = itemWidth + GAP;
-
+        const itemSize = width * 0.55 + GAP;
         leftCycle.current = leftCount * itemSize;
         rightCycle.current = rightCount * itemSize;
       } else {
-        const itemHeight = window.innerHeight * (ITEM_HEIGHT / 100);
-        const itemSize = itemHeight + GAP;
-
+        const itemSize = height * (ITEM_HEIGHT / 100) + GAP;
         leftCycle.current = leftCount * itemSize;
         rightCycle.current = rightCount * itemSize;
       }
     };
 
-    calculate();
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(calculate, 100);
+    };
 
-    window.addEventListener("resize", calculate);
+    calculate();
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
-      window.removeEventListener("resize", calculate);
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", handleResize);
     };
   }, [leftCount, rightCount]);
 
+  // Loop Principal de Animação e Scroll
   useEffect(() => {
     const lenis = new Lenis({
       smoothWheel: true,
       autoRaf: false,
       virtualScroll: ({ deltaY, deltaX }) => {
         if (isModalOpen || isDragging.current) return false;
-
         const delta = isMobile.current ? deltaX || deltaY : deltaY;
-
         targetScroll.current += delta * SCROLL_SPEED;
-
         return false;
       },
     });
@@ -83,12 +86,11 @@ export function useInfiniteColumns(leftCount, rightCount, isModalOpen = false) {
     const container = containerRef.current;
 
     const handlePointerDown = (event) => {
-      if (isModalOpen) return;
-      if (event.pointerType === "mouse" && event.button !== 0) return;
+      if (isModalOpen || (event.pointerType === "mouse" && event.button !== 0))
+        return;
 
       isDragging.current = true;
       hasDragged.current = false;
-
       dragStartY.current = event.clientY;
       dragStartX.current = event.clientX;
       dragStartScroll.current = targetScroll.current;
@@ -100,98 +102,101 @@ export function useInfiniteColumns(leftCount, rightCount, isModalOpen = false) {
     const handlePointerMove = (event) => {
       if (!isDragging.current || isModalOpen) return;
 
-      if (isMobile.current) {
-        const delta = event.clientX - dragStartX.current;
+      const delta = isMobile.current
+        ? event.clientX - dragStartX.current
+        : event.clientY - dragStartY.current;
 
-        if (Math.abs(delta) > 5) {
-          hasDragged.current = true;
-        }
-
-        targetScroll.current = dragStartScroll.current - delta;
-      } else {
-        const delta = event.clientY - dragStartY.current;
-
-        if (Math.abs(delta) > 5) {
-          hasDragged.current = true;
-        }
-
-        targetScroll.current = dragStartScroll.current - delta;
+      if (Math.abs(delta) > 5) {
+        hasDragged.current = true;
       }
+
+      targetScroll.current = dragStartScroll.current - delta;
     };
 
     const handlePointerUp = () => {
       if (!isDragging.current) return;
-
       isDragging.current = false;
-
       document.body.style.cursor = "";
       document.body.style.userSelect = "";
     };
 
     const handleClick = (event) => {
       if (!hasDragged.current) return;
-
       event.preventDefault();
       event.stopPropagation();
-
       hasDragged.current = false;
     };
 
-    container?.addEventListener("pointerdown", handlePointerDown);
+    container?.addEventListener("pointerdown", handlePointerDown, {
+      passive: true,
+    });
     container?.addEventListener("click", handleClick, true);
 
-    window.addEventListener("pointermove", handlePointerMove);
-    window.addEventListener("pointerup", handlePointerUp);
-    window.addEventListener("pointercancel", handlePointerUp);
+    window.addEventListener("pointermove", handlePointerMove, {
+      passive: true,
+    });
+    window.addEventListener("pointerup", handlePointerUp, { passive: true });
+    window.addEventListener("pointercancel", handlePointerUp, {
+      passive: true,
+    });
 
     let rafId;
+    let prevLeftTransform = "";
+    let prevRightTransform = "";
 
     const raf = (time) => {
       lenis.raf(time);
 
       if (!isModalOpen) {
+        // Interpolação Linear (LERP)
         currentScroll.current +=
           (targetScroll.current - currentScroll.current) * SMOOTHNESS;
 
         const scroll = currentScroll.current;
         const velocity = scroll - previousScroll.current;
-
         previousScroll.current = scroll;
 
         const normalizedVelocity = Math.max(-1, Math.min(1, velocity * 0.15));
-
         scrollVelocity.set(normalizedVelocity);
 
-        const leftCycleSize = leftCycle.current;
-        const rightCycleSize = rightCycle.current;
+        const lCycle = leftCycle.current;
+        const rCycle = rightCycle.current;
 
         if (isMobile.current) {
-          if (leftCycleSize > 0 && leftRef.current) {
-            const leftOffset =
-              ((scroll % leftCycleSize) + leftCycleSize) % leftCycleSize;
-
-            leftRef.current.style.transform = `translate3d(${-leftCycleSize + leftOffset}px, 0, 0)`;
+          if (lCycle > 0 && leftRef.current) {
+            const leftOffset = ((scroll % lCycle) + lCycle) % lCycle;
+            const transform = `translate3d(${-lCycle + leftOffset}px, 0, 0)`;
+            if (transform !== prevLeftTransform) {
+              leftRef.current.style.transform = transform;
+              prevLeftTransform = transform;
+            }
           }
 
-          if (rightCycleSize > 0 && rightRef.current) {
-            const rightOffset =
-              ((-scroll % rightCycleSize) + rightCycleSize) % rightCycleSize;
-
-            rightRef.current.style.transform = `translate3d(${-rightCycleSize + rightOffset}px, 0, 0)`;
+          if (rCycle > 0 && rightRef.current) {
+            const rightOffset = ((-scroll % rCycle) + rCycle) % rCycle;
+            const transform = `translate3d(${-rCycle + rightOffset}px, 0, 0)`;
+            if (transform !== prevRightTransform) {
+              rightRef.current.style.transform = transform;
+              prevRightTransform = transform;
+            }
           }
         } else {
-          if (leftCycleSize > 0 && leftRef.current) {
-            const leftOffset =
-              ((scroll % leftCycleSize) + leftCycleSize) % leftCycleSize;
-
-            leftRef.current.style.transform = `translate3d(0, ${-leftCycleSize + leftOffset}px, 0)`;
+          if (lCycle > 0 && leftRef.current) {
+            const leftOffset = ((scroll % lCycle) + lCycle) % lCycle;
+            const transform = `translate3d(0, ${-lCycle + leftOffset}px, 0)`;
+            if (transform !== prevLeftTransform) {
+              leftRef.current.style.transform = transform;
+              prevLeftTransform = transform;
+            }
           }
 
-          if (rightCycleSize > 0 && rightRef.current) {
-            const rightOffset =
-              ((-scroll % rightCycleSize) + rightCycleSize) % rightCycleSize;
-
-            rightRef.current.style.transform = `translate3d(0, ${-rightCycleSize + rightOffset}px, 0)`;
+          if (rCycle > 0 && rightRef.current) {
+            const rightOffset = ((-scroll % rCycle) + rCycle) % rCycle;
+            const transform = `translate3d(0, ${-rCycle + rightOffset}px, 0)`;
+            if (transform !== prevRightTransform) {
+              rightRef.current.style.transform = transform;
+              prevRightTransform = transform;
+            }
           }
         }
       } else {

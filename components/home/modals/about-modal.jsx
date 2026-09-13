@@ -190,24 +190,24 @@ export default function AboutModal({ onCompleteClose }) {
               <section className="flex flex-col justify-end border-b border-p/15 py-10">
                 <RevealText
                   text="About us"
-                  className="mb-10 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="mb-10 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
                   text="We don't believe in design made to fill spaces. We create visual systems that find meaning, build presence, and make brands memorable."
                   tag="h1"
-                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[92%] tracking-[-5%] text-p"
+                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
 
                 <div className="mt-20 flex items-start justify-between gap-10">
                   <RevealText
                     text="01 — Manifesto"
-                    className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                    className="text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
                     text="Independent design for ideas that want to leave a mark."
-                    className="max-w-75 text-right text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-p"
+                    className="text-right max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
               </section>
@@ -216,7 +216,7 @@ export default function AboutModal({ onCompleteClose }) {
               <section className="border-b border-p/15 py-20">
                 <RevealText
                   text="02 — Values"
-                  className="mb-10 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="mb-10 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <div className="grid grid-cols-3 gap-2.5 max-md:grid-cols-1">
@@ -231,16 +231,14 @@ export default function AboutModal({ onCompleteClose }) {
                     }}
                     className="flex h-85 aspect-square w-full flex-col justify-between bg-p/90 p-2.5"
                   >
-                    <span className="text-[14px] font-medium text-s/50">
-                      01
-                    </span>
+                    <span className="text-[14px] font-medium text-s">01</span>
 
                     <div>
-                      <h3 className="text-[22px] font-medium uppercase leading-none tracking-[-4%] text-s">
+                      <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
                         Clarity
                       </h3>
 
-                      <p className="mt-5 text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-s/60">
+                      <p className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s mt-5">
                         Less noise. More intention. Every choice needs a reason.
                       </p>
                     </div>
@@ -258,16 +256,14 @@ export default function AboutModal({ onCompleteClose }) {
                     }}
                     className="flex h-85 aspect-square w-full flex-col justify-between bg-p/80  p-2.5"
                   >
-                    <span className="text-[14px] font-medium text-s/50">
-                      02
-                    </span>
+                    <span className="text-[14px] font-medium text-s">02</span>
 
                     <div>
-                      <h3 className="text-[22px] font-medium uppercase leading-none tracking-[-4%] text-s">
+                      <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
                         Intention
                       </h3>
 
-                      <p className="mt-5 text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-s/60">
+                      <p className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s mt-5">
                         We create with purpose, not trends. Strategy before
                         aesthetics.
                       </p>
@@ -286,16 +282,14 @@ export default function AboutModal({ onCompleteClose }) {
                     }}
                     className="flex h-85 aspect-square w-full flex-col justify-between bg-p/70  p-2.5"
                   >
-                    <span className="text-[14px] font-medium text-s/50">
-                      03
-                    </span>
+                    <span className="text-[14px] font-medium text-s">03</span>
 
                     <div>
-                      <h3 className="text-[22px] font-medium uppercase leading-none tracking-[-4%] text-s">
+                      <h3 className="text-[16px] font-normal uppercase leading-none tracking-[10%] text-s">
                         Impact
                       </h3>
 
-                      <p className="mt-5 text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-s/60">
+                      <p className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s mt-5">
                         The result needs to work in the real world, not just on
                         screen.
                       </p>
@@ -308,69 +302,69 @@ export default function AboutModal({ onCompleteClose }) {
               <section className="border-b border-p/15 py-20">
                 <RevealText
                   text="03 — Impact"
-                  className="mb-15 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="mb-15 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <div className="flex flex-col">
                   <div className="grid grid-cols-2 gap-2.5 border-t border-p/15 py-8 max-md:grid-cols-1">
-                    <span className="text-[clamp(48px,8vw,100px)] font-medium leading-none tracking-[-6%] text-p">
+                    <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-p">
                       2017
                     </span>
 
                     <div className="flex flex-col justify-end">
-                      <span className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40">
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
                         Founded
                       </span>
 
-                      <span className="mt-2 text-[14px] font-medium uppercase tracking-[-2%] text-p">
+                      <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
                         Independent by choice
                       </span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2.5 border-t border-p/15 py-8 max-md:grid-cols-1">
-                    <span className="text-[clamp(48px,8vw,100px)] font-medium leading-none tracking-[-6%] text-p">
+                    <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-p">
                       40+
                     </span>
 
                     <div className="flex flex-col justify-end">
-                      <span className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40">
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
                         Collaborations
                       </span>
 
-                      <span className="mt-2 text-[14px] font-medium uppercase tracking-[-2%] text-p">
+                      <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
                         Brands, people & spaces
                       </span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2.5 border-t border-p/15 py-8 max-md:grid-cols-1">
-                    <span className="text-[clamp(48px,8vw,100px)] font-medium leading-none tracking-[-6%] text-p">
+                    <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-p">
                       12
                     </span>
 
                     <div className="flex flex-col justify-end">
-                      <span className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40">
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
                         Countries
                       </span>
 
-                      <span className="mt-2 text-[14px] font-medium uppercase tracking-[-2%] text-p">
+                      <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
                         Work beyond borders
                       </span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2.5 border-t border-p/15 py-8 max-md:grid-cols-1">
-                    <span className="text-[clamp(48px,8vw,100px)] font-medium leading-none tracking-[-6%] text-p">
+                    <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-p">
                       100%
                     </span>
 
                     <div className="flex flex-col justify-end">
-                      <span className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40">
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
                         Independent
                       </span>
 
-                      <span className="mt-2 text-[14px] font-medium uppercase tracking-[-2%] text-p">
+                      <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
                         Small studio. Big ideas.
                       </span>
                     </div>
@@ -382,7 +376,7 @@ export default function AboutModal({ onCompleteClose }) {
               <section className="border-b border-p/15 py-20">
                 <RevealText
                   text="04 — Awards & Recognitions"
-                  className="mb-12 text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="mb-12 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <div className="flex flex-col">
@@ -408,15 +402,15 @@ export default function AboutModal({ onCompleteClose }) {
                       }}
                       className="grid grid-cols-[1fr_1fr_auto] items-center gap-5 border-t border-p/15 py-5 max-md:grid-cols-[1fr_auto]"
                     >
-                      <span className="text-[14px] font-medium uppercase tracking-[-3%] text-p">
+                      <span className="text-[14px] font-normal uppercase tracking-[-3%] text-p">
                         {name}
                       </span>
 
-                      <span className="text-[14px] font-medium uppercase tracking-[-3%] text-p/50 max-md:hidden">
+                      <span className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p/60 max-md:hidden">
                         {award}
                       </span>
 
-                      <span className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40">
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
                         {year}
                       </span>
                     </motion.div>
@@ -428,21 +422,21 @@ export default function AboutModal({ onCompleteClose }) {
               <footer className="flex flex-col justify-end gap-10 py-20 pb-10">
                 <RevealText
                   text="05 — Moving forward"
-                  className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
+                  className="text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
 
                 <RevealText
                   text="We think. We create. We change the way things are seen."
                   tag="h2"
-                  className="max-w-155 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[92%] tracking-[-5%] text-p"
+                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
 
                 <div className="flex items-center justify-between border-t border-p/15 pt-5">
-                  <span className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40">
+                  <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
                     Independent studio
                   </span>
 
-                  <span className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40">
+                  <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
                     2026
                   </span>
                 </div>
