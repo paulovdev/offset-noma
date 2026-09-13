@@ -9,6 +9,7 @@ export function ProjectCard({
   index = 0,
   scrollVelocity = 0,
   loading,
+  skipLoading = false,
 }) {
   const router = useRouter();
   const spring = useSpring(scrollVelocity, {

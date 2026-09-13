@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function PageAbout() {
+export default function PageProject() {
   redirect("/");
 }

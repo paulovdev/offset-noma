@@ -145,7 +145,7 @@ export default function Home() {
               style={{ y: textY }}
             >
               <ClipText
-                text="AN INDEPENDENT ✦ DESIGN STUDIO THAT CREATES IDENTITIES, ◉ ART DIRECTION AND VISUAL EXPERIENCES ✧ FOR BRANDS, PRODUCTS ■ AND SPACES. ☼"
+                text="AN INDEPENDENT ✦ DESIGN STUDIO THAT CREATES IDENTITIES, ◉ ART DIRECTION AND VISUAL EXPERIENCES ✧ FOR BRANDS, PRODUCTS ■ AND SPACES."
                 animate={loading ? "exit" : "animate"}
                 exit="exit"
                 tag="p"

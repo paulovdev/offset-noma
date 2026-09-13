@@ -196,10 +196,10 @@ export default function AboutModal({ onCompleteClose }) {
                 <RevealText
                   text="We don't believe in design made to fill spaces. We create visual systems that find meaning, build presence, and make brands memorable."
                   tag="h1"
-                  className="max-w-155 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[92%] tracking-[-5%] text-p"
+                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[92%] tracking-[-5%] text-p"
                 />
 
-                <div className="mt-20 flex items-end justify-between gap-10">
+                <div className="mt-20 flex items-start justify-between gap-10">
                   <RevealText
                     text="01 — Manifesto"
                     className="text-[14px] font-medium uppercase tracking-[-2%] text-p/40"
@@ -207,7 +207,7 @@ export default function AboutModal({ onCompleteClose }) {
 
                   <RevealText
                     text="Independent design for ideas that want to leave a mark."
-                    className="max-w-100 text-right text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-p"
+                    className="max-w-75 text-right text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-p"
                   />
                 </div>
               </section>

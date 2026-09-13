@@ -202,6 +202,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   width={3000}
                   height={3000}
                   placeholder="blur"
+                  priority
                   className="size-full object-cover brightness-75 noise"
                 />
 
@@ -211,12 +212,12 @@ export function ProjectModal({ project, onCompleteClose }) {
                   <RevealText
                     text={project.name}
                     tag="h1"
-                    className="max-w-155 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[92%] tracking-[-5%] text-p"
+                    className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[92%] tracking-[-5%] text-p"
                   />
 
                   <RevealText
                     text={project.description}
-                    className="mt-5 max-w-125 text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-p"
+                    className="mt-5 max-w-175 text-[14px] font-medium uppercase leading-[120%] tracking-[-3%] text-p"
                   />
                 </div>
               </div>
@@ -271,7 +272,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                 <RevealText
                   text={project.statement}
-                  className="max-w-155 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[100%] tracking-[-5%] text-p"
+                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[100%] tracking-[-5%] text-p"
                 />
               </section>
 
@@ -403,7 +404,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                 <RevealText
                   text={project.result}
-                  className="max-w-155 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[100%] tracking-[-5%] text-p"
+                  className="max-w-175 text-[clamp(28px,4vw,52px)] font-medium uppercase leading-[100%] tracking-[-5%] text-p"
                 />
               </section>
 
