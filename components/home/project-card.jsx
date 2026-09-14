@@ -7,8 +7,6 @@ import { useRouter } from "next/navigation";
 export function ProjectCard({ project, index = 0, scrollVelocity, loading }) {
   const router = useRouter();
 
-  // Mapeamento direto sem passar por uma molas extra (useSpring) por card.
-  // A suavidade já vem do scroll principal.
   const x = useTransform(scrollVelocity, [-1, 0, 1], [-25, 0, 25]);
 
   return (
@@ -26,7 +24,6 @@ export function ProjectCard({ project, index = 0, scrollVelocity, loading }) {
         },
       }}
       whileTap={{ scale: 0.98 }}
-      whileHover={{ scale: 0.99 }}
       className="group relative block h-full w-[40vw] shrink-0 cursor-pointer overflow-hidden max-lg:w-[75vw] [transform-style:preserve-3d]"
     >
       <motion.div

@@ -315,7 +315,7 @@ const ContactModal = ({ onCompleteClose }) => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative flex size-23 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-2 border-s bg-p text-s"
+                  className="group relative flex size-28 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-2 border-s bg-p text-s"
                 >
                   <span className="relative overflow-hidden will-change-transform">
                     <span className="block text-[14px] font-medium uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">

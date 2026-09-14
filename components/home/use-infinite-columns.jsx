@@ -13,7 +13,7 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
   const containerRef = useRef(null);
   const projectsRef = useRef(null);
 
-  const targetScroll = useRef(150);
+  const targetScroll = useRef(0);
   const currentScroll = useRef(0);
   const previousScroll = useRef(0);
 
