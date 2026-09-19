@@ -100,8 +100,10 @@ const ContactModal = ({ onCompleteClose }) => {
             >
               <motion.button
                 whileTap={{ scale: 1.1 }}
-                whileHover={{ scale: 1.05, backgroundColor: "#f5f5f5" }}
-                className="group flex size-12.5 cursor-pointer items-center justify-center bg-p backdrop-blur-2xl"
+                whileHover={{
+                  scale: 1.05,
+                }}
+                className="group flex size-12.5 cursor-pointer items-center justify-center bg-p  backdrop-blur-2xl"
               >
                 <IoClose className="text-[24px] text-s transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
               </motion.button>

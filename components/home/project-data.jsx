@@ -1,16 +1,13 @@
-import bg1 from "@/public/assets/images/img-01.jpg";
+import bg1 from "@/public/assets/images/img-01.webp";
 import bg2 from "@/public/assets/images/img-02.webp";
 import bg3 from "@/public/assets/images/img-03.webp";
-import bg4 from "@/public/assets/images/img-04.jpg";
+import bg4 from "@/public/assets/images/img-04.webp";
 import bg5 from "@/public/assets/images/img-05.webp";
 import bg6 from "@/public/assets/images/img-06.webp";
 import bg7 from "@/public/assets/images/img-07.jpg";
 import bg8 from "@/public/assets/images/img-08.webp";
-import bg9 from "@/public/assets/images/img-09.jpg";
+import bg9 from "@/public/assets/images/img-09.png";
 import bg10 from "@/public/assets/images/img-10.webp";
-import bg11 from "@/public/assets/images/img-11.webp";
-import bg12 from "@/public/assets/images/img-12.webp";
-import bg13 from "@/public/assets/images/img-13.jpg";
 
 export const projects = [
   {
@@ -286,90 +283,6 @@ export const projects = [
     img: bg10,
     img2: bg10,
     img3: bg10,
-  },
-
-  {
-    id: "project-11",
-    icon: "✳",
-    name: "Projeto 11",
-    description:
-      "Uma direção criativa completa criada para tornar a marca mais marcante, relevante e conectada ao seu público.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Direção criativa",
-    year: "2026",
-    type: "Projeto completo",
-    statement:
-      "Uma direção criativa completa criada para reposicionar a marca e construir uma presença mais relevante e marcante.",
-    idea: "Encontrar um equilíbrio entre a essência existente da marca e uma nova visão capaz de levá-la adiante.",
-    approach:
-      "O projeto combina estratégia, identidade, direção de arte e design digital para criar uma experiência de marca integrada.",
-    services: [
-      "Estratégia de marca",
-      "Direção criativa",
-      "Identidade visual",
-      "Design digital",
-    ],
-    result:
-      "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
-    img: bg11,
-    img2: bg11,
-    img3: bg11,
-  },
-
-  {
-    id: "project-12",
-    icon: "✳",
-    name: "Projeto 12",
-    description:
-      "Uma direção criativa completa criada para tornar a marca mais marcante, relevante e conectada ao seu público.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Direção criativa",
-    year: "2026",
-    type: "Projeto completo",
-    statement:
-      "Uma direção criativa completa criada para reposicionar a marca e construir uma presença mais relevante e marcante.",
-    idea: "Encontrar um equilíbrio entre a essência existente da marca e uma nova visão capaz de levá-la adiante.",
-    approach:
-      "O projeto combina estratégia, identidade, direção de arte e design digital para criar uma experiência de marca integrada.",
-    services: [
-      "Estratégia de marca",
-      "Direção criativa",
-      "Identidade visual",
-      "Design digital",
-    ],
-    result:
-      "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
-    img: bg12,
-    img2: bg12,
-    img3: bg12,
-  },
-
-  {
-    id: "project-13",
-    icon: "✳",
-    name: "iPhone",
-    description:
-      "Uma direção criativa completa criada para tornar a marca mais marcante, relevante e conectada ao seu público.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Direção criativa",
-    year: "2026",
-    type: "Projeto completo",
-    statement:
-      "Uma direção criativa completa criada para reposicionar a marca e construir uma presença mais relevante e marcante.",
-    idea: "Encontrar um equilíbrio entre a essência existente da marca e uma nova visão capaz de levá-la adiante.",
-    approach:
-      "O projeto combina estratégia, identidade, direção de arte e design digital para criar uma experiência de marca integrada.",
-    services: [
-      "Estratégia de marca",
-      "Direção criativa",
-      "Identidade visual",
-      "Design digital",
-    ],
-    result:
-      "Uma nova expressão de marca criada para gerar reconhecimento, relevância e consistência em todos os pontos de contato.",
-    img: bg13,
-    img2: bg13,
-    img3: bg13,
   },
 ];
 

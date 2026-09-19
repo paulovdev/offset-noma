@@ -1,8 +1,13 @@
-import { Instrument_Sans } from "next/font/google";
+import { Instrument_Sans, Chivo } from "next/font/google";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
+  subsets: ["latin"],
+});
+
+const chivo = Chivo({
+  variable: "--font-chivo",
   subsets: ["latin"],
 });
 
@@ -15,7 +20,7 @@ export default function RootLayout({ children, modal }) {
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} h-full antialiased noise`}
+      className={`${instrumentSans.variable} ${chivo.variable} h-full antialiased noise`}
     >
       <body className="min-h-full flex flex-col">
         {children}

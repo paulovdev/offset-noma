@@ -202,12 +202,12 @@ export function ProjectModal({ project, onCompleteClose }) {
                   <RevealText
                     text={project.name}
                     tag="h1"
-                    className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
+                    className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-s"
                   />
 
                   <RevealText
                     text={project.description}
-                    className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
+                    className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s"
                   />
                 </div>
               </div>
@@ -400,9 +400,9 @@ export function ProjectModal({ project, onCompleteClose }) {
                         duration: 0.9,
                         ease: [0.76, 0, 0.24, 1],
                       }}
-                      className="flex size-40 items-center justify-center rounded-full border border-p/30 bg-p/10 backdrop-blur-xl"
+                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
                     >
-                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p">
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
                         @paulovdev
                       </span>
                     </motion.div>
@@ -414,11 +414,11 @@ export function ProjectModal({ project, onCompleteClose }) {
                       transition={{
                         duration: 0.9,
                         ease: [0.76, 0, 0.24, 1],
-                        delay: 0.25,
+                        delay: 0.1,
                       }}
-                      className="flex size-40 items-center justify-center rounded-full border border-p/30 bg-p/10 backdrop-blur-xl"
+                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
                     >
-                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p">
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
                         @offset
                       </span>
                     </motion.div>
@@ -430,12 +430,28 @@ export function ProjectModal({ project, onCompleteClose }) {
                       transition={{
                         duration: 0.9,
                         ease: [0.76, 0, 0.24, 1],
-                        delay: 0.5,
+                        delay: 0.2,
                       }}
-                      className="flex size-40 items-center justify-center rounded-full border border-p/30 bg-p/10 backdrop-blur-xl"
+                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
                     >
-                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-p">
-                        @fc_studio
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
+                        @ht_studio
+                      </span>
+                    </motion.div>
+                    <motion.div
+                      initial={{ scale: 0, rotate: -45 }}
+                      exit={{ scale: 0, rotate: -45 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.9,
+                        ease: [0.76, 0, 0.24, 1],
+                        delay: 0.3,
+                      }}
+                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
+                    >
+                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
+                        @other_lab
                       </span>
                     </motion.div>
                   </div>

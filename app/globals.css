@@ -1,14 +1,8 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "chivo";
-  src: url("/fonts/chivo.ttf") format("truetype");
-  font-weight: 100 900;
-}
-
 @theme inline {
-  --color-p: #dedfe1;
-  --color-s: #050505;
+  --color-p: #050505;
+  --color-s: #f6f7f1;
   --color-ts: #ff3b3c;
 
   --font-chivo: "chivo";

@@ -2,11 +2,11 @@
 
 import Lenis from "lenis";
 import { useMotionValue } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const SMOOTHNESS = 0.025;
-
-const SCROLL_SPEED = 0.5;
+const SMOOTHNESS = 0.08;
+const SNAP_STRENGTH = 0.08;
+const SCROLL_SPEED = 0.8;
 const REPEAT_COUNT = 4;
 
 export function useInfiniteColumns(projectCount, isModalOpen = false) {
@@ -18,6 +18,8 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
   const previousScroll = useRef(0);
 
   const cycle = useRef(0);
+  const singleCardWidth = useRef(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const isDragging = useRef(false);
   const hasDragged = useRef(false);
@@ -27,32 +29,36 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
 
   const scrollVelocity = useMotionValue(0);
 
-  // Recálculo preciso da largura com tratamento para imagens/carregamento
   useEffect(() => {
-    const calculateCycle = () => {
+    const calculateSizes = () => {
       if (!projectsRef.current) return;
-      // Garante que pegamos a largura exata dividida pelo total de repetições
+
       const totalWidth = projectsRef.current.scrollWidth;
       if (totalWidth > 0) {
         cycle.current = totalWidth / REPEAT_COUNT;
+
+        // Pega a largura exata do primeiro filho (card) + gap de 10px
+        const firstCard = projectsRef.current.children[0];
+        if (firstCard) {
+          singleCardWidth.current = firstCard.offsetWidth; // 10px = gap-2.5
+        }
       }
     };
 
-    calculateCycle();
+    calculateSizes();
 
-    const observer = new ResizeObserver(calculateCycle);
+    const observer = new ResizeObserver(calculateSizes);
     if (projectsRef.current) {
       observer.observe(projectsRef.current);
     }
 
-    // Listener adicional para quando todas as imagens terminarem de carregar
-    window.addEventListener("load", calculateCycle);
-    window.addEventListener("resize", calculateCycle);
+    window.addEventListener("load", calculateSizes);
+    window.addEventListener("resize", calculateSizes);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("load", calculateCycle);
-      window.removeEventListener("resize", calculateCycle);
+      window.removeEventListener("load", calculateSizes);
+      window.removeEventListener("resize", calculateSizes);
     };
   }, [projectCount]);
 
@@ -63,7 +69,7 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
       virtualScroll: ({ deltaX, deltaY }) => {
         if (isModalOpen || isDragging.current) return false;
         const delta = deltaX || deltaY;
-        targetScroll.current += delta * SCROLL_SPEED;
+        targetScroll.current -= delta * SCROLL_SPEED;
         return false;
       },
     });
@@ -85,7 +91,6 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
       dragStartX.current = event.clientX;
       dragStartScroll.current = targetScroll.current;
 
-      document.body.style.cursor = "grabbing";
       document.body.style.userSelect = "none";
     };
 
@@ -95,7 +100,7 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
       if (Math.abs(delta) > 5) {
         hasDragged.current = true;
       }
-      targetScroll.current = dragStartScroll.current - delta;
+      targetScroll.current = dragStartScroll.current + delta;
     };
 
     const handlePointerUp = () => {
@@ -132,6 +137,16 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
       lenis.raf(time);
 
       if (!isModalOpen) {
+        const cardWidth = singleCardWidth.current;
+
+        // Snap Magnético no Ponto Central Exato do Card
+        if (!isDragging.current && cardWidth > 0) {
+          const nearestSnap =
+            Math.round(targetScroll.current / cardWidth) * cardWidth;
+          targetScroll.current +=
+            (nearestSnap - targetScroll.current) * SNAP_STRENGTH;
+        }
+
         currentScroll.current +=
           (targetScroll.current - currentScroll.current) * SMOOTHNESS;
 
@@ -144,16 +159,27 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
 
         const cycleWidth = cycle.current;
 
-        if (cycleWidth > 0 && projectsRef.current) {
+        if (cycleWidth > 0 && projectsRef.current && cardWidth > 0) {
           const offset = ((scroll % cycleWidth) + cycleWidth) % cycleWidth;
 
-          // Arredondamento para 2 casas decimais evita sub-pixel rendering excessivo na GPU
-          const translateX = (-cycleWidth + offset).toFixed(2);
+          // COMPENSAÇÃO DE CENTRALIZAÇÃO: (-cardWidth / 2) move o centro do card para o centro da tela
+          const centerOffset = -cardWidth / 2;
+          const translateX = (-cycleWidth + offset + centerOffset).toFixed(2);
           const transform = `translate3d(${translateX}px, 0px, 0px)`;
 
           if (transform !== previousTransform) {
             projectsRef.current.style.transform = transform;
             previousTransform = transform;
+          }
+
+          // Cálculo do índice ativo do card no centro
+          const realProjectCount = projectCount / REPEAT_COUNT;
+          if (realProjectCount > 0) {
+            const rawIndex = Math.round(-scroll / cardWidth);
+            const active =
+              ((rawIndex % realProjectCount) + realProjectCount) %
+              realProjectCount;
+            setActiveIndex(active);
           }
         }
       } else {
@@ -176,7 +202,7 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
       document.body.style.cursor = "";
       document.body.style.userSelect = "";
     };
-  }, [isModalOpen, scrollVelocity]);
+  }, [isModalOpen, scrollVelocity, projectCount]);
 
-  return { containerRef, projectsRef, scrollVelocity };
+  return { containerRef, projectsRef, scrollVelocity, activeIndex };
 }

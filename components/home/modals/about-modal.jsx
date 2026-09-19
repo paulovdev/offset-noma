@@ -244,7 +244,7 @@ export default function AboutModal({ onCompleteClose }) {
                         Clareza
                       </h3>
 
-                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-medium leading-[110%] tracking-[-3%] text-s">
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s/75">
                         Menos ruído. Mais intenção. Cada escolha precisa ter um
                         motivo.
                       </p>
@@ -272,7 +272,7 @@ export default function AboutModal({ onCompleteClose }) {
                         Intenção
                       </h3>
 
-                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-medium leading-[110%] tracking-[-3%] text-s">
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s/75">
                         Criamos com propósito, não seguindo tendências.
                         Estratégia antes da estética.
                       </p>
@@ -291,7 +291,7 @@ export default function AboutModal({ onCompleteClose }) {
                     }}
                     className="flex h-100 aspect-square w-full flex-col justify-between bg-p/80 p-2.5 py-5"
                   >
-                    <span className="text-[32px] font-medium text-s">
+                    <span className="text-[32px] font-normal text-s">
                       <LuTrendingUp />
                     </span>
 
@@ -300,7 +300,7 @@ export default function AboutModal({ onCompleteClose }) {
                         Impacto
                       </h3>
 
-                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-medium leading-[110%] tracking-[-3%] text-s">
+                      <p className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s/75">
                         O resultado precisa funcionar no mundo real, não apenas
                         na tela.
                       </p>
