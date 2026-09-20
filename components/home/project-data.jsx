@@ -11,9 +11,9 @@ import bg10 from "@/public/assets/images/img-10.webp";
 
 export const projects = [
   {
-    id: "project-01",
+    id: "critical-flytech",
     icon: "✳",
-    name: "NIKE",
+    name: "Critical Flytech",
     description:
       "Um estúdio independente de design que ajuda marcas a encontrar sua identidade, expressar suas ideias e se destacar.",
     action: "Descubra a NIKE e o que podemos criar juntos.",
@@ -36,12 +36,13 @@ export const projects = [
     img: bg1,
     img2: bg1,
     img3: bg1,
+    color: "text-s",
   },
 
   {
-    id: "project-02",
+    id: "brilean",
     icon: "✳",
-    name: "Projeto 02",
+    name: "Brilean",
     description:
       "Um projeto criativo focado na construção de uma identidade visual marcante e experiências digitais envolventes.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -64,12 +65,13 @@ export const projects = [
     img: bg2,
     img2: bg2,
     img3: bg2,
+    color: "text-s",
   },
 
   {
-    id: "project-03",
+    id: "supermodular-ai",
     icon: "✳",
-    name: "Projeto 03",
+    name: "supermodular.ai",
     description:
       "Uma identidade visual criada para dar à marca uma presença mais forte, memorável e relevante.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -92,12 +94,13 @@ export const projects = [
     img: bg3,
     img2: bg3,
     img3: bg3,
+    color: "text-s",
   },
 
   {
-    id: "project-04",
+    id: "modern-tax",
     icon: "✳",
-    name: "ADIDAS — STAN SMITH, FOREVER",
+    name: "Modern Tax",
     description:
       "Uma direção criativa desenvolvida a partir de uma linguagem visual marcante, contemporânea e altamente expressiva.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -120,12 +123,13 @@ export const projects = [
     img: bg4,
     img2: bg4,
     img3: bg4,
+    color: "text-s",
   },
 
   {
-    id: "project-05",
+    id: "rob-rotb",
     icon: "✳",
-    name: "Projeto 05",
+    name: "ROB: Revenge of the Body",
     description:
       "Um projeto de branding que combina estratégia, direção de arte e design digital em uma única linguagem.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -148,12 +152,13 @@ export const projects = [
     img: bg5,
     img2: bg5,
     img3: bg5,
+    color: "text-s",
   },
 
   {
-    id: "project-06",
+    id: "quill-orki",
     icon: "✳",
-    name: "Projeto 06",
+    name: "Quill & Orki",
     description:
       "Um novo sistema visual criado para estabelecer uma experiência de marca marcante, consistente e reconhecível.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -176,12 +181,13 @@ export const projects = [
     img: bg6,
     img2: bg6,
     img3: bg6,
+    color: "text-s",
   },
 
   {
-    id: "project-07",
+    id: "nike",
     icon: "✳",
-    name: "SPOTIFY",
+    name: "NIKE",
     description:
       "Uma identidade experimental que explora forma, tipografia, movimento e novas possibilidades visuais.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -204,12 +210,13 @@ export const projects = [
     img: bg7,
     img2: bg7,
     img3: bg7,
+    color: "text-s",
   },
 
   {
-    id: "project-08",
+    id: "abo-digital",
     icon: "✳",
-    name: "Projeto 08",
+    name: "ABO Digital",
     description:
       "Uma experiência digital construída a partir de uma direção visual refinada, expressiva e contemporânea.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -227,12 +234,13 @@ export const projects = [
     img: bg8,
     img2: bg8,
     img3: bg8,
+    color: "text-s",
   },
 
   {
-    id: "project-09",
+    id: "finiam",
     icon: "✳",
-    name: "Christian Dior SE",
+    name: "Finiam",
     description:
       "Um sistema de identidade contemporâneo criado para conectar cultura, design e tecnologia.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -255,12 +263,13 @@ export const projects = [
     img: bg9,
     img2: bg9,
     img3: bg9,
+    color: "text-p",
   },
 
   {
-    id: "project-10",
+    id: "aura",
     icon: "✳",
-    name: "Projeto 10",
+    name: "AURA",
     description:
       "Um conceito visual desenvolvido através de tipografia, composição e uma direção de arte precisa.",
     action: "Descubra o projeto e explore o trabalho.",
@@ -283,6 +292,7 @@ export const projects = [
     img: bg10,
     img2: bg10,
     img3: bg10,
+    color: "text-p",
   },
 ];
 

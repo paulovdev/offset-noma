@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Lenis from "lenis";
 import { ClipText } from "@/components/clip-text";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 const menuAnim = {
@@ -23,39 +23,26 @@ const menuAnim = {
     transition: {
       duration: 0.75,
       ease: [0.76, 0, 0.24, 1],
-      delay: 0.25,
+      delay: 0.5,
     },
   },
 };
 
 const overlayAnim = {
-  initial: {
-    opacity: 0,
-  },
+  initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-    },
+    transition: { duration: 0.75, ease: [0.76, 0, 0.24, 1] },
   },
   exit: {
     opacity: 0,
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-      delay: 0.25,
-    },
+    transition: { duration: 0.75, ease: [0.76, 0, 0.24, 1], delay: 0.5 },
   },
 };
 
 function RevealText({ text, tag = "p", className }) {
   const ref = useRef(null);
-
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-  });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <div ref={ref}>
@@ -77,10 +64,20 @@ export function ProjectModal({ project, onCompleteClose }) {
   const rafId = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
+  // Fechar com ESC
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") handleClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleClose]);
+
+  // Instância do Lenis + Trava de Scroll
   useEffect(() => {
     if (!scrollRef.current) return;
 
@@ -94,6 +91,7 @@ export function ProjectModal({ project, onCompleteClose }) {
       content: wrapper,
       smoothWheel: true,
       syncTouch: true,
+      autoResize: true,
       prevent: (node) => !wrapper.contains(node),
     });
 
@@ -109,7 +107,6 @@ export function ProjectModal({ project, onCompleteClose }) {
         cancelAnimationFrame(rafId.current);
         rafId.current = null;
       }
-
       modalLenis.current?.destroy();
       modalLenis.current = null;
       document.body.style.overflow = previousOverflow;
@@ -120,30 +117,29 @@ export function ProjectModal({ project, onCompleteClose }) {
     <AnimatePresence onExitComplete={onCompleteClose}>
       {isOpen && (
         <>
+          {/* Overlay */}
           <motion.div
             onClick={handleClose}
             variants={overlayAnim}
             initial="initial"
             animate="animate"
             exit="exit"
-            className="fixed inset-0 z-90 cursor-not-allowed bg-p/5 backdrop-blur-md"
+            className="fixed inset-0 z-[90] cursor-pointer bg-p/5 backdrop-blur-md"
           />
 
+          {/* Modal Container */}
           <motion.div
             ref={container}
-            className="fixed bottom-0 left-1/2 -translate-x-1/2 h-[calc(100vh-10px)] w-full max-w-190 bg-s p-2.5 backdrop-blur-3xl cursor-s-resize z-9999 max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
+            className="fixed bottom-0 left-1/2 z-[100] h-[calc(100vh-10px)] w-full max-w-190 -translate-x-1/2 bg-s px-2.5 pt-2.5 backdrop-blur-3xl max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
             variants={menuAnim}
             initial="initial"
             animate="animate"
             exit="exit"
           >
-            {/* FECHAR */}
+            {/* Botão Fechar */}
             <motion.div
               onClick={handleClose}
-              initial={{
-                scale: 0,
-                rotate: -90,
-              }}
+              initial={{ scale: 0, rotate: -90 }}
               animate={{
                 scale: 1,
                 rotate: 0,
@@ -164,27 +160,22 @@ export function ProjectModal({ project, onCompleteClose }) {
               className="absolute right-2.5 top-2.5 z-30"
             >
               <motion.button
-                whileTap={{
-                  scale: 1.1,
-                }}
-                whileHover={{
-                  scale: 1.05,
-                }}
-                className="group flex size-12.5 cursor-pointer items-center justify-center bg-p backdrop-blur-2xl"
+                whileTap={{ scale: 1.1 }}
+                whileHover={{ scale: 1.1 }}
+                aria-label="Fechar modal"
+                className="group flex size-12.5 cursor-pointer items-center justify-center bg-ts backdrop-blur-2xl"
               >
-                <IoClose className="text-[24px] text-s transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
+                <IoClose className="text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
               </motion.button>
             </motion.div>
 
-            {/* SCROLL */}
+            {/* Scroll Container */}
             <div
               ref={scrollRef}
               className="size-full overflow-y-auto overscroll-contain"
-              style={{
-                scrollbarWidth: "none",
-              }}
+              style={{ scrollbarWidth: "none" }}
             >
-              {/* HERO */}
+              {/* Hero */}
               <div className="relative h-[75vh] w-full overflow-hidden">
                 <Image
                   src={project.img}
@@ -202,24 +193,23 @@ export function ProjectModal({ project, onCompleteClose }) {
                   <RevealText
                     text={project.name}
                     tag="h1"
-                    className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-s"
+                    className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                   />
 
                   <RevealText
                     text={project.description}
-                    className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-s"
+                    className="mt-5 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                   />
                 </div>
               </div>
 
-              {/* INFORMAÇÕES */}
+              {/* Informações */}
               <div className="grid grid-cols-3 gap-2.5 border-b border-p/15 p-2.5 py-5">
                 <div>
                   <RevealText
                     text="categoria"
                     className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
-
                   <RevealText
                     text={project.category}
                     className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
@@ -231,7 +221,6 @@ export function ProjectModal({ project, onCompleteClose }) {
                     text="ano"
                     className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
-
                   <RevealText
                     text={String(project.year)}
                     className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
@@ -243,7 +232,6 @@ export function ProjectModal({ project, onCompleteClose }) {
                     text="tipo"
                     className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
-
                   <RevealText
                     text={project.type}
                     className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
@@ -251,27 +239,25 @@ export function ProjectModal({ project, onCompleteClose }) {
                 </div>
               </div>
 
-              {/* VISÃO GERAL */}
+              {/* Visão Geral */}
               <section className="border-b border-p/15 p-2.5 py-25">
                 <RevealText
                   text="01 — Visão geral"
                   className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
-
                 <RevealText
                   text={project.statement}
                   className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
               </section>
 
-              {/* DETALHES */}
+              {/* Detalhes */}
               <section className="grid grid-cols-2 gap-10 border-b border-p/15 p-2.5 py-25 max-md:grid-cols-1">
                 <div>
                   <RevealText
                     text="A ideia"
                     className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
-
                   <RevealText
                     text={project.idea}
                     className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
@@ -283,7 +269,6 @@ export function ProjectModal({ project, onCompleteClose }) {
                     text="A abordagem"
                     className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
-
                   <RevealText
                     text={project.approach}
                     className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
@@ -291,7 +276,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                 </div>
               </section>
 
-              {/* SEGUNDA IMAGEM */}
+              {/* Segunda Imagem */}
               {project.img2 && (
                 <motion.div
                   initial={{ scale: 1.05 }}
@@ -315,7 +300,6 @@ export function ProjectModal({ project, onCompleteClose }) {
                     <span className="text-[14px] uppercase tracking-[10%] text-p">
                       detalhe
                     </span>
-
                     <span className="text-[14px] text-p/40">02</span>
                   </div>
 
@@ -327,7 +311,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                 </motion.div>
               )}
 
-              {/* SERVIÇOS */}
+              {/* Serviços */}
               <section className="border-b border-p/15 p-2.5 py-25">
                 <RevealText
                   text="02 — Serviços"
@@ -335,16 +319,15 @@ export function ProjectModal({ project, onCompleteClose }) {
                 />
 
                 <div className="flex flex-col">
-                  {project.services.map((service, index) => (
+                  {project.services?.map((service, index) => (
                     <div
                       key={`${service}-${index}`}
                       className="flex items-center justify-between border-t border-p/15 py-5"
                     >
                       <RevealText
                         text={service}
-                        className="text-p text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%]"
+                        className="text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                       />
-
                       <RevealText
                         text={String(index + 1).padStart(2, "0")}
                         className="text-[14px] font-normal text-p/40"
@@ -354,29 +337,25 @@ export function ProjectModal({ project, onCompleteClose }) {
                 </div>
               </section>
 
-              {/* RESULTADO */}
+              {/* Resultado */}
               <section className="p-2.5 py-25">
                 <RevealText
                   text="03 — Resultado"
                   className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                 />
-
                 <RevealText
                   text={project.result}
                   className="text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                 />
               </section>
 
-              {/* TERCEIRA IMAGEM */}
+              {/* Terceira Imagem */}
               {project.img3 && (
                 <motion.div
                   initial={{ scale: 1.05 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true, amount: 0.15 }}
-                  transition={{
-                    duration: 1,
-                    ease: [0.33, 1, 0.68, 1],
-                  }}
+                  transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
                   className="relative h-[50vh] w-full overflow-hidden"
                 >
                   <Image
@@ -390,100 +369,48 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <div className="absolute inset-0 bg-p/5" />
 
-                  <div className="absolute inset-0 p-2.5 flex items-center justify-between gap-5">
-                    <motion.div
-                      initial={{ scale: 0, rotate: -45 }}
-                      exit={{ scale: 0, rotate: -45 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{
-                        duration: 0.9,
-                        ease: [0.76, 0, 0.24, 1],
-                      }}
-                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
-                    >
-                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
-                        @paulovdev
-                      </span>
-                    </motion.div>
-                    <motion.div
-                      initial={{ scale: 0, rotate: -45 }}
-                      exit={{ scale: 0, rotate: -45 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{
-                        duration: 0.9,
-                        ease: [0.76, 0, 0.24, 1],
-                        delay: 0.1,
-                      }}
-                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
-                    >
-                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
-                        @offset
-                      </span>
-                    </motion.div>
-                    <motion.div
-                      initial={{ scale: 0, rotate: -45 }}
-                      exit={{ scale: 0, rotate: -45 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{
-                        duration: 0.9,
-                        ease: [0.76, 0, 0.24, 1],
-                        delay: 0.2,
-                      }}
-                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
-                    >
-                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
-                        @ht_studio
-                      </span>
-                    </motion.div>
-                    <motion.div
-                      initial={{ scale: 0, rotate: -45 }}
-                      exit={{ scale: 0, rotate: -45 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{
-                        duration: 0.9,
-                        ease: [0.76, 0, 0.24, 1],
-                        delay: 0.3,
-                      }}
-                      className="flex size-40 items-center justify-center rounded-full border border-s/30 bg-s/10 backdrop-blur-xl"
-                    >
-                      <span className="text-[14px] font-normal uppercase tracking-[10%] text-s">
-                        @other_lab
-                      </span>
-                    </motion.div>
+                  <div className="absolute inset-0 flex items-center justify-between gap-5 p-2.5">
+                    {["@paulovdev", "@offset", "@ht_studio", "@other_lab"].map(
+                      (handle, idx) => (
+                        <motion.div
+                          key={handle}
+                          initial={{ scale: 0, rotate: -45 }}
+                          exit={{ scale: 0, rotate: -45 }}
+                          whileInView={{ scale: 1, rotate: 0 }}
+                          viewport={{ once: true, amount: 0.2 }}
+                          transition={{
+                            duration: 0.9,
+                            ease: [0.76, 0, 0.24, 1],
+                            delay: idx * 0.1,
+                          }}
+                          className="flex size-40 items-center justify-center rounded-full border border-ts/30 bg-ts/10 backdrop-blur-xl"
+                        >
+                          <span className="text-[14px] font-normal uppercase tracking-[10%] text-ts">
+                            {handle}
+                          </span>
+                        </motion.div>
+                      ),
+                    )}
                   </div>
                 </motion.div>
               )}
 
-              {/* RODAPÉ */}
-              <footer className="py-25 flex flex-col justify-end gap-8 border-t border-p/15 p-2.5 pb-10">
-                <div className="flex items-center gap-2.5 ">
+              {/* Rodapé */}
+              <footer className="flex flex-col justify-end gap-8 border-t border-p/15 p-2.5 pb-10 py-25">
+                <div className="flex items-center gap-2.5">
                   <motion.span
-                    initial={{
-                      y: 50,
-                    }}
-                    whileInView={{
-                      y: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                      amount: 0.15,
-                    }}
-                    transition={{
-                      duration: 0.8,
-                      ease: [0.33, 1, 0.68, 1],
-                    }}
-                    className="relative -top-0.5 text-p text-[14px]"
+                    initial={{ y: 50 }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+                    className="relative -top-0.5 text-[14px] text-p"
                   >
                     ✳
                   </motion.span>
 
                   <RevealText
                     text={project.name}
-                    className="text-[14px] font-normal uppercase tracking-[10%] leading-[100%] text-p"
+                    className="text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p"
                   />
                 </div>
 

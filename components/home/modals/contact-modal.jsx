@@ -1,10 +1,30 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { ClipText } from "@/components/clip-text";
-import { useRouter } from "next/navigation";
+
+const loaderLayerAnim = {
+  initial: {
+    clipPath: "inset(100% 0% 0% 0%)",
+  },
+  animate: {
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: {
+      duration: 0.75,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+  exit: {
+    clipPath: "inset(100% 0% 0% 0%)",
+    transition: {
+      duration: 0.75,
+      ease: [0.76, 0, 0.24, 1],
+      delay: 1,
+    },
+  },
+};
 
 const menuAnim = {
   initial: {
@@ -15,6 +35,7 @@ const menuAnim = {
     transition: {
       duration: 0.75,
       ease: [0.76, 0, 0.24, 1],
+      delay: 0.25,
     },
   },
   exit: {
@@ -43,7 +64,7 @@ const overlayAnim = {
     transition: {
       duration: 0.75,
       ease: [0.76, 0, 0.24, 1],
-      delay: 0.25,
+      delay: 1,
     },
   },
 };
@@ -59,6 +80,7 @@ const ContactModal = ({ onCompleteClose }) => {
     <AnimatePresence onExitComplete={onCompleteClose}>
       {isOpen && (
         <>
+          {/* OVERLAY */}
           <motion.div
             onClick={handleClose}
             variants={overlayAnim}
@@ -68,8 +90,19 @@ const ContactModal = ({ onCompleteClose }) => {
             className="fixed inset-0 z-90 cursor-not-allowed bg-p/5 backdrop-blur-md"
           />
 
+          {/* CAMADA DE CARREGAMENTO / TRANSIÇÃO (bg-ts) */}
           <motion.div
-            className="fixed bottom-0 left-1/2 z-100 flex h-160 w-full max-w-190 -translate-x-1/2 cursor-default flex-col justify-between bg-s p-5 max-lg:h-[90svh] max-lg:max-w-none"
+            className="fixed bottom-0 left-1/2 z-[95] h-160 w-full max-w-190 -translate-x-1/2 bg-ts max-lg:h-[90svh] max-lg:max-w-none"
+            variants={loaderLayerAnim}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          />
+
+          {/* CONTAINER PRINCIPAL DO CONTEÚDO (bg-s) */}
+          <motion.div
+            className="fixed bottom-0 left-1/2 z-100 flex h-160 w-full max-w-190 -translate-x-1/2 cursor-default 
+            flex-col justify-between bg-s p-5 max-lg:h-[90svh] max-lg:max-w-none"
             variants={menuAnim}
             initial="initial"
             animate="animate"
@@ -85,14 +118,14 @@ const ContactModal = ({ onCompleteClose }) => {
                 transition: {
                   duration: 0.8,
                   ease: [0.76, 0, 0.24, 1],
-                  delay: 0.2,
+                  delay: 0.4,
                 },
               }}
               exit={{
                 scale: 0,
                 rotate: 90,
                 transition: {
-                  duration: 0.4,
+                  duration: 0.3,
                   ease: [0.76, 0, 0.24, 1],
                 },
               }}
@@ -100,12 +133,10 @@ const ContactModal = ({ onCompleteClose }) => {
             >
               <motion.button
                 whileTap={{ scale: 1.1 }}
-                whileHover={{
-                  scale: 1.05,
-                }}
-                className="group flex size-12.5 cursor-pointer items-center justify-center bg-p  backdrop-blur-2xl"
+                whileHover={{ scale: 1.1 }}
+                className="group flex size-12.5 cursor-pointer items-center justify-center bg-ts backdrop-blur-2xl"
               >
-                <IoClose className="text-[24px] text-s transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
+                <IoClose className="text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
               </motion.button>
             </motion.div>
 
@@ -119,7 +150,7 @@ const ContactModal = ({ onCompleteClose }) => {
                   exit={{ y: 30, opacity: 0 }}
                   transition={{
                     duration: 0.8,
-                    delay: 0.15,
+                    delay: 0.35,
                     ease: [0.33, 1, 0.68, 1],
                   }}
                 >
@@ -135,14 +166,13 @@ const ContactModal = ({ onCompleteClose }) => {
 
               {/* FORMULÁRIO */}
               <div className="flex flex-col">
-                {/* NOME */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 25, opacity: 0 }}
                   transition={{
                     duration: 0.7,
-                    delay: 0.25,
+                    delay: 0.45,
                     ease: [0.33, 1, 0.68, 1],
                   }}
                   className="group relative overflow-hidden border-b border-p/15"
@@ -150,18 +180,17 @@ const ContactModal = ({ onCompleteClose }) => {
                   <input
                     type="text"
                     placeholder="nome"
-                    className="h-11 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform placeholder:text-p/40"
+                    className="h-15 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform placeholder:text-p/40"
                   />
                 </motion.div>
 
-                {/* E-MAIL */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 25, opacity: 0 }}
                   transition={{
                     duration: 0.7,
-                    delay: 0.3,
+                    delay: 0.5,
                     ease: [0.33, 1, 0.68, 1],
                   }}
                   className="group relative overflow-hidden border-b border-p/15"
@@ -169,25 +198,24 @@ const ContactModal = ({ onCompleteClose }) => {
                   <input
                     type="email"
                     placeholder="e-mail"
-                    className="h-11 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none placeholder:text-p/40 will-change-transform"
+                    className="h-15 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform placeholder:text-p/40"
                   />
                 </motion.div>
 
-                {/* TIPO DE PROJETO */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 25, opacity: 0 }}
                   transition={{
                     duration: 0.7,
-                    delay: 0.35,
+                    delay: 0.55,
                     ease: [0.33, 1, 0.68, 1],
                   }}
                   className="group relative overflow-hidden border-b border-p/15"
                 >
                   <select
                     defaultValue=""
-                    className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
+                    className="h-15 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-semibold uppercase leading-[100%] tracking-[10%] text-ts outline-none will-change-transform"
                   >
                     <option value="" disabled>
                       tipo de projeto
@@ -201,7 +229,6 @@ const ContactModal = ({ onCompleteClose }) => {
                   </select>
                 </motion.div>
 
-                {/* INVESTIMENTO + PRAZO */}
                 <div className="grid grid-cols-2 gap-2.5">
                   <motion.div
                     initial={{ y: 25, opacity: 0 }}
@@ -209,14 +236,14 @@ const ContactModal = ({ onCompleteClose }) => {
                     exit={{ y: 25, opacity: 0 }}
                     transition={{
                       duration: 0.7,
-                      delay: 0.4,
+                      delay: 0.6,
                       ease: [0.33, 1, 0.68, 1],
                     }}
                     className="group relative overflow-hidden border-b border-p/15 pr-5"
                   >
                     <select
                       defaultValue=""
-                      className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
+                      className="h-15 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-semibold uppercase leading-[100%] tracking-[10%] text-ts outline-none will-change-transform"
                     >
                       <option value="" disabled>
                         investimento
@@ -235,14 +262,14 @@ const ContactModal = ({ onCompleteClose }) => {
                     exit={{ y: 25, opacity: 0 }}
                     transition={{
                       duration: 0.7,
-                      delay: 0.45,
+                      delay: 0.65,
                       ease: [0.33, 1, 0.68, 1],
                     }}
                     className="group relative overflow-hidden border-b border-p/15"
                   >
                     <select
                       defaultValue=""
-                      className="h-11 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none will-change-transform"
+                      className="h-15 w-full cursor-pointer appearance-none bg-transparent text-[14px] font-semibold uppercase leading-[100%] tracking-[10%] text-ts outline-none will-change-transform"
                     >
                       <option value="" disabled>
                         prazo
@@ -256,14 +283,13 @@ const ContactModal = ({ onCompleteClose }) => {
                   </motion.div>
                 </div>
 
-                {/* MENSAGEM */}
                 <motion.div
                   initial={{ y: 25, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 25, opacity: 0 }}
                   transition={{
                     duration: 0.7,
-                    delay: 0.5,
+                    delay: 0.7,
                     ease: [0.33, 1, 0.68, 1],
                   }}
                   className="group relative overflow-hidden border-b border-p/15"
@@ -284,13 +310,12 @@ const ContactModal = ({ onCompleteClose }) => {
               exit={{ y: 30, opacity: 0 }}
               transition={{
                 duration: 0.8,
-                delay: 0.55,
+                delay: 0.75,
                 ease: [0.33, 1, 0.68, 1],
               }}
               className="mt-5 flex flex-col gap-5"
             >
               <div className="flex items-center justify-between gap-10 max-lg:gap-5">
-                {/* CONTATO */}
                 <div className="flex flex-col gap-5">
                   <div className="flex flex-col gap-1">
                     <span className="text-[14px] uppercase tracking-[10%] text-p/40 will-change-transform">
@@ -305,7 +330,7 @@ const ContactModal = ({ onCompleteClose }) => {
                         <p className="text-[16px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                           hello@offset.studio
                         </p>
-                        <p className="absolute left-0 top-full text-[16px] font-normal uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                        <p className="absolute left-0 top-full text-[16px] font-normal uppercase leading-[100%] tracking-[10%] text-ts transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                           hello@offset.studio
                         </p>
                       </div>
@@ -313,11 +338,10 @@ const ContactModal = ({ onCompleteClose }) => {
                   </div>
                 </div>
 
-                {/* ENVIAR */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative flex size-28 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-2 border-s bg-p text-s"
+                  className="group relative size-28 shrink-0 cursor-pointer flex items-center justify-center overflow-hidden rounded-full border-2 border-s bg-ts text-p"
                 >
                   <span className="relative overflow-hidden will-change-transform">
                     <span className="block text-[14px] font-medium uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
@@ -330,7 +354,6 @@ const ContactModal = ({ onCompleteClose }) => {
                 </motion.button>
               </div>
 
-              {/* RODAPÉ */}
               <div className="flex items-center justify-between border-t border-p/20 pt-4">
                 <div className="flex gap-5">
                   <a

@@ -1,24 +1,49 @@
 "use client";
 
-import { motion, useTransform } from "framer-motion";
+import { motion, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export function ProjectCard({
   project,
   index = 0,
   scrollVelocity,
-  loading,
+  onComplete,
   isActive,
-  setIsHoveringActive, // <--- Nova prop
+  setIsHoveringActive,
 }) {
   const router = useRouter();
+  const pathname = usePathname();
+  const [isClicked, setIsClicked] = useState(false);
 
-  const x = useTransform(scrollVelocity, [-1, 0, 1], [-30, 0, 30]);
+  useEffect(() => {
+    if (!pathname.includes("/project")) {
+      setIsClicked(false);
+    }
+  }, [pathname]);
+
+  const rawX = useTransform(scrollVelocity, [-1, 0, 1], [-70, 0, 70]);
+
+  const x = useSpring(rawX, {
+    stiffness: 65 - (index % 4) * 5,
+    damping: 20,
+    mass: 1.1 + (index % 4) * 0.1,
+  });
+
+  const handleClick = () => {
+    if (!isActive || isClicked) return;
+
+    setIsClicked(true);
+
+    setTimeout(() => {
+      router.push(`/project/${project.id}`);
+    }, 600);
+  };
 
   return (
     <motion.button
-      onClick={() => router.push(`/project/${project.id}`)}
+      onClick={handleClick}
       onMouseEnter={() => {
         if (isActive && setIsHoveringActive) setIsHoveringActive(true);
       }}
@@ -27,26 +52,36 @@ export function ProjectCard({
       }}
       initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
       animate={{
-        clipPath: loading ? "inset(100% 0% 0% 0%)" : "inset(0% 0% 0% 0%)",
-        scale: isActive ? 1.02 : 0.92,
-        opacity: isActive ? 1 : 0.6,
+        clipPath: onComplete ? "inset(100% 0% 0% 0%)" : "inset(0% 0% 0% 0%)",
+        filter: isActive ? "brightness(100%)" : "brightness(75%)",
       }}
       transition={{
         clipPath: {
-          delay: loading ? 0 : 0.05 + index * 0.035,
+          delay: onComplete ? 0 : 0.05 + index * 0.045,
           duration: 1,
           ease: [0.76, 0, 0.24, 1],
         },
-        scale: { duration: 0.4, ease: [0.33, 1, 0.68, 1] },
-        opacity: { duration: 0.4, ease: [0.33, 1, 0.68, 1] },
+        filter: { duration: 0.4, ease: [0.33, 1, 0.68, 1] },
+        scale: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
+        opacity: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
       }}
-      whileTap={{ scale: 0.95 }}
-      className="group relative block h-full w-[30vw] shrink-0 cursor-pointer overflow-hidden 
-      max-lg:w-[75vw] transform-3d"
+      className="group relative block h-full w-[30vw] shrink-0 cursor-pointer overflow-hidden max-lg:w-[75vw] transform-3d"
     >
       <motion.div
+        initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+        animate={{
+          clipPath: isClicked ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
+        }}
+        transition={{
+          duration: 1,
+          ease: [0.76, 0, 0.24, 1],
+        }}
+        className="absolute inset-0 z-30 pointer-events-none bg-ts"
+      />
+
+      <motion.div
         style={{ x }}
-        className="relative size-full will-change-transform pointer-events-none "
+        className="absolute -top-[5%] -left-[20%] h-[110%] w-[140%] pointer-events-none will-change-transform"
       >
         <Image
           src={project.img}

@@ -40,7 +40,7 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
         // Pega a largura exata do primeiro filho (card) + gap de 10px
         const firstCard = projectsRef.current.children[0];
         if (firstCard) {
-          singleCardWidth.current = firstCard.offsetWidth; // 10px = gap-2.5
+          singleCardWidth.current = firstCard.offsetWidth + 10; // 10px = gap-2.5
         }
       }
     };
@@ -162,7 +162,6 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
         if (cycleWidth > 0 && projectsRef.current && cardWidth > 0) {
           const offset = ((scroll % cycleWidth) + cycleWidth) % cycleWidth;
 
-          // COMPENSAÇÃO DE CENTRALIZAÇÃO: (-cardWidth / 2) move o centro do card para o centro da tela
           const centerOffset = -cardWidth / 2;
           const translateX = (-cycleWidth + offset + centerOffset).toFixed(2);
           const transform = `translate3d(${translateX}px, 0px, 0px)`;
@@ -172,7 +171,6 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
             previousTransform = transform;
           }
 
-          // Cálculo do índice ativo do card no centro
           const realProjectCount = projectCount / REPEAT_COUNT;
           if (realProjectCount > 0) {
             const rawIndex = Math.round(-scroll / cardWidth);
