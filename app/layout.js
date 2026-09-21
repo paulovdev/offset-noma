@@ -20,7 +20,7 @@ export default function RootLayout({ children, modal }) {
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${chivo.variable} h-full antialiased noise`}
+      className={`${instrumentSans.variable} ${chivo.variable} bg-s h-full antialiased noise`}
     >
       <body className="min-h-full flex flex-col">
         {children}

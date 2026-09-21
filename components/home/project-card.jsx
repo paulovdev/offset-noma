@@ -61,9 +61,7 @@ export function ProjectCard({
           duration: 1,
           ease: [0.76, 0, 0.24, 1],
         },
-        filter: { duration: 0.4, ease: [0.33, 1, 0.68, 1] },
-        scale: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
-        opacity: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
+        filter: { duration: 0.75, ease: [0.76, 0, 0.24, 1] },
       }}
       className="group relative block h-full w-[30vw] shrink-0 cursor-pointer overflow-hidden max-lg:w-[75vw] transform-3d"
     >

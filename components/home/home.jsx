@@ -18,6 +18,7 @@ import { Loader } from "../loader";
 import { LuMouse } from "react-icons/lu";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { PiAsterisk } from "react-icons/pi";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const BRAND_ICONS = [SiNike, SiAdidas, SiApple, SiSpotify, SiDior];
 
@@ -61,6 +62,7 @@ export default function Home() {
   const pathname = usePathname();
 
   const { x: mouseX, y: mouseY } = useMousePosition();
+  const isMobile = useIsMobile(768);
 
   const [isDragging, setIsDragging] = useState(false);
   const [isHoveringActive, setIsHoveringActive] = useState(false);
@@ -194,7 +196,7 @@ export default function Home() {
         </motion.div>
 
         <AnimatePresence>
-          {isDragging && (
+          {isDragging && !isMobile && (
             <motion.div
               key={`${isDragging}-${isModalActive}`}
               className="pointer-events-none fixed z-999 size-32 -translate-x-1/2 -translate-y-1/2 
@@ -311,11 +313,12 @@ export default function Home() {
                   >
                     <div className="relative will-change-transform">
                       <p
-                        className={`text-center text-[14px] font-medium uppercase leading-[100%] tracking-[10%] text-p transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-                          pathname === "/contact"
-                            ? "-translate-y-full"
-                            : "group-hover:-translate-y-full"
-                        }`}
+                        className={`text-center text-[14px] font-medium uppercase leading-[100%] tracking-[10%] text-p 
+                          transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                            pathname === "/contact"
+                              ? "-translate-y-full"
+                              : "group-hover:-translate-y-full"
+                          }`}
                       >
                         contato
                       </p>
