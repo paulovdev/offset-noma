@@ -138,7 +138,7 @@ export function ProjectModal({ project, onCompleteClose }) {
               animate="animate"
               exit="exit"
             >
-              {/* Botão Fechar */}
+              {/* Close Button */}
               <AnimatePresence>
                 {!isHover && (
                   <motion.div
@@ -166,7 +166,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                     <motion.button
                       whileTap={{ scale: 1.1 }}
                       whileHover={{ scale: 1.1 }}
-                      aria-label="Fechar modal"
+                      aria-label="Close modal"
                       className="group flex size-12.5 cursor-pointer items-center justify-center bg-ts backdrop-blur-2xl"
                     >
                       <IoClose className="text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
@@ -219,11 +219,11 @@ export function ProjectModal({ project, onCompleteClose }) {
                   </div>
                 </div>
 
-                {/* Informações */}
+                {/* Information */}
                 <div className="grid grid-cols-3 gap-2.5 border-b border-p/15 p-2.5 py-5">
                   <div>
                     <RevealText
-                      text="categoria"
+                      text="category"
                       className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                     />
                     <RevealText
@@ -234,7 +234,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <div>
                     <RevealText
-                      text="ano"
+                      text="year"
                       className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                     />
                     <RevealText
@@ -245,7 +245,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <div>
                     <RevealText
-                      text="tipo"
+                      text="type"
                       className="mb-2 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                     />
                     <RevealText
@@ -255,10 +255,10 @@ export function ProjectModal({ project, onCompleteClose }) {
                   </div>
                 </div>
 
-                {/* Visão Geral */}
+                {/* Overview */}
                 <section className="border-b border-p/15 p-2.5 py-25">
                   <RevealText
-                    text="01 — Visão geral"
+                    text="01 — Overview"
                     className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
                   <RevealText
@@ -267,11 +267,11 @@ export function ProjectModal({ project, onCompleteClose }) {
                   />
                 </section>
 
-                {/* Detalhes */}
+                {/* Details */}
                 <section className="grid grid-cols-2 gap-10 border-b border-p/15 p-2.5 py-25 max-md:grid-cols-1">
                   <div>
                     <RevealText
-                      text="A ideia"
+                      text="The idea"
                       className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                     />
                     <RevealText
@@ -282,7 +282,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                   <div>
                     <RevealText
-                      text="A abordagem"
+                      text="The approach"
                       className="mb-5 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                     />
                     <RevealText
@@ -292,7 +292,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* Segunda Imagem */}
+                {/* Second Image */}
                 {project.img2 && (
                   <motion.div
                     initial={{ scale: 1.05 }}
@@ -303,7 +303,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   >
                     <Image
                       src={project.img2}
-                      alt={`${project.name} detalhe`}
+                      alt={`${project.name} detail`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 720px"
                       placeholder="blur"
@@ -314,7 +314,7 @@ export function ProjectModal({ project, onCompleteClose }) {
 
                     <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
                       <span className="text-[14px] uppercase tracking-[10%] text-p">
-                        detalhe
+                        detail
                       </span>
                       <span className="text-[14px] text-p/40">02</span>
                     </div>
@@ -327,10 +327,10 @@ export function ProjectModal({ project, onCompleteClose }) {
                   </motion.div>
                 )}
 
-                {/* Serviços */}
+                {/* Services */}
                 <section className="border-b border-p/15 p-2.5 py-25">
                   <RevealText
-                    text="02 — Serviços"
+                    text="02 — Services"
                     className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -353,10 +353,10 @@ export function ProjectModal({ project, onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* Resultado */}
+                {/* Result */}
                 <section className="p-2.5 py-25">
                   <RevealText
-                    text="03 — Resultado"
+                    text="03 — Result"
                     className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
                   <RevealText
@@ -365,7 +365,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   />
                 </section>
 
-                {/* Terceira Imagem */}
+                {/* Third Image */}
                 {project.img3 && (
                   <motion.div
                     initial={{ scale: 1.05 }}
@@ -376,7 +376,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   >
                     <Image
                       src={project.img3}
-                      alt={`${project.name} apresentação`}
+                      alt={`${project.name} presentation`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 720px"
                       placeholder="blur"
@@ -414,7 +414,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   </motion.div>
                 )}
 
-                {/* Rodapé */}
+                {/* Footer */}
                 <footer className="flex flex-col justify-end gap-8 border-t border-p/15 p-2.5 pb-10 py-25">
                   <div className="flex items-center gap-2.5">
                     <motion.span
@@ -439,7 +439,7 @@ export function ProjectModal({ project, onCompleteClose }) {
                   />
 
                   <RevealText
-                    text={`Offset® — Projetos selecionados — ${project.year}`}
+                    text={`Offset® — Selected Projects — ${project.year}`}
                     className="text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
                 </footer>

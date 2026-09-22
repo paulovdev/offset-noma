@@ -1,38 +1,38 @@
-import bg1 from "@/public/assets/images/img-01.webp";
-import bg2 from "@/public/assets/images/img-02.webp";
-import bg3 from "@/public/assets/images/img-03.webp";
-import bg4 from "@/public/assets/images/img-04.webp";
-import bg5 from "@/public/assets/images/img-05.webp";
-import bg6 from "@/public/assets/images/img-06.webp";
+import bg1 from "@/public/assets/images/img-01.jpg";
+import bg2 from "@/public/assets/images/img-02.jpg";
+import bg3 from "@/public/assets/images/img-03.jpg";
+import bg4 from "@/public/assets/images/img-04.jpg";
+import bg5 from "@/public/assets/images/img-05.jpg";
+import bg6 from "@/public/assets/images/img-06.jpg";
 import bg7 from "@/public/assets/images/img-07.jpg";
-import bg8 from "@/public/assets/images/img-08.webp";
-import bg9 from "@/public/assets/images/img-09.png";
-import bg10 from "@/public/assets/images/img-10.webp";
+import bg8 from "@/public/assets/images/img-08.jpg";
+import bg9 from "@/public/assets/images/img-09.jpg";
+import bg10 from "@/public/assets/images/img-10.jpg";
 
 export const projects = [
   {
-    id: "critical-flytech",
+    id: "skybox-backpack",
     icon: "✳",
-    name: "Critical Flytech",
+    name: "Skybox",
     description:
-      "Um estúdio independente de design que ajuda marcas a encontrar sua identidade, expressar suas ideias e se destacar.",
-    action: "Descubra a NIKE e o que podemos criar juntos.",
-    category: "Identidade",
+      "A sleek, minimalist hardshell backpack engineered for urban commuters, creators, and modern travelers.",
+    action: "Discover Skybox and experience modern functional carrying.",
+    category: "Product Design",
     year: "2026",
-    type: "Projeto selecionado",
+    type: "Selected project",
     statement:
-      "Uma identidade visual criada para transformar estratégia em uma presença marcante, contemporânea e reconhecível.",
-    idea: "Criar uma linguagem visual que traduza a personalidade da NIKE em uma identidade simples e expressiva, capaz de evoluir junto com a marca.",
+      "A matte black hardshell construction designed to blend ultimate protection, structural symmetry, and bold minimalism.",
+    idea: "To create an iconic carrying solution featuring an embossed 'S' identity, combining impact-resistant shell geometry with refined aesthetic simplicity.",
     approach:
-      "Partimos da estratégia da marca para desenvolver direção de arte, tipografia, composição e elementos gráficos que funcionam juntos como um sistema visual consistente.",
+      "Starting from ergonomic research and structural prototyping, we developed a molded hardshell exterior, hidden weather-resistant zippers, and specialized tech compartments.",
     services: [
-      "Estratégia de marca",
-      "Identidade visual",
-      "Direção de arte",
-      "Design digital",
+      "Product design",
+      "Industrial engineering",
+      "Material sourcing",
+      "3D modeling & prototyping",
     ],
     result:
-      "Uma identidade flexível e marcante, criada para posicionar a NIKE com clareza e força em diferentes contextos.",
+      "A durable, weather-resistant, and visually striking backpack designed to shield your essentials while making a statement.",
     img: bg1,
     img2: bg1,
     img3: bg1,
@@ -40,144 +40,56 @@ export const projects = [
   },
 
   {
-    id: "brilean",
-    icon: "✳",
-    name: "Brilean",
+    id: "prism-flux",
+    icon: "💎",
+    name: "Prism Flux",
     description:
-      "Um projeto criativo focado na construção de uma identidade visual marcante e experiências digitais envolventes.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Direção criativa",
+      "A 3D exploration of transparency, glass refraction, and fluid crystalline geometry set against a vibrant blue backdrop.",
+    action: "Explore Prism Flux and experience refractive 3D design.",
+    category: "3D & Digital Art",
     year: "2026",
-    type: "Identidade visual",
+    type: "Selected project",
     statement:
-      "Uma nova linguagem visual criada para transformar uma ideia em uma marca com presença, personalidade e propósito.",
-    idea: "Desenvolver uma identidade capaz de comunicar a essência do projeto imediatamente, deixando espaço para interpretação e experimentação.",
+      "An abstract visual experiment focused on light dispersion, physical glass shader properties, and twisted organic shapes.",
+    idea: "To capture the illusion of frozen liquid motion through a intricate, interlocking glass sculpture that bends and reflects light seamlessly.",
     approach:
-      "Exploramos formas, tipografia, ritmo e composição para construir uma linguagem visual contemporânea e adaptável a diferentes aplicações.",
+      "We utilized advanced caustic rendering, custom Index of Refraction (IOR) glass materials, and procedural geometry modeling to create dynamic internal reflections.",
     services: [
-      "Direção criativa",
-      "Identidade visual",
-      "Tipografia",
-      "Design digital",
+      "3D Modeling",
+      "Digital Art",
+      "Material Design",
+      "Lighting & Rendering",
     ],
     result:
-      "Um sistema visual coeso que transforma diferentes pontos de contato em uma experiência única e reconhecível.",
+      "A clean, captivating visual piece that showcases high-end digital material artistry and modern abstract composition.",
     img: bg2,
     img2: bg2,
     img3: bg2,
     color: "text-s",
   },
-
   {
-    id: "supermodular-ai",
-    icon: "✳",
-    name: "supermodular.ai",
+    id: "cafe-fugaz",
+    icon: "☕",
+    name: "Café Fugaz",
     description:
-      "Uma identidade visual criada para dar à marca uma presença mais forte, memorável e relevante.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Branding",
+      "A vibrant branding and specialty coffee packaging project inspired by cosmic themes, molecular structures, and bold typography.",
+    action: "Explore Café Fugaz and discover specialty packaging design.",
+    category: "Packaging & Branding",
     year: "2026",
-    type: "Identidade de marca",
+    type: "Selected project",
     statement:
-      "Uma identidade criada para tornar a marca mais clara, reconhecível e presente dentro da cultura visual contemporânea.",
-    idea: "Construir uma marca capaz de se destacar sem depender do excesso visual, utilizando contraste, proporção e uma linguagem gráfica precisa.",
+      "A dynamic visual identity crafted for a specialty coffee brand to connect unique bean profiles with bold colors and playful pop geometry.",
+    idea: "To reflect the origin, process, and distinct tasting notes of specialty roasts through energetic color blocks, custom iconography, and expressive typography.",
     approach:
-      "A identidade foi desenvolvida através da combinação de estratégia, direção de arte e design, criando uma base visual simples e altamente adaptável.",
+      "We designed custom pouch packaging using high-contrast colorways (vibrant orange and deep cosmic blue), thematic illustrations (Saturn rings and molecular beans), and clear origin copy layouts.",
     services: [
-      "Branding",
-      "Identidade visual",
-      "Direção de arte",
-      "Estratégia",
+      "Brand identity",
+      "Packaging design",
+      "Illustration",
+      "Print collateral",
     ],
     result:
-      "Uma presença de marca mais consistente e reconhecível, preparada para diferentes ambientes físicos e digitais.",
-    img: bg3,
-    img2: bg3,
-    img3: bg3,
-    color: "text-s",
-  },
-
-  {
-    id: "modern-tax",
-    icon: "✳",
-    name: "Modern Tax",
-    description:
-      "Uma direção criativa desenvolvida a partir de uma linguagem visual marcante, contemporânea e altamente expressiva.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Direção de arte",
-    year: "2026",
-    type: "Projeto criativo",
-    statement:
-      "Uma direção visual criada para romper com o previsível e construir uma presença mais marcante e culturalmente relevante.",
-    idea: "Explorar uma estética que equilibre impacto e refinamento, criando uma identidade capaz de chamar atenção sem perder sofisticação.",
-    approach:
-      "Trabalhamos composição, fotografia, tipografia e movimento como partes de uma mesma linguagem, criando uma experiência visual dinâmica.",
-    services: [
-      "Direção de arte",
-      "Direção criativa",
-      "Fotografia",
-      "Design digital",
-    ],
-    result:
-      "Uma direção visual expressiva que posiciona a marca de forma mais marcante e abre espaço para novas formas de comunicação.",
-    img: bg4,
-    img2: bg4,
-    img3: bg4,
-    color: "text-s",
-  },
-
-  {
-    id: "rob-rotb",
-    icon: "✳",
-    name: "ROB: Revenge of the Body",
-    description:
-      "Um projeto de branding que combina estratégia, direção de arte e design digital em uma única linguagem.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Branding",
-    year: "2026",
-    type: "Estratégia + Design",
-    statement:
-      "Uma marca construída na interseção entre estratégia, estética e uma visão clara de futuro.",
-    idea: "Criar uma identidade que não apenas represente a marca, mas também ajude a definir como ela deve ser percebida.",
-    approach:
-      "Combinamos posicionamento, identidade visual e design digital para construir um sistema consistente, mas que também permite liberdade criativa.",
-    services: [
-      "Estratégia de marca",
-      "Branding",
-      "Direção de arte",
-      "Design digital",
-    ],
-    result:
-      "Uma identidade completa preparada para crescer mantendo sua personalidade em diferentes canais e experiências.",
-    img: bg5,
-    img2: bg5,
-    img3: bg5,
-    color: "text-s",
-  },
-
-  {
-    id: "quill-orki",
-    icon: "✳",
-    name: "Quill & Orki",
-    description:
-      "Um novo sistema visual criado para estabelecer uma experiência de marca marcante, consistente e reconhecível.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Sistema visual",
-    year: "2026",
-    type: "Identidade",
-    statement:
-      "Um sistema visual desenvolvido para transformar consistência em reconhecimento, fazendo de cada aplicação uma extensão da marca.",
-    idea: "Criar uma estrutura visual forte o suficiente para garantir unidade, mas flexível o bastante para se adaptar a diferentes necessidades.",
-    approach:
-      "Definimos elementos visuais, regras de composição, tipografia e direção de arte para criar uma linguagem que pudesse ser aplicada de forma intuitiva.",
-    services: [
-      "Sistema visual",
-      "Identidade de marca",
-      "Direção de arte",
-      "Design editorial",
-    ],
-    result:
-      "Uma linguagem visual consistente que permite à marca crescer sem perder sua personalidade ou reconhecimento.",
+      "A memorable, shelf-ready brand presence that positions Café Fugaz as an approachable yet distinct choice for specialty coffee enthusiasts.",
     img: bg6,
     img2: bg6,
     img3: bg6,
@@ -189,24 +101,24 @@ export const projects = [
     icon: "✳",
     name: "NIKE",
     description:
-      "Uma identidade experimental que explora forma, tipografia, movimento e novas possibilidades visuais.",
-    action: "Descubra o projeto e explore o trabalho.",
+      "An experimental identity exploring form, typography, motion, and new visual possibilities.",
+    action: "Discover the project and explore the work.",
     category: "Experimental",
     year: "2026",
-    type: "Exploração visual",
+    type: "Visual exploration",
     statement:
-      "Uma exploração visual onde forma, movimento e tipografia se unem para criar uma identidade não convencional.",
-    idea: "Questionar estruturas tradicionais de identidade e explorar como elementos gráficos podem ganhar movimento, ritmo e personalidade.",
+      "A visual exploration where form, motion, and typography merge to create an unconventional identity.",
+    idea: "To challenge traditional identity structures and explore how graphic elements can gain motion, rhythm, and character.",
     approach:
-      "Experimentamos diferentes relações entre tipografia, escala, espaço e movimento até encontrar uma linguagem visual única.",
+      "We experimented with relationships between typography, scale, space, and motion until finding a unique visual language.",
     services: [
-      "Direção criativa",
-      "Design experimental",
-      "Tipografia",
+      "Creative direction",
+      "Experimental design",
+      "Typography",
       "Motion design",
     ],
     result:
-      "Uma identidade experimental que transforma regras visuais em ferramentas para criar experiências mais expressivas.",
+      "An experimental identity that transforms visual rules into tools for crafting more expressive experiences.",
     img: bg7,
     img2: bg7,
     img3: bg7,
@@ -214,85 +126,171 @@ export const projects = [
   },
 
   {
-    id: "abo-digital",
+    id: "supermodular-ai",
     icon: "✳",
-    name: "ABO Digital",
+    name: "supermodular.ai",
     description:
-      "Uma experiência digital construída a partir de uma direção visual refinada, expressiva e contemporânea.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Digital",
+      "A visual identity created to give the brand a stronger, more memorable, and relevant presence.",
+    action: "Discover the project and explore the work.",
+    category: "Branding",
     year: "2026",
-    type: "Experiência digital",
+    type: "Brand identity",
     statement:
-      "Uma experiência digital onde design, movimento e interação trabalham juntos para criar uma presença memorável.",
-    idea: "Transformar a navegação em parte da identidade, criando uma experiência que comunica a personalidade da marca através de cada interação.",
+      "An identity designed to make the brand clearer, more recognizable, and grounded within contemporary visual culture.",
+    idea: "To build a brand that stands out without relying on visual overload, utilizing contrast, proportion, and precise graphic language.",
     approach:
-      "Desenvolvemos uma direção visual baseada em tipografia, espaço, movimento e transições sutis para criar uma experiência digital envolvente.",
-    services: ["Design digital", "Direção de arte", "UI/UX", "Motion design"],
+      "The identity was developed through a combination of strategy, art direction, and design, creating a simple yet highly adaptable visual foundation.",
+    services: ["Branding", "Visual identity", "Art direction", "Strategy"],
     result:
-      "Uma experiência digital refinada que transforma a interação em uma extensão natural da identidade da marca.",
-    img: bg8,
-    img2: bg8,
-    img3: bg8,
+      "A more consistent and recognizable brand presence, prepared for diverse physical and digital environments.",
+    img: bg3,
+    img2: bg3,
+    img3: bg3,
     color: "text-s",
   },
 
   {
-    id: "finiam",
-    icon: "✳",
-    name: "Finiam",
+    id: "sora-wellness",
+    icon: "☀️",
+    name: "Sora Wellness",
     description:
-      "Um sistema de identidade contemporâneo criado para conectar cultura, design e tecnologia.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Cultura",
+      "A holistic packaging and visual identity design focused on mindfulness, natural tones, and organic elegance.",
+    action: "Discover Sora Wellness and explore holistic branding solutions.",
+    category: "Packaging & Identity",
     year: "2026",
-    type: "Identidade cultural",
+    type: "Selected project",
     statement:
-      "Uma identidade criada para aproximar cultura, design e tecnologia através de uma linguagem visual contemporânea.",
-    idea: "Construir uma marca capaz de dialogar com diferentes públicos e contextos sem perder sua essência e personalidade.",
+      "An elegant and tactile visual system created to connect self-care routines with natural textures and earthy sophistication.",
+    idea: "To develop a serene brand identity centered around balance and mindfulness, utilizing organic symbols and warm, minimalist aesthetic cues.",
     approach:
-      "A identidade combina elementos culturais com uma direção visual digital, criando um sistema aberto, dinâmico e adaptável.",
+      "Starting with brand positioning, we selected rich earthy color palettes, soft-touch matte packaging finishes, gold foil emblem details, and complementary stationary.",
     services: [
-      "Estratégia",
-      "Identidade visual",
-      "Direção de arte",
-      "Experiência digital",
+      "Brand identity",
+      "Packaging design",
+      "Art direction",
+      "Print & Editorial",
     ],
     result:
-      "Uma identidade contemporânea que cria conexões entre diferentes linguagens, plataformas e comunidades.",
-    img: bg9,
-    img2: bg9,
-    img3: bg9,
-    color: "text-p",
+      "A harmonious and premium brand presence that establishes Sora Wellness as an inviting, mindful reference in self-care and luxury lifestyle.",
+    img: bg4,
+    img2: bg4,
+    img3: bg4,
+    color: "text-s",
   },
 
   {
-    id: "aura",
-    icon: "✳",
-    name: "AURA",
+    id: "blvck-paris",
+    icon: "🖤",
+    name: "Blvck Paris®",
     description:
-      "Um conceito visual desenvolvido através de tipografia, composição e uma direção de arte precisa.",
-    action: "Descubra o projeto e explore o trabalho.",
-    category: "Conceito",
+      "An all-black lifestyle collection featuring premium matte apparel, footwear, and minimal daily accessories.",
+    action: "Discover Blvck Paris and explore the monochromatic lifestyle.",
+    category: "Fashion & Lifestyle",
     year: "2026",
-    type: "Conceito visual",
+    type: "Selected project",
     statement:
-      "Um conceito visual construído através de contraste, tipografia e composição para criar uma presença forte e precisa.",
-    idea: "Reduzir a linguagem visual ao essencial e utilizar cada elemento como parte de uma composição cuidadosamente controlada.",
+      "A bold lifestyle brand identity defined by monochrome aesthetics, sleek craftsmanship, and timeless dark minimalism.",
+    idea: "To create an uncompromising visual experience centered around the aesthetic of pitch black, transforming everyday accessories into statement pieces.",
     approach:
-      "A direção de arte foi construída através da combinação de tipografia expressiva, espaço negativo e composições de alto contraste.",
+      "We unified product design, matte and leather material curation, and tactile branding across a range of slides, headwear, drinkware, and lifestyle items.",
     services: [
-      "Direção de arte",
-      "Conceito visual",
-      "Tipografia",
-      "Design gráfico",
+      "Product branding",
+      "Lifestyle design",
+      "Art direction",
+      "Packaging design",
     ],
     result:
-      "Uma linguagem visual precisa e reconhecível, capaz de transformar simplicidade em presença.",
+      "A highly cohesive and desirable lifestyle identity that anchors Blvck Paris as a leader in contemporary monochromatic design.",
+    img: bg9,
+    img2: bg9,
+    img3: bg9,
+    color: "text-s",
+  },
+
+  {
+    id: "apex-strata",
+    icon: "◢",
+    name: "Apex Strata",
+    description:
+      "A architectural-inspired brand identity and spatial system built on geometry, precision, and layered structure.",
+    action: "Discover Apex Strata and explore structural design solutions.",
+    category: "Visual Identity",
+    year: "2026",
+    type: "Selected project",
+    statement:
+      "A sharp, high-contrast visual identity crafted to translate architectural stability and forward momentum into a bold digital symbol.",
+    idea: "To synthesize structure and upward motion into a minimalist emblem consisting of layered foundation lines and an ascending geometric peak.",
+    approach:
+      "We defined grid-based rules, monochrome color systems, high-contrast typography, and digital layouts that mirror architectural blueprints.",
+    services: [
+      "Brand identity",
+      "Logo design",
+      "Design system",
+      "Spatial graphics",
+    ],
+    result:
+      "A timeless, scalable brand language that projects authority, structure, and innovation across physical and digital touchpoints.",
     img: bg10,
     img2: bg10,
     img3: bg10,
-    color: "text-p",
+    color: "text-s",
+  },
+  {
+    id: "mf-brochure",
+    icon: "📄",
+    name: "MF Studio Brochure",
+    description:
+      "A clean, editorial Z-fold brochure layout combining minimalist typography and striking monochromatic imagery[cite: 10].",
+    action: "Explore the editorial layout and print design system.",
+    category: "Editorial & Print",
+    year: "2026",
+    type: "Selected project",
+    statement:
+      "A sophisticated print collateral designed to structure information with absolute clarity, hierarchy, and tactile elegance.",
+    idea: "To create an engaging unfolding experience that showcases brand identity and visual arts through structured grid systems and stark contrast.",
+    approach:
+      "We developed a Z-fold layout format, editorial typography scales, high-contrast imagery staging, and clean negative space composition.",
+    services: [
+      "Editorial design",
+      "Print collateral",
+      "Typographic layout",
+      "Brand communication",
+    ],
+    result:
+      "A professional, beautifully balanced brochure that presents editorial content with striking visual impact.",
+    img: bg5,
+    img2: bg5,
+    img3: bg5,
+    color: "text-s",
+  },
+
+  {
+    id: "aether-core",
+    icon: "🔮",
+    name: "Aether Core",
+    description:
+      "A futuristic 3D motion concept exploring precision mechanics, glowing crystal structures, and concentric metal rings.",
+    action: "Experience the interactive 3D core and motion design.",
+    category: "3D & Motion",
+    year: "2026",
+    type: "Selected project",
+    statement:
+      "A captivating exploration of digital horology and futuristic kinetic sculpture rendered with metallic, glass, and iridescent textures.",
+    idea: "To create a mesmerizing central power core that blends high-end watchmaking aesthetics with sci-fi geometry and multi-layered motion dynamics.",
+    approach:
+      "Utilizing advanced 3D procedural modeling, ray-tracing illumination, and material design mixing brushed metallic teal, rose gold, and faceted violet glass.",
+    services: [
+      "3D Art direction",
+      "Motion design",
+      "CGI visualization",
+      "Procedural texturing",
+    ],
+    result:
+      "A stunning visual piece and kinetic experience that showcases cutting-edge digital craftsmanship and high-precision luxury design.",
+    img: bg8,
+    img2: bg8,
+    img3: bg8,
+    color: "text-s",
   },
 ];
 

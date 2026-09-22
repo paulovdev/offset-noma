@@ -167,7 +167,7 @@ export default function AboutModal({ onCompleteClose }) {
     };
   }, []);
 
-  // Lista de Ícones para o Slider Infinito
+  // List of icons for Infinite Slider
   const clientIcons = [
     SiNike,
     SiApple,
@@ -179,47 +179,47 @@ export default function AboutModal({ onCompleteClose }) {
     SiGoogle,
   ];
 
-  // Dados dos Serviços
+  // Service Data
   const services = [
     {
-      title: "Estratégia & Posicionamento",
-      desc: "Análise de mercado, diagnóstico de marca e diretrizes fundamentais para destacar seu negócio de maneira autêntica e escalável.",
+      title: "Strategy & Positioning",
+      desc: "Market analysis, brand diagnostics, and foundational guidelines to elevate your business authentically and scalably.",
     },
     {
-      title: "Sistemas de Identidade Visual",
-      desc: "Logotipos, tipografia customizada, paleta de cores e guias de estilo escaláveis para qualquer suporte digital ou impresso.",
+      title: "Visual Identity Systems",
+      desc: "Logos, custom typography, color palettes, and scalable style guides for digital and physical touchpoints.",
     },
     {
-      title: "Experiências Digitais & UI/UX",
-      desc: "Websites, aplicações e plataformas interativas desenhadas com foco absoluto em performance, usabilidade e estético contemporânea.",
+      title: "Digital Experiences & UI/UX",
+      desc: "Websites, applications, and interactive platforms designed with a relentless focus on performance, usability, and modern aesthetics.",
     },
     {
-      title: "Motion & Direção de Arte",
-      desc: "Animações, vídeos institucionais e direção visual de campanhas para narrativas marcantes e engajadoras.",
+      title: "Motion & Art Direction",
+      desc: "Animations, brand films, and visual direction for campaigns that deliver compelling and memorable stories.",
     },
   ];
 
-  // Etapas do Processo
+  // Process Steps
   const processSteps = [
     {
       step: "01",
-      title: "Imersão & Diagnóstico",
-      desc: "Compreendemos o contexto, desafios e objetivos reais do projeto.",
+      title: "Immersion & Discovery",
+      desc: "We dive deep into the context, challenges, and core objectives of your project.",
     },
     {
       step: "02",
-      title: "Estratégia & Conceito",
-      desc: "Definimos o caminho criativo e as bases visuais da solução.",
+      title: "Strategy & Concept",
+      desc: "We define the creative direction and visual foundation of the solution.",
     },
     {
       step: "03",
-      title: "Execução & Refinamento",
-      desc: "Desenvolvemos o sistema com precisão técnica e atenção aos detalhes.",
+      title: "Execution & Refinement",
+      desc: "We craft the system with technical precision and meticulous attention to detail.",
     },
     {
       step: "04",
-      title: "Entrega & Implementação",
-      desc: "Entregamos sistemas prontos para o mundo real e suporte contínuo.",
+      title: "Delivery & Rollout",
+      desc: "We launch production-ready systems built for real-world impact with ongoing support.",
     },
   ];
 
@@ -227,20 +227,20 @@ export default function AboutModal({ onCompleteClose }) {
     {
       id: 1,
       icon: LuNavigation,
-      title: "Clareza",
-      desc: "Menos ruído. Mais intenção. Cada escolha precisa ter um motivo.",
+      title: "Clarity",
+      desc: "Less noise. More intention. Every creative decision serves a purpose.",
     },
     {
       id: 2,
       icon: LuFocus,
-      title: "Intenção",
-      desc: "Criamos com propósito, não seguindo tendências. Estratégia antes da estética.",
+      title: "Intention",
+      desc: "Purposeful creation over transient trends. Strategy always precedes aesthetics.",
     },
     {
       id: 3,
       icon: LuTrendingUp,
-      title: "Impacto",
-      desc: "O resultado precisa funcionar no mundo real, não apenas na tela.",
+      title: "Impact",
+      desc: "Delivering real-world effectiveness, beyond just looking good on screen.",
     },
   ];
 
@@ -252,8 +252,8 @@ export default function AboutModal({ onCompleteClose }) {
             {/* OVERLAY */}
             <motion.div
               onClick={handleClose}
-               onPointerEnter={() => setIsHover(true)}
-               onPointerLeave={() => setIsHover(false)}
+              onPointerEnter={() => setIsHover(true)}
+              onPointerLeave={() => setIsHover(false)}
               variants={overlayAnim}
               initial="initial"
               animate="animate"
@@ -280,7 +280,7 @@ export default function AboutModal({ onCompleteClose }) {
               className="fixed bottom-0 left-1/2 z-9999 h-[calc(100vh-10px)] 
             w-full max-w-190 -translate-x-1/2 cursor-s-resize bg-s px-2.5 pt-2.5 max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
             >
-              {/* CLOSE */}{" "}
+              {/* CLOSE */}
               <AnimatePresence>
                 {!isHover && (
                   <motion.div
@@ -320,6 +320,7 @@ export default function AboutModal({ onCompleteClose }) {
                   </motion.div>
                 )}
               </AnimatePresence>
+
               {/* SCROLL */}
               <div
                 ref={scrollRef}
@@ -331,12 +332,12 @@ export default function AboutModal({ onCompleteClose }) {
                 {/* HERO / MANIFESTO */}
                 <section className="flex flex-col justify-end border-b border-p/15 py-10">
                   <RevealText
-                    text="Sobre nós"
+                    text="About us"
                     className="mb-10 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
-                    text="Não acreditamos em design feito apenas para preencher espaços. Criamos sistemas visuais que encontram significado, constroem presença e tornam marcas memoráveis."
+                    text="We don't believe in design created just to fill space. We build visual systems that define meaning, establish presence, and make brands unforgettable."
                     tag="h1"
                     className="max-w-200 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                   />
@@ -348,7 +349,7 @@ export default function AboutModal({ onCompleteClose }) {
                     />
 
                     <RevealText
-                      text="Design independente para ideias que querem deixar uma marca."
+                      text="Independent design for ideas that aim to leave a mark."
                       className="max-w-125 text-right text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p"
                     />
                   </div>
@@ -367,7 +368,7 @@ export default function AboutModal({ onCompleteClose }) {
                   >
                     <Image
                       src={aboutCover}
-                      alt="Sobre o Estúdio"
+                      alt="About the Studio"
                       fill
                       sizes="100vw"
                       placeholder="blur"
@@ -377,10 +378,10 @@ export default function AboutModal({ onCompleteClose }) {
                   </motion.figure>
                 </section>
 
-                {/* VALORES */}
+                {/* VALUES */}
                 <section className="border-b border-p/15 py-20">
                   <RevealText
-                    text="02 — Valores"
+                    text="02 — Values"
                     className="mb-10 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -393,7 +394,7 @@ export default function AboutModal({ onCompleteClose }) {
                         <motion.div
                           key={item.id}
                           onClick={() => setActiveIndex(index)}
-                           onPointerEnter={() => setActiveIndex(index)}
+                          onPointerEnter={() => setActiveIndex(index)}
                           initial={{ y: 40, opacity: 0 }}
                           whileInView={{ y: 0, opacity: 1 }}
                           viewport={{ once: true, amount: 0.2 }}
@@ -425,7 +426,6 @@ export default function AboutModal({ onCompleteClose }) {
                               {item.title}
                             </h3>
 
-                            {/* Apenas o conteúdo textual expande ou ajusta visualmente */}
                             <motion.p
                               animate={{
                                 opacity: isActive ? 1 : 0.5,
@@ -442,10 +442,10 @@ export default function AboutModal({ onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* SERVIÇOS & DISCIPLINAS (ACCORDION COM REVEAL TEXT) */}
+                {/* SERVICES & DISCIPLINES */}
                 <section className="border-b border-p/15 py-20">
                   <RevealText
-                    text="03 — Serviços & Disciplinas"
+                    text="03 — Services & Disciplines"
                     className="mb-12 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -505,10 +505,10 @@ export default function AboutModal({ onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* CLIENTES - INFINITY SLIDE APENAS ÍCONES */}
+                {/* CLIENTS - INFINITE SLIDER */}
                 <section className="border-b border-p/15 py-25 overflow-hidden">
                   <RevealText
-                    text="04 — Clientes Selecionados"
+                    text="04 — Selected Clients"
                     className="mb-15 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -549,10 +549,10 @@ export default function AboutModal({ onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* PROCESSO DE TRABALHO (ESTILO SEÇÃO 07) */}
+                {/* WORK PROCESS */}
                 <section className="border-b border-p/15 py-20">
                   <RevealText
-                    text="05 — Processo"
+                    text="05 — Process"
                     className="mb-12 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -589,10 +589,10 @@ export default function AboutModal({ onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* IMPACTO */}
+                {/* IMPACT */}
                 <section className="border-b border-p/15 py-20">
                   <RevealText
-                    text="06 — Impacto"
+                    text="06 — Impact"
                     className="mb-15 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -604,11 +604,11 @@ export default function AboutModal({ onCompleteClose }) {
 
                       <div className="flex flex-col justify-end">
                         <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                          Fundação
+                          Founded
                         </span>
 
                         <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                          Independente por escolha
+                          Independent by choice
                         </span>
                       </div>
                     </div>
@@ -620,11 +620,11 @@ export default function AboutModal({ onCompleteClose }) {
 
                       <div className="flex flex-col justify-end">
                         <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                          Colaborações
+                          Collaborations
                         </span>
 
                         <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                          Marcas, pessoas e espaços
+                          Brands, people, and spaces
                         </span>
                       </div>
                     </div>
@@ -636,11 +636,11 @@ export default function AboutModal({ onCompleteClose }) {
 
                       <div className="flex flex-col justify-end">
                         <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                          Países
+                          Countries
                         </span>
 
                         <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                          Trabalho além das fronteiras
+                          Cross-border engagements
                         </span>
                       </div>
                     </div>
@@ -652,30 +652,30 @@ export default function AboutModal({ onCompleteClose }) {
 
                       <div className="flex flex-col justify-end">
                         <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                          Independência
+                          Independence
                         </span>
 
                         <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                          Estúdio pequeno. Grandes ideias.
+                          Small studio. Big ideas.
                         </span>
                       </div>
                     </div>
                   </div>
                 </section>
 
-                {/* PRÊMIOS */}
+                {/* AWARDS */}
                 <section className="border-b border-p/15 py-20">
                   <RevealText
-                    text="07 — Prêmios e reconhecimentos"
+                    text="07 — Awards & Recognition"
                     className="mb-12 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <div className="flex flex-col">
                     {[
-                      ["Awwwards", "Menção Honrosa", "2025"],
+                      ["Awwwards", "Honorable Mention", "2025"],
                       ["CSS Design Awards", "Special Kudos", "2024"],
-                      ["Behance", "Identidade em destaque", "2024"],
-                      ["Type Directors Club", "Trabalho selecionado", "2023"],
+                      ["Behance", "Featured Identity", "2024"],
+                      ["Type Directors Club", "Selected Work", "2023"],
                       ["D&AD", "Graphite Pencil", "2023"],
                     ].map(([name, award, year], index) => (
                       <motion.div
@@ -709,22 +709,22 @@ export default function AboutModal({ onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* ENCERRAMENTO */}
+                {/* FOOTER */}
                 <footer className="flex flex-col justify-end gap-10 py-20 pb-10">
                   <RevealText
-                    text="08 — Seguindo em frente"
+                    text="08 — Moving Forward"
                     className="text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
                   <RevealText
-                    text="Pensamos. Criamos. Mudamos a forma como as coisas são vistas."
+                    text="We think. We create. We shift how things are perceived."
                     tag="h2"
                     className="max-w-200 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                   />
 
                   <div className="flex items-center justify-between border-t border-p/15 pt-5">
                     <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">
-                      Estúdio independente
+                      Independent Studio
                     </span>
 
                     <span className="text-[14px] font-normal uppercase tracking-[10%] text-p/40">

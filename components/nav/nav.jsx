@@ -35,7 +35,7 @@ export function Navbar({ onComplete, inputY, logoY, logoRotate }) {
                       : "group-hover:-translate-y-full"
                   }`}
                 >
-                  sobre
+                  about
                 </p>
                 <p
                   className={`absolute left-0 top-full text-center text-[14px] font-medium uppercase leading-[100%] tracking-[10%] text-ts transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
@@ -44,7 +44,7 @@ export function Navbar({ onComplete, inputY, logoY, logoRotate }) {
                       : "group-hover:-translate-y-full"
                   }`}
                 >
-                  sobre
+                  about
                 </p>
               </div>
             </motion.div>
@@ -101,7 +101,7 @@ export function Navbar({ onComplete, inputY, logoY, logoRotate }) {
                       : "group-hover:-translate-y-full"
                   }`}
                 >
-                  contato
+                  contact
                 </p>
                 <p
                   className={`absolute left-0 top-full text-center text-[14px] font-medium uppercase leading-[100%] tracking-[10%] text-ts transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
@@ -110,7 +110,7 @@ export function Navbar({ onComplete, inputY, logoY, logoRotate }) {
                       : "group-hover:-translate-y-full"
                   }`}
                 >
-                  contato
+                  contact
                 </p>
               </div>
             </motion.div>

@@ -150,16 +150,16 @@ export function ContactModal({ onCompleteClose }) {
 
   const faqs = [
     {
-      q: "Qual é o prazo médio de um projeto?",
-      a: "Projetos de identidade visual costumam levar de 3 a 5 semanas. Websites e plataformas complexas variam entre 6 a 12 semanas.",
+      q: "What is the average timeline for a project?",
+      a: "Visual identity projects usually take 3 to 5 weeks. Websites and complex digital platforms range from 6 to 12 weeks.",
     },
     {
-      q: "Trabalham com clientes internacionais?",
-      a: "Sim. Atendemos marcas globais com comunicação totalmente em inglês ou português e gestão de fuso horário adaptada.",
+      q: "Do you work with international clients?",
+      a: "Yes. We work with global brands with full communication in English or Portuguese and tailored time-zone management.",
     },
     {
-      q: "Como funciona o fluxo de trabalho?",
-      a: "Imersão & Pesquisa → Estratégia de Marca → Direção Visual → Desenvolvimento & Handover técnico.",
+      q: "How does the workflow work?",
+      a: "Immersion & Research → Brand Strategy → Visual Direction → Development & Technical Handover.",
     },
   ];
 
@@ -180,7 +180,7 @@ export function ContactModal({ onCompleteClose }) {
               className="fixed inset-0 z-90 bg-p/5 backdrop-blur-md cursor-pointer"
             />
 
-            {/* CAMADA DE TRANSIÇÃO (bg-ts) */}
+            {/* TRANSITION LAYER */}
             <motion.div
               className="fixed bottom-0 left-1/2 z-96 h-[calc(100vh-10px)] w-full max-w-190 -translate-x-1/2
              bg-ts max-lg:h-dvh max-lg:w-screen pointer-events-none"
@@ -190,7 +190,7 @@ export function ContactModal({ onCompleteClose }) {
               exit="exit"
             />
 
-            {/* CONTAINER PRINCIPAL DO CONTEÚDO (bg-s) */}
+            {/* MAIN CONTENT CONTAINER */}
             <motion.div
               ref={container}
               className="fixed bottom-0 left-1/2 z-9999 h-[calc(100vh-10px)] w-full max-w-190 
@@ -200,7 +200,7 @@ export function ContactModal({ onCompleteClose }) {
               animate="animate"
               exit="exit"
             >
-              {/* FECHAR */}
+              {/* CLOSE BUTTON */}
               <AnimatePresence>
                 {!isHover && (
                   <motion.div
@@ -230,7 +230,7 @@ export function ContactModal({ onCompleteClose }) {
                     <motion.button
                       whileTap={{ scale: 1.1 }}
                       whileHover={{ scale: 1.1 }}
-                      aria-label="Fechar contato"
+                      aria-label="Close contact"
                       className="group flex size-12.5 cursor-pointer items-center justify-center bg-ts backdrop-blur-2xl"
                     >
                       <IoClose className="text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
@@ -239,7 +239,7 @@ export function ContactModal({ onCompleteClose }) {
                 )}
               </AnimatePresence>
 
-              {/* CONTEÚDO SCROLLÁVEL */}
+              {/* SCROLLABLE CONTENT */}
               <div
                 ref={scrollRef}
                 className="size-full overflow-y-auto overscroll-contain"
@@ -248,21 +248,21 @@ export function ContactModal({ onCompleteClose }) {
                 {/* HERO / MANIFESTO */}
                 <div className="flex flex-col justify-end border-b border-p/15 py-10">
                   <RevealText
-                    text="contato"
+                    text="contact"
                     className="mb-10 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
                   <RevealText
-                    text="Vamos começar um projeto juntos."
+                    text="Let's start a project together."
                     tag="h1"
                     className="max-w-200 text-[clamp(28px,4vw,52px)] font-instrument font-normal leading-[100%] tracking-[-6%] text-p"
                   />
 
-                  {/* FORMULÁRIO COM BORDAS ANIMADAS */}
+                  {/* FORM WITH ANIMATED BORDERS */}
                   <form
                     onSubmit={(e) => e.preventDefault()}
                     className="mt-16 flex flex-col"
                   >
-                    {/* Nome */}
+                    {/* Name */}
                     <motion.div
                       custom={0}
                       variants={fieldAnim}
@@ -274,7 +274,7 @@ export function ContactModal({ onCompleteClose }) {
                       <input
                         type="text"
                         required
-                        placeholder="nome *"
+                        placeholder="name *"
                         className="h-20 w-full bg-transparent text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none placeholder:text-p/40"
                       />
                     </motion.div>
@@ -296,7 +296,7 @@ export function ContactModal({ onCompleteClose }) {
                       />
                     </motion.div>
 
-                    {/* Tipo de Projeto */}
+                    {/* Project Type */}
                     <motion.div
                       custom={2}
                       variants={fieldAnim}
@@ -311,31 +311,31 @@ export function ContactModal({ onCompleteClose }) {
                       text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-ts outline-none"
                       >
                         <option value="" disabled className="bg-s text-ts">
-                          tipo de projeto
+                          project type
                         </option>
                         <option value="branding" className="bg-s text-ts">
                           branding
                         </option>
                         <option value="web-design" className="bg-s text-ts">
-                          design web
+                          web design
                         </option>
                         <option value="art-direction" className="bg-s text-ts">
-                          direção de arte
+                          art direction
                         </option>
                         <option value="graphic-design" className="bg-s text-ts">
-                          design gráfico
+                          graphic design
                         </option>
                         <option value="motion" className="bg-s text-ts">
                           motion design
                         </option>
                         <option value="other" className="bg-s text-ts">
-                          outro
+                          other
                         </option>
                       </select>
                       <IoChevronDown className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-p/40 transition-transform duration-300 group-focus-within:rotate-180" />
                     </motion.div>
 
-                    {/* Grid de Investimento e Prazo */}
+                    {/* Investment & Timeline Grid */}
                     <div className="grid grid-cols-2 gap-2.5 max-md:grid-cols-1">
                       <motion.div
                         custom={3}
@@ -351,22 +351,22 @@ export function ContactModal({ onCompleteClose }) {
                         text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-ts outline-none"
                         >
                           <option value="" disabled className="bg-s text-ts">
-                            investimento
+                            budget
                           </option>
                           <option value="under-1k" className="bg-s text-ts">
-                            até €1 mil
+                            under €1k
                           </option>
                           <option value="1k-3k" className="bg-s text-ts">
-                            €1 mil — €3 mil
+                            €1k — €3k
                           </option>
                           <option value="3k-5k" className="bg-s text-ts">
-                            €3 mil — €5 mil
+                            €3k — €5k
                           </option>
                           <option value="5k-10k" className="bg-s text-ts">
-                            €5 mil — €10 mil
+                            €5k — €10k
                           </option>
                           <option value="10k-plus" className="bg-s text-ts">
-                            €10 mil+
+                            €10k+
                           </option>
                         </select>
                         <IoChevronDown className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-p/40 transition-transform duration-300 group-focus-within:rotate-180" />
@@ -386,29 +386,29 @@ export function ContactModal({ onCompleteClose }) {
                          text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-ts outline-none"
                         >
                           <option value="" disabled className="bg-s text-ts">
-                            prazo
+                            timeline
                           </option>
                           <option value="asap" className="bg-s text-ts">
-                            o mais rápido possível
+                            as soon as possible
                           </option>
                           <option value="1-month" className="bg-s text-ts">
-                            até 1 mês
+                            within 1 month
                           </option>
                           <option value="2-months" className="bg-s text-ts">
-                            1 — 2 meses
+                            1 — 2 months
                           </option>
                           <option value="3-months" className="bg-s text-ts">
-                            2 — 3 meses
+                            2 — 3 months
                           </option>
                           <option value="flexible" className="bg-s text-ts">
-                            flexível
+                            flexible
                           </option>
                         </select>
                         <IoChevronDown className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-p/40 transition-transform duration-300 group-focus-within:rotate-180" />
                       </motion.div>
                     </div>
 
-                    {/* Mensagem */}
+                    {/* Message */}
                     <motion.div
                       custom={5}
                       variants={fieldAnim}
@@ -418,7 +418,7 @@ export function ContactModal({ onCompleteClose }) {
                       className="group relative mb-5 border-b border-p/15 focus-within:border-ts transition-colors duration-500"
                     >
                       <textarea
-                        placeholder="conte-nos sobre seu projeto *"
+                        placeholder="tell us about your project *"
                         rows={3}
                         className="w-full resize-none bg-transparent py-10 text-[14px] font-normal uppercase leading-[100%] tracking-[10%] text-p outline-none placeholder:text-p/40"
                       />
@@ -444,20 +444,20 @@ export function ContactModal({ onCompleteClose }) {
                     >
                       <span className="relative overflow-hidden">
                         <span className="block text-[14px] font-medium uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                          enviar
+                          submit
                         </span>
                         <span className="absolute left-0 top-full block text-[14px] font-medium uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                          enviar
+                          submit
                         </span>
                       </span>
                     </motion.button>
                   </form>
                 </div>
 
-                {/* PERGUNTAS FREQUENTES (FAQ) */}
+                {/* FREQUENTLY ASKED QUESTIONS (FAQ) */}
                 <section className="border-b border-p/15 py-16">
                   <RevealText
-                    text="duvidas frequentes"
+                    text="frequently asked questions"
                     className="mb-8 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
                   />
 
@@ -520,7 +520,7 @@ export function ContactModal({ onCompleteClose }) {
                   </div>
                 </section>
 
-                {/* RODAPÉ & ENVIO */}
+                {/* FOOTER & DIRECT CONTACT */}
                 <motion.div
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -535,7 +535,7 @@ export function ContactModal({ onCompleteClose }) {
                   <div className="flex items-center justify-between gap-10 max-lg:gap-5">
                     <div className="flex flex-col gap-1">
                       <span className="text-[14px] uppercase tracking-[10%] text-p/40">
-                        ou fale diretamente conosco
+                        or talk to us directly
                       </span>
 
                       <a
@@ -554,7 +554,7 @@ export function ContactModal({ onCompleteClose }) {
                     </div>
                   </div>
 
-                  {/* REDES SOCIAIS */}
+                  {/* SOCIAL MEDIA */}
                   <div className="flex items-center justify-between border-t border-p/20 pt-6">
                     <div className="flex gap-5">
                       {["instagram", "behance", "linkedin", "twitter"].map(
@@ -586,7 +586,7 @@ export function ContactModal({ onCompleteClose }) {
         )}
       </AnimatePresence>
 
-      {/* CURSOR PERSONAILZADO SOMENTE QUANDO O MODAL ESTIVER ATIVO */}
+      {/* CUSTOM CURSOR ONLY WHEN MODAL IS ACTIVE */}
       <AnimatePresence>
         {isOpen && isHover && !isMobile && (
           <motion.div
