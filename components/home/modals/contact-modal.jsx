@@ -25,7 +25,7 @@ const loaderLayerAnim = {
     transition: {
       duration: 0.75,
       ease: [0.76, 0, 0.24, 1],
-      delay: 0.25,
+      delay: 1,
     },
   },
 };
@@ -100,12 +100,12 @@ export function ContactModal({ onCompleteClose }) {
   const scrollRef = useRef(null);
   const modalLenis = useRef(null);
   const rafId = useRef(null);
-  
+
   const isMobile = useIsMobile(768);
   const { x: mouseX, y: mouseY } = useMousePosition();
 
   const [isOpen, setIsOpen] = useState(true);
-  const [isHover, setIsHover] = useState(null);
+  const [isHover, setIsHover] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
 
   const handleClose = useCallback(() => {
@@ -171,8 +171,8 @@ export function ContactModal({ onCompleteClose }) {
             {/* OVERLAY */}
             <motion.div
               onClick={handleClose}
-              onMouseEnter={() => setIsHover(true)}
-              onMouseLeave={() => setIsHover(false)}
+              onPointerEnter={() => setIsHover(true)}
+              onPointerLeave={() => setIsHover(false)}
               variants={overlayAnim}
               initial="initial"
               animate="animate"
@@ -183,7 +183,7 @@ export function ContactModal({ onCompleteClose }) {
             {/* CAMADA DE TRANSIÇÃO (bg-ts) */}
             <motion.div
               className="fixed bottom-0 left-1/2 z-96 h-[calc(100vh-10px)] w-full max-w-190 -translate-x-1/2
-             bg-ts max-lg:h-dvh max-lg:w-screen"
+             bg-ts max-lg:h-dvh max-lg:w-screen pointer-events-none"
               variants={loaderLayerAnim}
               initial="initial"
               animate="animate"
@@ -194,7 +194,7 @@ export function ContactModal({ onCompleteClose }) {
             <motion.div
               ref={container}
               className="fixed bottom-0 left-1/2 z-9999 h-[calc(100vh-10px)] w-full max-w-190 
-            -translate-x-1/2 cursor-s-resize bg-s px-2.5 pt-2.5 backdrop-blur-3xl max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
+            -translate-x-1/2 bg-s px-2.5 pt-2.5 backdrop-blur-3xl max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
               variants={menuAnim}
               initial="initial"
               animate="animate"
@@ -204,8 +204,10 @@ export function ContactModal({ onCompleteClose }) {
               <AnimatePresence>
                 {!isHover && (
                   <motion.div
-                    key={isHover}
-                    onClick={handleClose}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleClose();
+                    }}
                     initial={{ scale: 0, rotate: -90 }}
                     animate={{
                       scale: 1,
@@ -236,6 +238,7 @@ export function ContactModal({ onCompleteClose }) {
                   </motion.div>
                 )}
               </AnimatePresence>
+
               {/* CONTEÚDO SCROLLÁVEL */}
               <div
                 ref={scrollRef}
@@ -463,10 +466,11 @@ export function ContactModal({ onCompleteClose }) {
                       const isOpenFaq = activeFaq === index;
                       return (
                         <div
-                          key={faq.a}
+                          key={index}
                           className="border-t border-p/15 py-6 transition-colors"
                         >
                           <button
+                            type="button"
                             onClick={() =>
                               setActiveFaq(isOpenFaq ? null : index)
                             }
@@ -581,8 +585,10 @@ export function ContactModal({ onCompleteClose }) {
           </>
         )}
       </AnimatePresence>
+
+      {/* CURSOR PERSONAILZADO SOMENTE QUANDO O MODAL ESTIVER ATIVO */}
       <AnimatePresence>
-        {isHover && !isMobile && (
+        {isOpen && isHover && !isMobile && (
           <motion.div
             className="pointer-events-none fixed z-90 size-32 -translate-x-1/2 -translate-y-1/2 
                         flex items-center justify-center rounded-full bg-ts"
@@ -591,7 +597,10 @@ export function ContactModal({ onCompleteClose }) {
               top: mouseY,
             }}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
           >

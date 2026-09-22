@@ -252,8 +252,8 @@ export default function AboutModal({ onCompleteClose }) {
             {/* OVERLAY */}
             <motion.div
               onClick={handleClose}
-              onMouseEnter={() => setIsHover(true)}
-              onMouseLeave={() => setIsHover(false)}
+               onPointerEnter={() => setIsHover(true)}
+               onPointerLeave={() => setIsHover(false)}
               variants={overlayAnim}
               initial="initial"
               animate="animate"
@@ -393,7 +393,7 @@ export default function AboutModal({ onCompleteClose }) {
                         <motion.div
                           key={item.id}
                           onClick={() => setActiveIndex(index)}
-                          onMouseEnter={() => setActiveIndex(index)}
+                           onPointerEnter={() => setActiveIndex(index)}
                           initial={{ y: 40, opacity: 0 }}
                           whileInView={{ y: 0, opacity: 1 }}
                           viewport={{ once: true, amount: 0.2 }}
@@ -738,7 +738,7 @@ export default function AboutModal({ onCompleteClose }) {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {isHover && !isMobile && (
+        {isOpen && isHover && !isMobile && (
           <motion.div
             className="pointer-events-none fixed z-90 size-32 -translate-x-1/2 -translate-y-1/2 
                         flex items-center justify-center rounded-full bg-ts"

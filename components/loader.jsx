@@ -38,6 +38,8 @@ export function Loader({ setOnComplete }) {
             ease: [0.76, 0, 0.24, 1],
           },
           await wait(1800),
+          setOnComplete(false),
+          await wait(1200),
           animate(
             ".loader-icon-wrapper",
             {
@@ -59,7 +61,6 @@ export function Loader({ setOnComplete }) {
               ease: [0.76, 0, 0.24, 1],
             },
           ),
-          setOnComplete(false),
         ),
       ]);
 

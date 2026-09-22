@@ -119,8 +119,8 @@ export function ProjectModal({ project, onCompleteClose }) {
             {/* Overlay */}
             <motion.div
               onClick={handleClose}
-              onMouseEnter={() => setIsHover(true)}
-              onMouseLeave={() => setIsHover(false)}
+              onPointerEnter={() => setIsHover(true)}
+              onPointerLeave={() => setIsHover(false)}
               variants={overlayAnim}
               initial="initial"
               animate="animate"
@@ -450,7 +450,7 @@ export function ProjectModal({ project, onCompleteClose }) {
       </AnimatePresence>
 
       <AnimatePresence>
-        {isHover && !isMobile && (
+        {isOpen && isHover && !isMobile && (
           <motion.div
             className="pointer-events-none fixed z-90 size-32 -translate-x-1/2 -translate-y-1/2 
                         flex items-center justify-center rounded-full bg-ts"
