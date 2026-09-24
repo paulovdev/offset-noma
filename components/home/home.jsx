@@ -37,8 +37,13 @@ export default function Home() {
     [pathname],
   );
 
-  const { containerRef, projectsRef, scrollVelocity, activeIndex } =
-    useInfiniteColumns(repeatedProjects.length, isModalActive);
+  const {
+    containerRef,
+    projectsRef,
+    scrollVelocity,
+    activeIndex,
+    scrollToIndex,
+  } = useInfiniteColumns(repeatedProjects.length, isModalActive);
 
   const logoSpring = useSpring(scrollVelocity, {
     stiffness: 300,
@@ -77,6 +82,14 @@ export default function Home() {
   const cursor = useTransform(cursorSpring, [-1, 0, 1], [25, 0, -25]);
   const dotsX = useTransform(dotsSpring, [-1, 0, 1], [25, 0, -25]);
 
+  const realProjectsCount = repeatedProjects.length / 4;
+
+  const handleDotClick = (idx) => {
+    if (scrollToIndex) {
+      scrollToIndex(idx);
+    }
+  };
+
   return (
     <>
       <Loader setOnComplete={setOnComplete} />
@@ -98,8 +111,7 @@ export default function Home() {
             className="absolute flex h-[60vh] w-max transform-3d items-center gap-2.5"
           >
             {repeatedProjects.map((project, index) => {
-              const realCount = repeatedProjects.length / 4;
-              const isCardActive = index % realCount === activeIndex;
+              const isCardActive = index % realProjectsCount === activeIndex;
 
               return (
                 <ProjectCard
@@ -119,16 +131,45 @@ export default function Home() {
 
         <motion.div
           style={{ x: dotsX }}
-          className="absolute bottom-10 left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5 pointer-events-none"
+          className="absolute bottom-10 left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5 pointer-events-auto"
         >
-          {Array.from({ length: repeatedProjects.length / 4 }).map((_, idx) => (
-            <div
-              key={idx}
-              className={`h-1.5 transition-all duration-300 ${
-                idx === activeIndex ? "w-6 bg-ts" : "w-1.5 bg-p/30"
-              }`}
-            />
-          ))}
+          {Array.from({ length: realProjectsCount }).map((_, idx) => {
+            const isActive = idx === activeIndex;
+
+            return (
+              <motion.button
+                key={idx}
+                onClick={() => handleDotClick(idx)}
+                initial={{ y: 15, opacity: 0 }}
+                animate={{
+                  y: !onComplete ? 0 : 15,
+                  opacity: !onComplete ? 1 : 0,
+                  width: isActive ? 25 : 10,
+                }}
+                transition={{
+                  y: {
+                    duration: 0.75,
+                    ease: [0.76, 0, 0.24, 1],
+                    delay: !onComplete ? 1.5 + idx * 0.05 : 0,
+                  },
+                  opacity: {
+                    duration: 0.75,
+                    ease: [0.76, 0, 0.24, 1],
+                    delay: !onComplete ? 1.5 + idx * 0.05 : 0,
+                  },
+                  width: {
+                    duration: 0.3,
+                    ease: [0.76, 0, 0.24, 1],
+                  },
+                }}
+                whileHover={{ scaleY: 1.6, scaleX: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                className={`h-1.5 cursor-pointer transition-colors duration-300 ${
+                  isActive ? "bg-ts" : "bg-p/30 hover:bg-p/60"
+                }`}
+              />
+            );
+          })}
         </motion.div>
 
         <AnimatePresence>

@@ -25,7 +25,7 @@ export function Loader({ setOnComplete }) {
         },
       );
 
-      await wait(1800);
+      await wait(1000);
 
       await Promise.all([
         animate(
@@ -37,7 +37,7 @@ export function Loader({ setOnComplete }) {
             duration: 1,
             ease: [0.76, 0, 0.24, 1],
           },
-          await wait(1800),
+
           setOnComplete(false),
           await wait(1200),
           animate(

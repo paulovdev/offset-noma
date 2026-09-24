@@ -2,7 +2,7 @@
 
 import Lenis from "lenis";
 import { useMotionValue } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const SMOOTHNESS = 0.08;
 const SNAP_STRENGTH = 0.08;
@@ -28,6 +28,26 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
   const dragStartScroll = useRef(0);
 
   const scrollVelocity = useMotionValue(0);
+
+  const realProjectCount = projectCount / REPEAT_COUNT;
+
+  // Função para navegar até um card específico ao clicar no dot
+  const scrollToIndex = useCallback(
+    (targetIndex) => {
+      const cardWidth = singleCardWidth.current;
+      if (cardWidth <= 0 || realProjectCount <= 0) return;
+
+      // Descobre quantos passos faltam do índice atual até o clicado (menor caminho)
+      let diff = targetIndex - activeIndex;
+
+      // Mantém a navegação pelo caminho mais curto
+      if (diff > realProjectCount / 2) diff -= realProjectCount;
+      if (diff < -realProjectCount / 2) diff += realProjectCount;
+
+      targetScroll.current -= diff * cardWidth;
+    },
+    [activeIndex, realProjectCount],
+  );
 
   useEffect(() => {
     const calculateSizes = () => {
@@ -171,12 +191,11 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
             previousTransform = transform;
           }
 
-          const realProjectCount = projectCount / REPEAT_COUNT;
-          if (realProjectCount > 0) {
+          const realProjects = projectCount / REPEAT_COUNT;
+          if (realProjects > 0) {
             const rawIndex = Math.round(-scroll / cardWidth);
             const active =
-              ((rawIndex % realProjectCount) + realProjectCount) %
-              realProjectCount;
+              ((rawIndex % realProjects) + realProjects) % realProjects;
             setActiveIndex(active);
           }
         }
@@ -202,5 +221,11 @@ export function useInfiniteColumns(projectCount, isModalOpen = false) {
     };
   }, [isModalOpen, scrollVelocity, projectCount]);
 
-  return { containerRef, projectsRef, scrollVelocity, activeIndex };
+  return {
+    containerRef,
+    projectsRef,
+    scrollVelocity,
+    activeIndex,
+    scrollToIndex,
+  };
 }

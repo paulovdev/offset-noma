@@ -70,9 +70,9 @@ const fieldAnim = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.7,
-      delay: 0.45 + custom * 0.05,
-      ease: [0.33, 1, 0.68, 1],
+      duration: 0.75,
+      delay: 0.75 + custom * 0.075,
+      ease: [0.76, 0, 0.24, 1],
     },
   }),
   exit: { y: 25, opacity: 0, transition: { duration: 0.3 } },
@@ -433,14 +433,13 @@ export function ContactModal({ onCompleteClose }) {
                       }}
                       transition={{
                         duration: 1,
-                        delay: 0.5,
+                        delay: 0.9,
                         ease: [0.76, 0, 0.24, 1],
                       }}
-                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
                       className="group relative w-full h-20 shrink-0 cursor-pointer 
-                    flex items-center justify-center overflow-hidden border-2 border-s bg-ts text-p"
+                    flex items-center justify-center overflow-hidden border-2 border-s bg-ts text-p max-md:h-15"
                     >
                       <span className="relative overflow-hidden">
                         <span className="block text-[14px] font-medium uppercase leading-[100%] tracking-[10%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
