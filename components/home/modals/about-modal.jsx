@@ -1,113 +1,20 @@
 "use client";
 
-import { ClipText } from "@/components/clip-text";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
 import { useCallback, useEffect, useRef, useState } from "react";
 import aboutCover from "@/public/assets/images/about-cover.jpg";
 
-import { IoClose } from "react-icons/io5";
-import { LuFocus, LuNavigation, LuTrendingUp } from "react-icons/lu";
+import { menuAnim, overlayAnim, loaderLayerAnim } from "@/anim/modal.anim";
 
-import {
-  SiAmd,
-  SiApple,
-  SiFigma,
-  SiGoogle,
-  SiNike,
-  SiNotion,
-  SiSpotify,
-  SiVercel,
-} from "react-icons/si";
 import Image from "next/image";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { useIsMobile } from "@/hooks/useIsMobile";
-
-const loaderLayerAnim = {
-  initial: {
-    clipPath: "inset(100% 0% 0% 0%)",
-  },
-  animate: {
-    clipPath: "inset(0% 0% 0% 0%)",
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-    },
-  },
-  exit: {
-    clipPath: "inset(100% 0% 0% 0%)",
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-      delay: 1,
-    },
-  },
-};
-
-const menuAnim = {
-  initial: {
-    clipPath: "inset(100% 0% 0% 0%)",
-  },
-  animate: {
-    clipPath: "inset(0% 0% 0% 0%)",
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-      delay: 0.25,
-    },
-  },
-  exit: {
-    clipPath: "inset(100% 0% 0% 0%)",
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-      delay: 0.25,
-    },
-  },
-};
-
-const overlayAnim = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-      delay: 1,
-    },
-  },
-};
-
-function RevealText({ text, tag = "p", className }) {
-  const ref = useRef(null);
-
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-  });
-
-  return (
-    <div ref={ref}>
-      <ClipText
-        text={text}
-        animate={isInView ? "animate" : "initial"}
-        exit="exit"
-        tag={tag}
-        className={className}
-      />
-    </div>
-  );
-}
+import { RevealText } from "@/components/ui/reveal-text";
+import { CloseButton } from "@/components/ui/close-button";
+import { values, clientIcons, services, processSteps } from "../about-data";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
 export default function AboutModal({ onCompleteClose }) {
   const container = useRef(null);
@@ -120,7 +27,7 @@ export default function AboutModal({ onCompleteClose }) {
   const [isHover, setIsHover] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [openServiceIndex, setOpenServiceIndex] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClose = useCallback(() => {
     setIsHover(false);
@@ -167,83 +74,6 @@ export default function AboutModal({ onCompleteClose }) {
     };
   }, []);
 
-  // List of icons for Infinite Slider
-  const clientIcons = [
-    SiNike,
-    SiApple,
-    SiSpotify,
-    SiVercel,
-    SiFigma,
-    SiNotion,
-    SiAmd,
-    SiGoogle,
-  ];
-
-  // Service Data
-  const services = [
-    {
-      title: "Strategy & Positioning",
-      desc: "Market analysis, brand diagnostics, and foundational guidelines to elevate your business authentically and scalably.",
-    },
-    {
-      title: "Visual Identity Systems",
-      desc: "Logos, custom typography, color palettes, and scalable style guides for digital and physical touchpoints.",
-    },
-    {
-      title: "Digital Experiences & UI/UX",
-      desc: "Websites, applications, and interactive platforms designed with a relentless focus on performance, usability, and modern aesthetics.",
-    },
-    {
-      title: "Motion & Art Direction",
-      desc: "Animations, brand films, and visual direction for campaigns that deliver compelling and memorable stories.",
-    },
-  ];
-
-  // Process Steps
-  const processSteps = [
-    {
-      step: "01",
-      title: "Immersion & Discovery",
-      desc: "We dive deep into the context, challenges, and core objectives of your project.",
-    },
-    {
-      step: "02",
-      title: "Strategy & Concept",
-      desc: "We define the creative direction and visual foundation of the solution.",
-    },
-    {
-      step: "03",
-      title: "Execution & Refinement",
-      desc: "We craft the system with technical precision and meticulous attention to detail.",
-    },
-    {
-      step: "04",
-      title: "Delivery & Rollout",
-      desc: "We launch production-ready systems built for real-world impact with ongoing support.",
-    },
-  ];
-
-  const values = [
-    {
-      id: 1,
-      icon: LuNavigation,
-      title: "Clarity",
-      desc: "Less noise. More intention. Every creative decision serves a purpose.",
-    },
-    {
-      id: 2,
-      icon: LuFocus,
-      title: "Intention",
-      desc: "Purposeful creation over transient trends. Strategy always precedes aesthetics.",
-    },
-    {
-      id: 3,
-      icon: LuTrendingUp,
-      title: "Impact",
-      desc: "Delivering real-world effectiveness, beyond just looking good on screen.",
-    },
-  ];
-
   return (
     <>
       <AnimatePresence onExitComplete={onCompleteClose}>
@@ -262,8 +92,7 @@ export default function AboutModal({ onCompleteClose }) {
             />
 
             <motion.div
-              className="fixed bottom-0 left-1/2 z-95 h-[calc(100vh-10px)] 
-            w-full max-w-190 -translate-x-1/2 bg-ts max-lg:h-dvh max-lg:w-screen"
+              className="fixed bottom-0 left-1/2 z-95 h-[calc(100vh-10px)] w-full max-w-190 -translate-x-1/2 bg-ts max-lg:h-dvh max-lg:w-screen"
               variants={loaderLayerAnim}
               initial="initial"
               animate="animate"
@@ -277,48 +106,11 @@ export default function AboutModal({ onCompleteClose }) {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="fixed bottom-0 left-1/2 z-9999 h-[calc(100vh-10px)] 
-            w-full max-w-190 -translate-x-1/2 cursor-s-resize bg-s px-2.5 pt-2.5 max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
+              className="fixed bottom-0 left-1/2 z-9999 h-[calc(100vh-10px)] w-full max-w-190 -translate-x-1/2 bg-s px-2.5 pt-2.5 max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
             >
               {/* CLOSE */}
               <AnimatePresence>
-                {!isHover && (
-                  <motion.div
-                    key={isHover}
-                    onClick={handleClose}
-                    initial={{
-                      scale: 0,
-                      rotate: -90,
-                    }}
-                    animate={{
-                      scale: 1,
-                      rotate: 0,
-                      transition: {
-                        duration: 0.8,
-                        ease: [0.76, 0, 0.24, 1],
-                      },
-                    }}
-                    exit={{
-                      scale: 0,
-                      rotate: 90,
-                      transition: {
-                        duration: 0.4,
-                        ease: [0.76, 0, 0.24, 1],
-                      },
-                    }}
-                    className="absolute right-2.5 top-2.5 z-30"
-                  >
-                    <motion.button
-                      whileTap={{ scale: 1.1 }}
-                      whileHover={{
-                        scale: 1.1,
-                      }}
-                      className="group flex size-12.5 cursor-pointer items-center justify-center bg-ts backdrop-blur-2xl"
-                    >
-                      <IoClose className="text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
-                    </motion.button>
-                  </motion.div>
-                )}
+                {!isHover && <CloseButton onClick={handleClose} />}
               </AnimatePresence>
 
               {/* SCROLL */}
@@ -404,20 +196,17 @@ export default function AboutModal({ onCompleteClose }) {
                             ease: [0.33, 1, 0.68, 1],
                           }}
                           animate={{
-                            flex: isActive ? 2 : 1,
+                            flex: isActive ? 1.5 : 1,
                           }}
                           className={`relative flex cursor-pointer flex-col justify-between border border-p/15 p-5 transition-colors duration-500 max-md:h-64 max-md:w-full ${
                             isActive
-                              ? "bg-ts border-p/30"
+                              ? "border-p/30 bg-ts"
                               : "bg-transparent hover:border-p/20"
                           }`}
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-[32px] font-medium text-p">
                               <Icon />
-                            </span>
-                            <span className="text-[14px] font-medium uppercase leading-none tracking-[10%] text-p/50">
-                              0{index + 1}
                             </span>
                           </div>
 
@@ -455,12 +244,10 @@ export default function AboutModal({ onCompleteClose }) {
                       return (
                         <div
                           key={service.title}
-                          className="border-t border-p/15 py-6 transition-colors"
+                          onClick={() => toggleService(index)}
+                          className={`border-t border-p/15 py-6 transition-colors ${isExpanded ? "cursor-default" : "cursor-pointer"}`}
                         >
-                          <button
-                            onClick={() => toggleService(index)}
-                            className="flex w-full cursor-pointer items-center justify-between text-left focus:outline-none"
-                          >
+                          <button className="flex w-full cursor-pointer items-center justify-between text-left focus:outline-none">
                             <div className="flex items-center gap-6">
                               <span className="text-[14px] font-normal text-p/40">
                                 0{index + 1}
@@ -470,9 +257,9 @@ export default function AboutModal({ onCompleteClose }) {
                               </h3>
                             </div>
                             <span
-                              className={`text-[32px] text-ts ${isExpanded ? "rotate-45" : "rotate-0"} 
-                            transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]
-                            `}
+                              className={`text-[32px] text-ts ${
+                                isExpanded ? "rotate-45" : "rotate-0"
+                              } transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]`}
                             >
                               <AiOutlinePlus />
                             </span>
@@ -490,7 +277,7 @@ export default function AboutModal({ onCompleteClose }) {
                                 }}
                                 className="overflow-hidden"
                               >
-                                <div className="pt-4 pl-10 max-md:pl-0">
+                                <div className="pl-10 pt-4 max-md:pl-0">
                                   <RevealText
                                     text={service.desc}
                                     className="max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p/75"
@@ -506,7 +293,7 @@ export default function AboutModal({ onCompleteClose }) {
                 </section>
 
                 {/* CLIENTS - INFINITE SLIDER */}
-                <section className="border-b border-p/15 py-25 overflow-hidden">
+                <section className="overflow-hidden border-b border-p/15 py-25">
                   <RevealText
                     text="04 — Selected Clients"
                     className="mb-15 text-[14px] font-normal uppercase tracking-[10%] text-p/40"
@@ -598,7 +385,7 @@ export default function AboutModal({ onCompleteClose }) {
 
                   <div className="flex flex-col">
                     <div className="grid grid-cols-2 gap-2.5 border-t border-p/15 py-8 max-md:grid-cols-1">
-                      <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-ts">
+                      <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-p">
                         2017
                       </span>
 
@@ -630,7 +417,7 @@ export default function AboutModal({ onCompleteClose }) {
                     </div>
 
                     <div className="grid grid-cols-2 gap-2.5 border-t border-p/15 py-8 max-md:grid-cols-1">
-                      <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-ts">
+                      <span className="text-[clamp(48px,8vw,100px)] font-instrument font-normal leading-none tracking-[-6%] text-p">
                         12
                       </span>
 
@@ -640,7 +427,7 @@ export default function AboutModal({ onCompleteClose }) {
                         </span>
 
                         <span className="mt-2 max-w-125 text-[18px] font-instrument font-normal leading-[110%] tracking-[-3%] text-p">
-                          Cross-border engagements
+                          Cross-border engagemenp
                         </span>
                       </div>
                     </div>
@@ -737,30 +524,10 @@ export default function AboutModal({ onCompleteClose }) {
           </>
         )}
       </AnimatePresence>
+
       <AnimatePresence>
         {isOpen && isHover && !isMobile && (
-          <motion.div
-            className="pointer-events-none fixed z-90 size-32 -translate-x-1/2 -translate-y-1/2 
-                        flex items-center justify-center rounded-full bg-ts"
-            style={{
-              left: mouseX,
-              top: mouseY,
-            }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="flex items-center"
-            >
-              <IoClose className="text-[32px] text-p" />
-            </motion.div>
-          </motion.div>
+          <CustomCursor x={mouseX} y={mouseY} />
         )}
       </AnimatePresence>
     </>

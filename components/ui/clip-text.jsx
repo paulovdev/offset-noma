@@ -1,29 +1,5 @@
+import { wordReveal } from "@/anim/modal.anim";
 import { motion } from "motion/react";
-
-const wordReveal = {
-  initial: {
-    y: "100%",
-    opacity: 0,
-  },
-  animate: (custom) => ({
-    y: "0%",
-    opacity: 1,
-    transition: {
-      duration: 1,
-      ease: [0.33, 1, 0.68, 1],
-      delay: custom,
-    },
-  }),
-  exit: (custom) => ({
-    y: "100%",
-    opacity: 0,
-    transition: {
-      duration: 1,
-      ease: [0.33, 1, 0.68, 1],
-      delay: custom,
-    },
-  }),
-};
 
 export const ClipText = ({
   text,

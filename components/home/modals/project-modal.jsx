@@ -1,63 +1,17 @@
 "use client";
 
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Lenis from "lenis";
-import { ClipText } from "@/components/clip-text";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { IoClose } from "react-icons/io5";
+
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { menuAnim, overlayAnim } from "@/anim/modal.anim";
 
-const menuAnim = {
-  initial: {
-    clipPath: "inset(100% 0% 0% 0%)",
-  },
-  animate: {
-    clipPath: "inset(0% 0% 0% 0%)",
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-    },
-  },
-  exit: {
-    clipPath: "inset(100% 0% 0% 0%)",
-    transition: {
-      duration: 0.75,
-      ease: [0.76, 0, 0.24, 1],
-      delay: 0.5,
-    },
-  },
-};
-
-const overlayAnim = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: { duration: 0.75, ease: [0.76, 0, 0.24, 1] },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.75, ease: [0.76, 0, 0.24, 1], delay: 0.5 },
-  },
-};
-
-function RevealText({ text, tag = "p", className }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  return (
-    <div ref={ref}>
-      <ClipText
-        text={text}
-        animate={isInView ? "animate" : "initial"}
-        exit="exit"
-        tag={tag}
-        className={className}
-      />
-    </div>
-  );
-}
+import { RevealText } from "@/components/ui/reveal-text";
+import { CloseButton } from "@/components/ui/close-button";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
 export function ProjectModal({ project, onCompleteClose }) {
   const container = useRef(null);
@@ -68,7 +22,7 @@ export function ProjectModal({ project, onCompleteClose }) {
   const { x: mouseX, y: mouseY } = useMousePosition();
   const isMobile = useIsMobile(768);
 
-  const [isHover, setIsHover] = useState(null);
+  const [isHover, setIsHover] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = useCallback(() => {
@@ -131,8 +85,7 @@ export function ProjectModal({ project, onCompleteClose }) {
             {/* Modal Container */}
             <motion.div
               ref={container}
-              className="fixed bottom-0 left-1/2 z-[100] h-[calc(100vh-10px)] 
-            w-full max-w-190 -translate-x-1/2 bg-s px-2.5 pt-2.5 backdrop-blur-3xl max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
+              className="fixed bottom-0 left-1/2 z-[100] h-[calc(100vh-10px)] w-full max-w-190 -translate-x-1/2 bg-s px-2.5 pt-2.5 backdrop-blur-3xl max-lg:m-0 max-lg:h-dvh max-lg:w-screen"
               variants={menuAnim}
               initial="initial"
               animate="animate"
@@ -140,40 +93,9 @@ export function ProjectModal({ project, onCompleteClose }) {
             >
               {/* Close Button */}
               <AnimatePresence>
-                {!isHover && (
-                  <motion.div
-                    key={isHover}
-                    onClick={handleClose}
-                    initial={{ scale: 0, rotate: -90 }}
-                    animate={{
-                      scale: 1,
-                      rotate: 0,
-                      transition: {
-                        duration: 0.8,
-                        ease: [0.76, 0, 0.24, 1],
-                      },
-                    }}
-                    exit={{
-                      scale: 0,
-                      rotate: 90,
-                      transition: {
-                        duration: 0.4,
-                        ease: [0.76, 0, 0.24, 1],
-                      },
-                    }}
-                    className="absolute right-2.5 top-2.5 z-30"
-                  >
-                    <motion.button
-                      whileTap={{ scale: 1.1 }}
-                      whileHover={{ scale: 1.1 }}
-                      aria-label="Close modal"
-                      className="group flex size-12.5 cursor-pointer items-center justify-center bg-ts backdrop-blur-2xl"
-                    >
-                      <IoClose className="text-[24px] text-p transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-90" />
-                    </motion.button>
-                  </motion.div>
-                )}
+                {!isHover && <CloseButton onClick={handleClose} />}
               </AnimatePresence>
+
               {/* Scroll Container */}
               <div
                 ref={scrollRef}
@@ -449,30 +371,10 @@ export function ProjectModal({ project, onCompleteClose }) {
         )}
       </AnimatePresence>
 
+      {/* Custom Cursor */}
       <AnimatePresence>
         {isOpen && isHover && !isMobile && (
-          <motion.div
-            className="pointer-events-none fixed z-90 size-32 -translate-x-1/2 -translate-y-1/2 
-                        flex items-center justify-center rounded-full bg-ts"
-            style={{
-              left: mouseX,
-              top: mouseY,
-            }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="flex items-center"
-            >
-              <IoClose className="text-[32px] text-p" />
-            </motion.div>
-          </motion.div>
+          <CustomCursor x={mouseX} y={mouseY} />
         )}
       </AnimatePresence>
     </>
