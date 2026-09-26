@@ -118,8 +118,8 @@ export function ProjectModal({ project, onCompleteClose }) {
                     <Image
                       src={project.img}
                       alt={project.name}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 720px"
+                      width={3200}
+                      height={3600}
                       placeholder="blur"
                       priority
                       className="size-full object-cover brightness-75"
@@ -226,8 +226,8 @@ export function ProjectModal({ project, onCompleteClose }) {
                     <Image
                       src={project.img2}
                       alt={`${project.name} detail`}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 720px"
+                      width={3200}
+                      height={3600}
                       placeholder="blur"
                       className="size-full scale-110 object-cover grayscale-[15%]"
                     />
@@ -299,8 +299,8 @@ export function ProjectModal({ project, onCompleteClose }) {
                     <Image
                       src={project.img3}
                       alt={`${project.name} presentation`}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 720px"
+                      width={3200}
+                      height={3600}
                       placeholder="blur"
                       className="size-full scale-200 blur-2xl object-cover grayscale-50"
                     />

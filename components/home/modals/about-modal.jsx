@@ -161,8 +161,8 @@ export default function AboutModal({ onCompleteClose }) {
                     <Image
                       src={aboutCover}
                       alt="About the Studio"
-                      fill
-                      sizes="100vw"
+                      width={3200}
+                      height={3600}
                       placeholder="blur"
                       priority
                       className="object-cover brightness-75"
