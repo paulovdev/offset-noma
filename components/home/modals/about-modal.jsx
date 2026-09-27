@@ -147,7 +147,7 @@ export default function AboutModal({ onCompleteClose }) {
                   </div>
                 </section>
 
-                <section className="relative h-[75vh] w-full overflow-hidden">
+                <section className="relative h-[75vh] w-full overflow-hidden max-md:h-[60vh]">
                   <motion.figure
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -165,7 +165,7 @@ export default function AboutModal({ onCompleteClose }) {
                       height={3600}
                       placeholder="blur"
                       priority
-                      className="object-cover brightness-75"
+                      className="object-cover brightness-75 size-full"
                     />
                   </motion.figure>
                 </section>
@@ -198,13 +198,14 @@ export default function AboutModal({ onCompleteClose }) {
                           animate={{
                             flex: isActive ? 1.5 : 1,
                           }}
-                          className={`relative flex cursor-pointer flex-col justify-between border border-p/15 p-5 transition-colors duration-500 max-md:h-64 max-md:w-full ${
-                            isActive
-                              ? "border-p/30 bg-ts"
-                              : "bg-transparent hover:border-p/20"
-                          }`}
+                          className={`relative flex cursor-pointer flex-col justify-between border border-p/15 p-5 transition-colors duration-500 
+                             max-md:w-full ${
+                               isActive
+                                 ? "border-p/30 bg-ts"
+                                 : "bg-transparent hover:border-p/20"
+                             }`}
                         >
-                          <div className="flex items-center justify-between">
+                          <div className="flex items-center justify-between max-lg:mb-15">
                             <span className="text-[32px] font-medium text-p">
                               <Icon />
                             </span>

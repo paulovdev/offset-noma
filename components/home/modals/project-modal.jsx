@@ -308,30 +308,27 @@ export function ProjectModal({ project, onCompleteClose }) {
                     <div className="absolute inset-0 bg-p/5" />
 
                     <div className="absolute inset-0 flex items-center justify-between gap-5 p-2.5">
-                      {[
-                        "@paulovdev",
-                        "@offset",
-                        "@ht_studio",
-                        "@other_lab",
-                      ].map((handle, idx) => (
-                        <motion.div
-                          key={handle}
-                          initial={{ scale: 0, rotate: -45 }}
-                          exit={{ scale: 0, rotate: -45 }}
-                          whileInView={{ scale: 1, rotate: 0 }}
-                          viewport={{ once: true, amount: 0.2 }}
-                          transition={{
-                            duration: 0.9,
-                            ease: [0.76, 0, 0.24, 1],
-                            delay: idx * 0.1,
-                          }}
-                          className="flex size-40 items-center justify-center rounded-full border border-ts/30 bg-ts/10 backdrop-blur-xl"
-                        >
-                          <span className="text-[14px] font-normal uppercase tracking-[10%] text-ts">
-                            {handle}
-                          </span>
-                        </motion.div>
-                      ))}
+                      {["@paulovdev", "@offset", "@ht_studio"].map(
+                        (handle, idx) => (
+                          <motion.div
+                            key={handle}
+                            initial={{ scale: 0, rotate: -45 }}
+                            exit={{ scale: 0, rotate: -45 }}
+                            whileInView={{ scale: 1, rotate: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{
+                              duration: 0.9,
+                              ease: [0.76, 0, 0.24, 1],
+                              delay: idx * 0.1,
+                            }}
+                            className="flex size-40 items-center justify-center rounded-full border border-ts/30 bg-ts/10 backdrop-blur-xl"
+                          >
+                            <span className="text-[14px] font-normal uppercase tracking-[10%] text-ts">
+                              {handle}
+                            </span>
+                          </motion.div>
+                        ),
+                      )}
                     </div>
                   </motion.div>
                 )}
